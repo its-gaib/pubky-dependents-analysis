@@ -116,6 +116,8 @@ def scrape_github_dependents(github_repo: str) -> list[str]:
 
         html = resp.text
 
+        page_repos_before = len(repos)
+
         for match in re.finditer(
             r'<a[^>]+data-hovercard-type="repository"[^>]+href="/([^"]+)"',
             html,
@@ -123,8 +125,6 @@ def scrape_github_dependents(github_repo: str) -> list[str]:
             repo = match.group(1)
             if repo != github_repo and repo not in repos:
                 repos.append(repo)
-
-        page_repos_before = len(repos)
 
         # Find next page link
         next_match = re.search(r'<a[^>]*class="[^"]*"[^>]*href="([^"]+)"[^>]*>Next</a>', html)

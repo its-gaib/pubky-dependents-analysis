@@ -4,12 +4,12 @@ import json
 import logging
 import sys
 import time
+import tomllib
 from datetime import datetime, timezone
 from pathlib import Path
 
 from classify import (
     CategorizedEntry,
-    Classification,
     RepoAnalysis,
     categorize,
     classify_cargo_toml,
@@ -177,7 +177,6 @@ def _classify_repo(
 
 def _extract_crate_name(toml_content: str) -> str | None:
     """Extract the [package] name from a Cargo.toml."""
-    import tomllib
     try:
         data = tomllib.loads(toml_content)
         return data.get("package", {}).get("name")
