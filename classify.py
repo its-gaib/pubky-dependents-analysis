@@ -71,6 +71,15 @@ def classify_cargo_toml(content: str, target_crate: str) -> Classification | Non
     if dep is not None:
         return _parse_direct_dep(dep)
 
+    # Check [target.<cfg>.dependencies] and [target.<cfg>.dev-dependencies]
+    for _target_name, target_deps in data.get("target", {}).items():
+        if not isinstance(target_deps, dict):
+            continue
+        for section in ("dependencies", "dev-dependencies", "build-dependencies"):
+            dep = target_deps.get(section, {}).get(target_crate)
+            if dep is not None:
+                return _parse_direct_dep(dep)
+
     # Check if target_crate appears only in feature strings of other deps
     feature_flag_parent = _find_in_feature_flags(data, target_crate)
     if feature_flag_parent:
@@ -171,6 +180,11 @@ def _find_in_feature_flags(data: dict, target_crate: str) -> str | None:
     all_deps += list(data.get("dev-dependencies", {}).items())
     all_deps += list(data.get("build-dependencies", {}).items())
     all_deps += list(data.get("workspace", {}).get("dependencies", {}).items())
+    for _target_name, target_deps in data.get("target", {}).items():
+        if not isinstance(target_deps, dict):
+            continue
+        for section in ("dependencies", "dev-dependencies", "build-dependencies"):
+            all_deps += list(target_deps.get(section, {}).items())
 
     for crate_name, dep_val in all_deps:
         if not isinstance(dep_val, dict):
