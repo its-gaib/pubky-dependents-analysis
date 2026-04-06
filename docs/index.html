@@ -12,8 +12,15 @@
   .tabs { display: flex; gap: .5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
   .tab { padding: .4rem .8rem; border: 1px solid #ccc; background: #fff; cursor: pointer; font: inherit; font-size: .85rem; }
   .tab.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
-  .meta { font-size: .8rem; color: #666; margin-bottom: 1.5rem; }
+  .meta { font-size: .8rem; color: #666; margin-bottom: .5rem; display: flex; justify-content: space-between; align-items: baseline; }
   .meta a { color: #0066cc; }
+  .stats { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .stat-card { flex: 1; min-width: 140px; background: #fff; border: 1px solid #e0e0e0; padding: .75rem 1rem; }
+  .stat-value { font-size: 1.4rem; font-weight: bold; line-height: 1.2; }
+  .stat-label { font-size: .75rem; color: #666; margin-top: .15rem; }
+  .stat-sub { font-size: .75rem; color: #999; margin-top: .25rem; }
+  .section-title { font-size: 1rem; font-weight: bold; margin-bottom: .25rem; }
+  .section-desc { font-size: .8rem; color: #666; margin-bottom: 1rem; }
   .chart-row { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
   .chart-col { flex: 0 0 200px; }
   .legend { flex: 1; min-width: 200px; font-size: .8rem; }
@@ -113,18 +120,22 @@ function render(data) {
     const entries = lists[name] || [];
     const count = summary[name];
     const pct = (count / total * 100).toFixed(1);
-    const top5 = [...entries].sort((a, b) => (b.stars || 0) - (a.stars || 0)).slice(0, 5);
-    const rows = top5.map(e =>
+    const top10 = [...entries].sort((a, b) => (b.stars || 0) - (a.stars || 0)).slice(0, 10);
+    const rows = top10.map(e =>
       `<div class="repo-row"><a href="https://github.com/${e.repo}" target="_blank">${e.repo}</a><span class="stars">${e.stars != null ? e.stars.toLocaleString() + " stars" : ""}</span></div>`
     ).join("");
     return `<div class="category"><div class="cat-header"><span class="cat-name">${name}</span><span class="cat-stat">${count} repos (${pct}%)</span></div><div class="top-repos">${rows}</div></div>`;
   }).join("");
 
-  const dlInfo = dl ? ` &middot; ${dl.total.toLocaleString()} crates.io downloads` : "";
-  const ndlInfo = ndl ? ` &middot; ${ndl.total.toLocaleString()} npm downloads` : "";
+  let statCards = `<div class="stat-card"><div class="stat-value">${total.toLocaleString()}</div><div class="stat-label">public dependants</div></div>`;
+  if (dl) statCards += `<div class="stat-card"><div class="stat-value">${dl.total.toLocaleString()}</div><div class="stat-label">crates.io downloads (all-time)</div><div class="stat-sub">${dl.recent.toLocaleString()} in last 90 days</div></div>`;
+  if (ndl) statCards += `<div class="stat-card"><div class="stat-value">${ndl.total.toLocaleString()}</div><div class="stat-label">npm downloads (all-time)</div><div class="stat-sub">${ndl.recent.toLocaleString()} in last 30 days</div></div>`;
 
   content.innerHTML = `
-    <div class="meta">Updated ${updated} &middot; ${total} public dependants${dlInfo}${ndlInfo} &middot; <a href="${jsonUrl}">JSON API</a></div>
+    <div class="meta"><span>Updated ${updated}</span><a href="${jsonUrl}">JSON API</a></div>
+    <div class="stats">${statCards}</div>
+    <div class="section-title">How projects depend on ${data.crate}</div>
+    <div class="section-desc">Many projects don't add ${data.crate} directly &mdash; they depend on an intermediary crate (e.g. iroh), which pulls in ${data.crate} as a transitive dependency.</div>
     <div class="chart-row"><div class="chart-col">${svg}</div><div class="legend">${legend}</div></div>
     ${categories}
     <div class="note">This analysis only tracks public / open-source projects. Private and proprietary projects that depend on this crate are not visible. The crates.io download count above includes all usage (public and private) and serves as a rough indicator of total adoption.</div>`;
