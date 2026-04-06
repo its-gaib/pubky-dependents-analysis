@@ -179,58 +179,60 @@ def fetch_github_stars(repo: str) -> int | None:
     return None
 
 
-def scrape_npm_dependents(package_name: str) -> list[dict]:
-    """Scrape npm dependents for a package.
+def search_npm_dependents(package_name: str) -> list[dict]:
+    """Search for npm packages that depend on the target package.
 
-    npm doesn't have a public API for dependents, but the website
-    exposes them at npmjs.com/browse/depended/{package}.
+    Uses npm registry search API and GitHub code search for package.json.
     """
     dependents = []
-    page = 0
+    seen = set()
 
-    while True:
-        offset = page * 36
-        url = f"https://www.npmjs.com/browse/depended/{package_name}?offset={offset}"
-        try:
-            resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
-            if resp.status_code != 200:
-                break
-        except requests.RequestException as e:
-            print(f"Warning: npm dependents fetch failed: {e}")
-            break
+    # Source 1: npm registry search
+    try:
+        resp = requests.get(
+            "https://registry.npmjs.org/-/v1/search",
+            params={"text": package_name, "size": 50},
+            headers={"User-Agent": USER_AGENT},
+            timeout=30,
+        )
+        if resp.status_code == 200:
+            data = resp.json()
+            for obj in data.get("objects", []):
+                pkg = obj["package"]
+                name = pkg["name"]
+                if name != package_name and name not in seen:
+                    seen.add(name)
+                    dependents.append({
+                        "package": name,
+                        "description": pkg.get("description", ""),
+                        "source": "npm_registry",
+                    })
+    except requests.RequestException as e:
+        print(f"Warning: npm registry search failed: {e}")
 
-        html = resp.text
-
-        # Extract package names from the dependents page
-        found = []
-        for match in re.finditer(
-            r'<a[^>]+href="/package/([^"]+)"[^>]*class="[^"]*"[^>]*>',
-            html,
-        ):
-            pkg = match.group(1)
-            if pkg != package_name and pkg not in found:
-                found.append(pkg)
-
-        # Also try pattern with package listing sections
-        if not found:
-            for match in re.finditer(
-                r'"package"[^}]*"name"\s*:\s*"([^"]+)"',
-                html,
-            ):
-                pkg = match.group(1)
-                if pkg != package_name and pkg not in found:
-                    found.append(pkg)
-
-        if not found:
-            break
-
-        for pkg in found:
-            dependents.append({"package": pkg, "source": "npm"})
-
-        page += 1
-        if page >= 10:  # limit pages
-            break
-        time.sleep(1)
+    # Source 2: GitHub code search for package.json references
+    try:
+        result = subprocess.run(
+            [
+                "gh", "search", "code", package_name,
+                "--filename", "package.json",
+                "--limit", "50",
+                "--json", "repository,path",
+            ],
+            capture_output=True, text=True, timeout=60,
+        )
+        if result.returncode == 0:
+            items = json.loads(result.stdout)
+            for item in items:
+                repo = item["repository"]["nameWithOwner"]
+                if repo not in seen:
+                    seen.add(repo)
+                    dependents.append({
+                        "package": repo,
+                        "source": "github_package_json",
+                    })
+    except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
+        print(f"Warning: gh search for package.json failed: {e}")
 
     return dependents
 

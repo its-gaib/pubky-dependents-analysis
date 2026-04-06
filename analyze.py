@@ -13,7 +13,7 @@ from sources import (
     fetch_file_content,
     fetch_github_stars,
     scrape_github_dependents,
-    scrape_npm_dependents,
+    search_npm_dependents,
     search_github_cargo_lock,
     search_github_cargo_toml,
 )
@@ -44,8 +44,8 @@ def analyze_crate(crate_name: str, github_repo: str, npm_package: str | None = N
 
     npm_deps = []
     if npm_package:
-        print(f"  Scraping npm dependents for {npm_package}...")
-        npm_deps = scrape_npm_dependents(npm_package)
+        print(f"  Searching npm dependents for {npm_package}...")
+        npm_deps = search_npm_dependents(npm_package)
         print(f"  Found {len(npm_deps)} npm dependents")
 
     # Merge all sources into a unified repo set
