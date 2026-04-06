@@ -1,6 +1,8 @@
 """Fetch dependant data from crates.io, GitHub search, and GitHub dependents page."""
 
+import base64
 import json
+import logging
 import re
 import subprocess
 import time
@@ -8,8 +10,13 @@ from dataclasses import dataclass, field
 
 import requests
 
+log = logging.getLogger(__name__)
+
 USER_AGENT = "pubky-dependants-analysis (https://github.com/its-gaib/pubky-dependants-analysis)"
 CRATES_IO_BASE = "https://crates.io/api/v1"
+CRATES_IO_DELAY = 1  # seconds between crates.io requests
+SCRAPE_DELAY = 1  # seconds between dependents page requests
+SCRAPE_MAX_PAGES = 10
 
 
 @dataclass
@@ -47,7 +54,7 @@ def fetch_crates_io_reverse_deps(crate_name: str) -> list[dict]:
         if page * 100 >= total:
             break
         page += 1
-        time.sleep(1)  # crates.io rate limit
+        time.sleep(CRATES_IO_DELAY)
 
     return results
 
@@ -75,12 +82,12 @@ def _gh_search_code(query: str, filename: str, path_attr: str) -> list[RepoMatch
             capture_output=True, text=True, timeout=60,
         )
         if result.returncode != 0:
-            print(f"Warning: gh search failed: {result.stderr}")
+            log.warning("gh search failed: %s", result.stderr)
             return []
 
         items = json.loads(result.stdout)
     except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-        print(f"Warning: gh search error: {e}")
+        log.warning("gh search error: %s", e)
         return []
 
     repo_map: dict[str, RepoMatch] = {}
@@ -95,46 +102,29 @@ def _gh_search_code(query: str, filename: str, path_attr: str) -> list[RepoMatch
 
 
 def scrape_github_dependents(github_repo: str) -> list[str]:
-    """Scrape the GitHub dependents page to get repo names.
-
-    GitHub doesn't have an API for this, so we parse the HTML.
-    """
+    """Scrape the GitHub dependents page to get repo names."""
     repos = []
     url = f"https://github.com/{github_repo}/network/dependents"
 
-    for _page in range(10):  # limit to 10 pages
+    for page_num in range(SCRAPE_MAX_PAGES):
         try:
             resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
             resp.raise_for_status()
         except requests.RequestException as e:
-            print(f"Warning: dependents page fetch failed: {e}")
+            log.warning("Dependents page fetch failed: %s", e)
             break
 
         html = resp.text
 
-        # Extract repo names from the dependents page
-        # Pattern: <a data-hovercard-type="repository" ...>owner/repo</a>
-        # or: <a href="/owner/repo">repo</a> within the dependents list
         for match in re.finditer(
-            r'data-repository-id="\d+"[^>]*>\s*'
-            r'<a[^>]*href="/([^"]+)"[^>]*>([^<]+)</a>\s*'
-            r'</span>\s*<span[^>]*>\s*/'
-            r'\s*</span>\s*<a[^>]*href="/([^"]+)"[^>]*>([^<]+)</a>',
+            r'<a[^>]+data-hovercard-type="repository"[^>]+href="/([^"]+)"',
             html,
         ):
-            owner = match.group(2).strip()
-            name = match.group(4).strip()
-            repos.append(f"{owner}/{name}")
+            repo = match.group(1)
+            if repo != github_repo and repo not in repos:
+                repos.append(repo)
 
-        # Also try a simpler pattern
-        if not repos or _page > 0:
-            for match in re.finditer(
-                r'<a[^>]+data-hovercard-type="repository"[^>]+href="/([^"]+)"',
-                html,
-            ):
-                repo = match.group(1)
-                if repo != github_repo and repo not in repos:
-                    repos.append(repo)
+        page_repos_before = len(repos)
 
         # Find next page link
         next_match = re.search(r'<a[^>]*class="[^"]*"[^>]*href="([^"]+)"[^>]*>Next</a>', html)
@@ -143,9 +133,14 @@ def scrape_github_dependents(github_repo: str) -> list[str]:
         url = next_match.group(1)
         if not url.startswith("http"):
             url = f"https://github.com{url}"
-        time.sleep(1)
 
-    return list(dict.fromkeys(repos))  # dedupe preserving order
+        if page_num > 0 and len(repos) == page_repos_before:
+            log.warning("Dependents page %d returned no new repos — HTML structure may have changed", page_num + 1)
+            break
+
+        time.sleep(SCRAPE_DELAY)
+
+    return repos
 
 
 def fetch_file_content(repo: str, path: str) -> str | None:
@@ -156,10 +151,8 @@ def fetch_file_content(repo: str, path: str) -> str | None:
             capture_output=True, text=True, timeout=30,
         )
         if result.returncode != 0:
-            # Try raw URL for large files
             return _fetch_raw(repo, path)
 
-        import base64
         return base64.b64decode(result.stdout.strip()).decode("utf-8", errors="replace")
     except Exception:
         return _fetch_raw(repo, path)
@@ -180,10 +173,7 @@ def fetch_github_stars(repo: str) -> int | None:
 
 
 def search_npm_dependents(package_name: str) -> list[dict]:
-    """Search for npm packages that depend on the target package.
-
-    Uses npm registry search API and GitHub code search for package.json.
-    """
+    """Search for npm packages that reference the target package."""
     dependents = []
     seen = set()
 
@@ -208,7 +198,7 @@ def search_npm_dependents(package_name: str) -> list[dict]:
                         "source": "npm_registry",
                     })
     except requests.RequestException as e:
-        print(f"Warning: npm registry search failed: {e}")
+        log.warning("npm registry search failed: %s", e)
 
     # Source 2: GitHub code search for package.json references
     try:
@@ -232,7 +222,7 @@ def search_npm_dependents(package_name: str) -> list[dict]:
                         "source": "github_package_json",
                     })
     except (subprocess.TimeoutExpired, json.JSONDecodeError, FileNotFoundError) as e:
-        print(f"Warning: gh search for package.json failed: {e}")
+        log.warning("gh search for package.json failed: %s", e)
 
     return dependents
 
