@@ -18,7 +18,6 @@ USER_AGENT = (
 CRATES_IO_BASE = "https://crates.io/api/v1"
 CRATES_IO_DELAY = 1  # seconds between crates.io requests
 SCRAPE_DELAY = 1  # seconds between dependents page requests
-SCRAPE_MAX_PAGES = 10
 
 
 @dataclass
@@ -122,7 +121,8 @@ def scrape_github_dependents(github_repo: str) -> list[str]:
     repos = []
     url = f"https://github.com/{github_repo}/network/dependents"
 
-    for page_num in range(SCRAPE_MAX_PAGES):
+    page_num = 0
+    while True:
         try:
             resp = requests.get(url, headers={"User-Agent": USER_AGENT}, timeout=30)
             resp.raise_for_status()
@@ -160,6 +160,7 @@ def scrape_github_dependents(github_repo: str) -> list[str]:
             break
 
         time.sleep(SCRAPE_DELAY)
+        page_num += 1
 
     return repos
 
