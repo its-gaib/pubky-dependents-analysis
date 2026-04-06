@@ -1,0 +1,334 @@
+{
+  "crate": "pubky-app-specs",
+  "updated_at": "2026-04-06T10:36:17.600163+00:00",
+  "total": 4,
+  "summary": {
+    "direct": 4
+  },
+  "lists": {
+    "direct": [
+      {
+        "repo": "MiguelMedeiros/ai-rand",
+        "chain": [
+          "client-pubky",
+          "pubky-app-specs"
+        ],
+        "stars": 3,
+        "version": "0.3.3"
+      },
+      {
+        "repo": "SHAcollision/pubky-vibes",
+        "chain": [
+          "pubky-swiss-knife",
+          "pubky-app-specs"
+        ],
+        "stars": 2,
+        "version": "0.4"
+      },
+      {
+        "repo": "pubky/pubky-nexus",
+        "chain": [
+          "pubky-nexus",
+          "pubky-app-specs"
+        ],
+        "stars": 19,
+        "version": "workspace",
+        "features": [
+          "openapi"
+        ]
+      },
+      {
+        "repo": "synonymdev/bitkit-core",
+        "chain": [
+          "bitkitcore",
+          "pubky-app-specs"
+        ],
+        "stars": 5,
+        "version": "0.4"
+      }
+    ]
+  },
+  "crates_io_downloads": {
+    "total": 8245,
+    "recent": 391
+  },
+  "npm_downloads": {
+    "total": 11400,
+    "recent": 1918
+  },
+  "npm_dependents": [
+    {
+      "package": "find-cypress-specs",
+      "description": "Find Cypress spec files using the config settings",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@sigstore/protobuf-specs",
+      "description": "code-signing for npm packages",
+      "source": "npm_registry"
+    },
+    {
+      "package": "setimmediate",
+      "description": "A shim for the setImmediate efficient script yielding API",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/pubky",
+      "description": "Pubky client",
+      "source": "npm_registry"
+    },
+    {
+      "package": "device-specs",
+      "description": "A list of devices that can be emulated using Chrome DevTools.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
+      "source": "npm_registry"
+    },
+    {
+      "package": "cypress-split",
+      "description": "Split Cypress specs across parallel CI machines for speed",
+      "source": "npm_registry"
+    },
+    {
+      "package": "cypress-repeat",
+      "description": "Run Cypress multiple times in a row",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@metamask/api-specs",
+      "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@types/har-format",
+      "description": "TypeScript definitions for har-format",
+      "source": "npm_registry"
+    },
+    {
+      "package": "stop-only",
+      "description": "Detects '.only' left in the code accidentally",
+      "source": "npm_registry"
+    },
+    {
+      "package": "expo-updates",
+      "description": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "expo-structured-headers",
+      "description": "Expo module implementation of a parser based on https://httpwg.org/specs/rfc8941.html",
+      "source": "npm_registry"
+    },
+    {
+      "package": "openapi-schema-validator",
+      "description": "A validator for OpenAPI documents.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@substrate/connect-known-chains",
+      "description": "Substrate-connect well known chain specifications",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@rails/webpacker",
+      "description": "Use webpack to manage app-like JavaScript modules in Rails",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@standard-schema/spec",
+      "description": "A family of specs for interoperable TypeScript",
+      "source": "npm_registry"
+    },
+    {
+      "package": "graphology",
+      "description": "A robust and multipurpose Graph object for JavaScript.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "grunt-contrib-jasmine",
+      "description": "Run jasmine specs headlessly through Headless Chrome",
+      "source": "npm_registry"
+    },
+    {
+      "package": "css-shorthand-properties",
+      "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@polkadot/types-known",
+      "description": "Known type definitions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "json-joy",
+      "description": "Collection of libraries for building collaborative editing apps.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@webcomponents/custom-elements",
+      "description": "HTML Custom Elements Polyfill",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@microsoft/agents-activity",
+      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@replit/oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
+      "source": "npm_registry"
+    },
+    {
+      "package": "instantsearch.css",
+      "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "elm-spec-runner",
+      "description": "Node CLI for Elm-Spec",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@atproto/syntax",
+      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@chainsafe/libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@ideal-postcodes/openapi",
+      "description": "Ideal Postcodes OpenAPI v3 specifications",
+      "source": "npm_registry"
+    },
+    {
+      "package": "officecrypto-tool",
+      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@markuplint/react-spec",
+      "description": "Extended specification for tags and attributes in React",
+      "source": "npm_registry"
+    },
+    {
+      "package": "jasmine",
+      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@asyncapi/specs",
+      "description": "AsyncAPI schema versions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@perma/map",
+      "description": "Immutable hash maps implemented as hash array papped tries",
+      "source": "npm_registry"
+    },
+    {
+      "package": "applicationinsights",
+      "description": "Microsoft Application Insights module for Node.js",
+      "source": "npm_registry"
+    },
+    {
+      "package": "pwa-asset-generator",
+      "description": "Automates PWA asset generation and image declaration. Automatically generates icon and splash screen images, favicons and mstile images. Updates manifest.json and index.html files with the generated images according to Web App Manifest specs and Apple Hum",
+      "source": "npm_registry"
+    },
+    {
+      "package": "libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@darwinia/types-known",
+      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@azure/avocado",
+      "description": "A validator of OpenAPI configurations",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@azure/oad",
+      "description": "OpenApi Specification Diff tool",
+      "source": "npm_registry"
+    },
+    {
+      "package": "datocms-structured-text-utils",
+      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "aws-cron-parser",
+      "description": "A util to parse cron expressions used by AWS services",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@withfig/autocomplete",
+      "description": "Fig Autocomplete Specs",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@markuplint/vue-spec",
+      "description": "Extended specification for tags and attributes in Vue",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@elastic/opentelemetry-node",
+      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
+      "source": "npm_registry"
+    },
+    {
+      "package": "cypress-cucumber-preprocessor",
+      "description": "Run gherkin-syntaxed specs with cypress.io",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@libp2p/gossipsub",
+      "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
+      "package": "pubky/pubky-app-specs",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/eventky",
+      "source": "github_package_json"
+    },
+    {
+      "package": "PastaGringo/pubky-roadmap",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-app",
+      "source": "github_package_json"
+    },
+    {
+      "package": "PastaGringo/pubky-homeserver",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-ai-bot",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/pubky-ical-poc",
+      "source": "github_package_json"
+    }
+  ]
+}

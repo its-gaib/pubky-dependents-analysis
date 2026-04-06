@@ -1,11 +1,10 @@
 {
   "crate": "pubky",
-  "updated_at": "2026-04-06T09:48:24.300005+00:00",
+  "updated_at": "2026-04-06T10:36:00.749972+00:00",
   "total": 18,
   "summary": {
-    "direct": 16,
-    "pubky-messenger": 1,
-    "pubky-app-specs": 1
+    "direct": 17,
+    "pubky-messenger": 1
   },
   "lists": {
     "direct": [
@@ -111,6 +110,15 @@
         "version": "0.7.0"
       },
       {
+        "repo": "pubky/pubky-app-specs",
+        "chain": [
+          "pubky-app-specs",
+          "pubky"
+        ],
+        "stars": 8,
+        "version": "0.7.0"
+      },
+      {
         "repo": "pubky/pubky-cli",
         "chain": [
           "pubky-cli",
@@ -166,16 +174,6 @@
         ],
         "stars": 0
       }
-    ],
-    "pubky-app-specs": [
-      {
-        "repo": "pubky/pubky-app-specs",
-        "chain": [
-          "pubky-app-specs",
-          "pubky"
-        ],
-        "stars": 8
-      }
     ]
   },
   "crates_io_downloads": {
@@ -216,6 +214,114 @@
       "package": "@synonymdev/pkarr",
       "description": "Public-Key Addressable Resource Records (Pkarr); publish and resolve DNS records over Mainline DHT",
       "source": "npm_registry"
+    },
+    {
+      "package": "pubky/pkarr",
+      "source": "github_package_json"
+    },
+    {
+      "package": "PastaGringo/pubky-homeserver",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-core",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/eventky",
+      "source": "github_package_json"
+    },
+    {
+      "package": "coreyphillips/geostories",
+      "source": "github_package_json"
+    },
+    {
+      "package": "aljazceru/pak",
+      "source": "github_package_json"
+    },
+    {
+      "package": "BitcoinErrorLog/paykit-rs",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-app",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/pubky-canva",
+      "source": "github_package_json"
+    },
+    {
+      "package": "PastaGringo/pubky-roadmap",
+      "source": "github_package_json"
+    },
+    {
+      "package": "coreyphillips/pubky-private-messenger",
+      "source": "github_package_json"
+    },
+    {
+      "package": "ntheile/bitkit",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-ring",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/pubky-ical-poc",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/react-native-pubky",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/pubky-tools",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pkdns-digger",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/loombot_web",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-app-specs",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/homegate-hackathon25",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-ai-bot",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-explorer",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/ai-rand",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pwpw",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/arcade",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/paykit-rs",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/workshop",
+      "source": "github_package_json"
     }
   ]
 }
