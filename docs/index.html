@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pubky Dependants Analysis</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: ui-monospace, 'Cascadia Code', 'Fira Code', monospace; background: #fafafa; color: #1a1a1a; max-width: 960px; margin: 0 auto; padding: 1rem; }
+  h1 { font-size: 1.3rem; margin-bottom: .5rem; }
+  .subtitle { color: #666; font-size: .85rem; margin-bottom: 1rem; }
+  .tabs { display: flex; gap: .5rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+  .tab { padding: .4rem .8rem; border: 1px solid #ccc; background: #fff; cursor: pointer; font: inherit; font-size: .85rem; }
+  .tab.active { background: #1a1a1a; color: #fff; border-color: #1a1a1a; }
+  .meta { font-size: .8rem; color: #666; margin-bottom: 1.5rem; }
+  .meta a { color: #0066cc; }
+  .chart-row { display: flex; gap: 2rem; margin-bottom: 2rem; flex-wrap: wrap; }
+  .chart-col { flex: 0 0 200px; }
+  .legend { flex: 1; min-width: 200px; font-size: .8rem; }
+  .legend-item { display: flex; align-items: center; gap: .5rem; margin-bottom: .3rem; }
+  .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+  .category { border-top: 1px solid #e0e0e0; padding: 1rem 0; }
+  .cat-header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: .5rem; }
+  .cat-name { font-weight: bold; font-size: .95rem; }
+  .cat-stat { font-size: .8rem; color: #666; }
+  .top-repos { font-size: .8rem; }
+  .top-repos a { color: #0066cc; text-decoration: none; }
+  .top-repos a:hover { text-decoration: underline; }
+  .repo-row { display: flex; justify-content: space-between; padding: .15rem 0; }
+  .stars { color: #666; }
+  #content { min-height: 200px; }
+  .loading { color: #999; padding: 2rem 0; }
+</style>
+</head>
+<body>
+
+<h1>Pubky Dependants Analysis</h1>
+<p class="subtitle">Automated dependency tracking for Pubky ecosystem crates</p>
+
+<div class="tabs" id="tabs"></div>
+<div id="content"><p class="loading">Select a crate above...</p></div>
+
+<script>
+const CRATES = ["pkarr", "pubky", "pubky-nexus"];
+const BASE = location.href.replace(/\/[^/]*$/, "");
+const cache = {};
+const COLORS = ["#2563eb","#dc2626","#16a34a","#9333ea","#ea580c","#0891b2","#be185d","#65a30d","#6d28d9","#d97706","#4f46e5","#059669"];
+
+const tabs = document.getElementById("tabs");
+const content = document.getElementById("content");
+
+CRATES.forEach(c => {
+  const btn = document.createElement("button");
+  btn.className = "tab";
+  btn.textContent = c;
+  btn.onclick = () => load(c);
+  tabs.appendChild(btn);
+});
+
+async function load(crate) {
+  tabs.querySelectorAll(".tab").forEach(t => t.classList.toggle("active", t.textContent === crate));
+  content.innerHTML = '<p class="loading">Loading...</p>';
+
+  if (!cache[crate]) {
+    try {
+      const r = await fetch(`${BASE}/${crate}.json`);
+      if (!r.ok) { content.innerHTML = `<p>Failed to load ${crate}.json (${r.status})</p>`; return; }
+      cache[crate] = await r.json();
+    } catch (e) { content.innerHTML = `<p>Error: ${e.message}</p>`; return; }
+  }
+  render(cache[crate]);
+}
+
+function render(data) {
+  const { summary, total, lists } = data;
+  const updated = new Date(data.updated_at).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+  const jsonUrl = `${BASE}/${data.crate}.json`;
+
+  // Group small categories (< 2%) into "Other"
+  const threshold = total * 0.02;
+  const slices = [];
+  let otherCount = 0;
+  const otherNames = [];
+  for (const [name, count] of Object.entries(summary).sort((a, b) => b[1] - a[1])) {
+    if (count < threshold) { otherCount += count; otherNames.push(name); }
+    else slices.push({ name, count });
+  }
+  if (otherCount > 0) slices.push({ name: "other", count: otherCount });
+
+  // Pie chart SVG (stroke-dasharray technique)
+  const r = 80, circ = 2 * Math.PI * r;
+  let offset = 0;
+  const circles = slices.map((s, i) => {
+    const pct = s.count / total;
+    const dash = pct * circ;
+    const o = offset;
+    offset += dash;
+    return `<circle cx="100" cy="100" r="${r}" fill="none" stroke="${COLORS[i % COLORS.length]}" stroke-width="40" stroke-dasharray="${dash} ${circ - dash}" stroke-dashoffset="${-o}" />`;
+  }).join("");
+  const svg = `<svg viewBox="0 0 200 200" width="180" height="180">${circles}</svg>`;
+
+  // Legend
+  const legend = slices.map((s, i) =>
+    `<div class="legend-item"><span class="legend-dot" style="background:${COLORS[i % COLORS.length]}"></span>${s.name} &mdash; ${s.count} (${(s.count / total * 100).toFixed(1)}%)</div>`
+  ).join("");
+
+  // Categories
+  const allNames = Object.keys(summary).sort((a, b) => summary[b] - summary[a]);
+  const categories = allNames.map(name => {
+    const entries = lists[name] || [];
+    const count = summary[name];
+    const pct = (count / total * 100).toFixed(1);
+    const top5 = [...entries].sort((a, b) => (b.stars || 0) - (a.stars || 0)).slice(0, 5);
+    const rows = top5.map(e =>
+      `<div class="repo-row"><a href="https://github.com/${e.repo}" target="_blank">${e.repo}</a><span class="stars">${e.stars != null ? e.stars.toLocaleString() + " stars" : ""}</span></div>`
+    ).join("");
+    return `<div class="category"><div class="cat-header"><span class="cat-name">${name}</span><span class="cat-stat">${count} repos (${pct}%)</span></div><div class="top-repos">${rows}</div></div>`;
+  }).join("");
+
+  content.innerHTML = `
+    <div class="meta">Updated ${updated} &middot; ${total} dependants &middot; <a href="${jsonUrl}">JSON API</a></div>
+    <div class="chart-row"><div class="chart-col">${svg}</div><div class="legend">${legend}</div></div>
+    ${categories}`;
+}
+
+load(CRATES[0]);
+</script>
+</body>
+</html>
