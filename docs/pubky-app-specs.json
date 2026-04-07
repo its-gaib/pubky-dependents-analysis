@@ -1,6 +1,6 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-04-06T12:10:30.156216+00:00",
+  "updated_at": "2026-04-07T05:48:44.243213+00:00",
   "total": 4,
   "summary": {
     "direct": 4
@@ -50,7 +50,7 @@
   },
   "crates_io_downloads": {
     "total": 8248,
-    "recent": 394
+    "recent": 388
   },
   "npm_downloads": {
     "total": 11400,
@@ -73,13 +73,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "device-specs",
+      "description": "A list of devices that can be emulated using Chrome DevTools.",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/pubky",
       "description": "Pubky client",
       "source": "npm_registry"
     },
     {
-      "package": "device-specs",
-      "description": "A list of devices that can be emulated using Chrome DevTools.",
+      "package": "cypress-repeat",
+      "description": "Run Cypress multiple times in a row",
       "source": "npm_registry"
     },
     {
@@ -90,11 +95,6 @@
     {
       "package": "cypress-split",
       "description": "Split Cypress specs across parallel CI machines for speed",
-      "source": "npm_registry"
-    },
-    {
-      "package": "cypress-repeat",
-      "description": "Run Cypress multiple times in a row",
       "source": "npm_registry"
     },
     {
@@ -148,13 +148,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "graphology",
-      "description": "A robust and multipurpose Graph object for JavaScript.",
+      "package": "grunt-contrib-jasmine",
+      "description": "Run jasmine specs headlessly through Headless Chrome",
       "source": "npm_registry"
     },
     {
-      "package": "grunt-contrib-jasmine",
-      "description": "Run jasmine specs headlessly through Headless Chrome",
+      "package": "graphology",
+      "description": "A robust and multipurpose Graph object for JavaScript.",
       "source": "npm_registry"
     },
     {
@@ -163,13 +163,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@polkadot/types-known",
-      "description": "Known type definitions",
+      "package": "@microsoft/agents-activity",
+      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
       "source": "npm_registry"
     },
     {
-      "package": "json-joy",
-      "description": "Collection of libraries for building collaborative editing apps.",
+      "package": "@polkadot/types-known",
+      "description": "Known type definitions",
       "source": "npm_registry"
     },
     {
@@ -178,8 +178,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@microsoft/agents-activity",
-      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
+      "package": "json-joy",
+      "description": "Collection of libraries for building collaborative editing apps.",
       "source": "npm_registry"
     },
     {
@@ -208,43 +208,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@ideal-postcodes/openapi",
-      "description": "Ideal Postcodes OpenAPI v3 specifications",
-      "source": "npm_registry"
-    },
-    {
       "package": "officecrypto-tool",
       "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
       "source": "npm_registry"
     },
     {
-      "package": "@markuplint/react-spec",
-      "description": "Extended specification for tags and attributes in React",
-      "source": "npm_registry"
-    },
-    {
-      "package": "jasmine",
-      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@asyncapi/specs",
-      "description": "AsyncAPI schema versions",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@perma/map",
-      "description": "Immutable hash maps implemented as hash array papped tries",
-      "source": "npm_registry"
-    },
-    {
-      "package": "applicationinsights",
-      "description": "Microsoft Application Insights module for Node.js",
-      "source": "npm_registry"
-    },
-    {
-      "package": "pwa-asset-generator",
-      "description": "Automates PWA asset generation and image declaration. Automatically generates icon and splash screen images, favicons and mstile images. Updates manifest.json and index.html files with the generated images according to Web App Manifest specs and Apple Hum",
+      "package": "@ideal-postcodes/openapi",
+      "description": "Ideal Postcodes OpenAPI v3 specifications",
       "source": "npm_registry"
     },
     {
@@ -253,8 +223,33 @@
       "source": "npm_registry"
     },
     {
-      "package": "@darwinia/types-known",
-      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "package": "@asyncapi/specs",
+      "description": "AsyncAPI schema versions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "jasmine",
+      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@markuplint/react-spec",
+      "description": "Extended specification for tags and attributes in React",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@azure/oad",
+      "description": "OpenApi Specification Diff tool",
+      "source": "npm_registry"
+    },
+    {
+      "package": "applicationinsights",
+      "description": "Microsoft Application Insights module for Node.js",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@perma/map",
+      "description": "Immutable hash maps implemented as hash array papped tries",
       "source": "npm_registry"
     },
     {
@@ -263,8 +258,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@azure/oad",
-      "description": "OpenApi Specification Diff tool",
+      "package": "pwa-asset-generator",
+      "description": "Automates PWA asset generation and image declaration. Automatically generates icon and splash screen images, favicons and mstile images. Updates manifest.json and index.html files with the generated images according to Web App Manifest specs and Apple Hum",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@darwinia/types-known",
+      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@markuplint/vue-spec",
+      "description": "Extended specification for tags and attributes in Vue",
       "source": "npm_registry"
     },
     {
@@ -283,11 +288,6 @@
       "source": "npm_registry"
     },
     {
-      "package": "@markuplint/vue-spec",
-      "description": "Extended specification for tags and attributes in Vue",
-      "source": "npm_registry"
-    },
-    {
       "package": "@elastic/opentelemetry-node",
       "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
       "source": "npm_registry"
@@ -301,34 +301,6 @@
       "package": "@libp2p/gossipsub",
       "description": "A typescript implementation of gossipsub",
       "source": "npm_registry"
-    },
-    {
-      "package": "pubky/pubky-app-specs",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/eventky",
-      "source": "github_package_json"
-    },
-    {
-      "package": "PastaGringo/pubky-roadmap",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pubky-app",
-      "source": "github_package_json"
-    },
-    {
-      "package": "PastaGringo/pubky-homeserver",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pubky-ai-bot",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/pubky-ical-poc",
-      "source": "github_package_json"
     }
   ]
 }

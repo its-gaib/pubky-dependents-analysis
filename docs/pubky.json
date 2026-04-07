@@ -1,6 +1,6 @@
 {
   "crate": "pubky",
-  "updated_at": "2026-04-06T12:10:12.908145+00:00",
+  "updated_at": "2026-04-07T05:46:56.313332+00:00",
   "total": 18,
   "summary": {
     "direct": 17,
@@ -177,15 +177,15 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 17400,
-    "recent": 1501
+    "total": 17404,
+    "recent": 1492
   },
   "npm_downloads": {
-    "total": 15077,
+    "total": 15075,
     "recent": 2071
   },
   "rn_downloads": {
-    "total": 5224,
+    "total": 5179,
     "recent": 84
   },
   "npm_dependents": [
@@ -315,13 +315,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-actions",
-      "description": "Packaged handlers for Slashtags actions",
+      "package": "@synonymdev/web-relay",
+      "description": "Slashtags Web Relay is a powerful abstraction library designed to simplify the management of data on Slashtags.",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/web-relay",
-      "description": "Slashtags Web Relay is a powerful abstraction library designed to simplify the management of data on Slashtags.",
+      "package": "@synonymdev/slashtags-actions",
+      "description": "Packaged handlers for Slashtags actions",
       "source": "npm_registry"
     },
     {
@@ -360,13 +360,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/ln-constr-parser",
-      "description": "Lightning Connection String Parser",
+      "package": "@synonymdev/selfie-records",
+      "description": "SDK for interacting with the Selfie-Records DNS TXT records.",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/selfie-records",
-      "description": "SDK for interacting with the Selfie-Records DNS TXT records.",
+      "package": "@synonymdev/ln-constr-parser",
+      "description": "Lightning Connection String Parser",
       "source": "npm_registry"
     },
     {
@@ -398,74 +398,6 @@
       "package": "@synonymdev/lightning-channel-id",
       "description": "Convert lightning channel id formats",
       "source": "npm_registry"
-    },
-    {
-      "package": "pubky/pubky-core",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/pubky-ical-poc",
-      "source": "github_package_json"
-    },
-    {
-      "package": "PastaGringo/pubky-homeserver",
-      "source": "github_package_json"
-    },
-    {
-      "package": "aljazceru/pak",
-      "source": "github_package_json"
-    },
-    {
-      "package": "coreyphillips/geostories",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/loombot_web",
-      "source": "github_package_json"
-    },
-    {
-      "package": "PastaGringo/pubky-roadmap",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pwpw",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pubky-explorer",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/pubky-tools",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/homegate-hackathon25",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/pubky-canva",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/eventky",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/workshop",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pubky-ai-bot",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pubky-app",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/arcade",
-      "source": "github_package_json"
     }
   ]
 }
