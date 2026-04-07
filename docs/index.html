@@ -50,13 +50,12 @@
 <div id="content"><p class="loading">Select a crate above...</p></div>
 
 <script>
-const CRATES = ["pkarr", "pubky", "pubky-app-specs", "mainline", "pubky-nexus"];
+const CRATES = ["pkarr", "pubky", "pubky-app-specs", "mainline"];
 const CRATE_META = {
   "pkarr": { github: "pubky/pkarr", npm: "@synonymdev/pkarr", display: "PKARR" },
   "pubky": { github: "pubky/pubky-core", npm: "@synonymdev/pubky", rn: "@synonymdev/react-native-pubky", display: "Pubky" },
   "pubky-app-specs": { github: "pubky/pubky-app-specs", npm: "pubky-app-specs", display: "pubky-app-specs" },
-  "mainline": { github: "pubky/mainline", display: "Mainline" },
-  "pubky-nexus": { github: "pubky/pubky-nexus", display: "Pubky Nexus" }
+  "mainline": { github: "pubky/mainline", display: "Mainline" }
 };
 function displayName(crate) { return (CRATE_META[crate] && CRATE_META[crate].display) || crate; }
 const BASE = location.href.replace(/\/[^/]*$/, "");

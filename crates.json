@@ -2,6 +2,5 @@
   {"crate": "pkarr", "github_repo": "pubky/pkarr", "npm_package": "@synonymdev/pkarr"},
   {"crate": "pubky", "github_repo": "pubky/pubky-core", "npm_package": "@synonymdev/pubky", "react_native_package": "@synonymdev/react-native-pubky"},
   {"crate": "pubky-app-specs", "github_repo": "pubky/pubky-app-specs", "npm_package": "pubky-app-specs"},
-  {"crate": "mainline", "github_repo": "pubky/mainline"},
-  {"crate": "pubky-nexus", "github_repo": "pubky/pubky-nexus"}
+  {"crate": "mainline", "github_repo": "pubky/mainline"}
 ]
