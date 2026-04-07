@@ -1,5 +1,7 @@
 # Pubky Dependents Analysis
 
+**[Live dashboard](https://its-gaib.github.io/pubky-dependents-analysis/)**
+
 Automated weekly analysis of which projects depend on Pubky ecosystem crates, how they depend on them, and through which intermediary.
 
 ## API
@@ -7,7 +9,7 @@ Automated weekly analysis of which projects depend on Pubky ecosystem crates, ho
 Each analyzed crate has a JSON endpoint:
 
 ```
-https://its-gaib.github.io/pubky-dependants-analysis/{crate}.json
+https://its-gaib.github.io/pubky-dependents-analysis/{crate}.json
 ```
 
 Available: `pkarr.json`, `pubky.json`, `pubky-app-specs.json`

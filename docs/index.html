@@ -45,7 +45,8 @@
 </head>
 <body>
 
-<a class="gh-link" href="https://github.com/its-gaib/pubky-dependents-analysis" title="View on GitHub">GitHub</a>
+<a class="gh-link" id="gh-link" title="View on GitHub">GitHub</a>
+<script>document.getElementById('gh-link').href='https://github.com/'+location.hostname.split('.github.io')[0]+location.pathname.replace(/\/$/,'');</script>
 <h1>Pubky Dependents Analysis</h1>
 <p class="subtitle">Automated dependency tracking for Pubky ecosystem crates</p>
 
