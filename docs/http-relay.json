@@ -1,0 +1,73 @@
+{
+  "crate": "http-relay",
+  "updated_at": "2026-04-08T09:42:27.179682+00:00",
+  "total": 6,
+  "summary": {
+    "pubky-testnet": 5,
+    "direct": 1
+  },
+  "lists": {
+    "pubky-testnet": [
+      {
+        "repo": "BitcoinErrorLog/paykit-rs",
+        "chain": [
+          "paykit-demo-cli",
+          "pubky-testnet",
+          "http-relay"
+        ],
+        "stars": 1
+      },
+      {
+        "repo": "pubky/paykit-rs",
+        "chain": [
+          "paykit-lib",
+          "pubky-testnet",
+          "http-relay"
+        ],
+        "stars": 3
+      },
+      {
+        "repo": "pubky/pubky-cli",
+        "chain": [
+          "pubky-cli",
+          "pubky-testnet",
+          "http-relay"
+        ],
+        "stars": 0
+      },
+      {
+        "repo": "pubky/pubky-nexus",
+        "chain": [
+          "nexus-watcher",
+          "pubky-testnet",
+          "http-relay"
+        ],
+        "stars": 19
+      },
+      {
+        "repo": "pubky/pubky-noise",
+        "chain": [
+          "e2e",
+          "pubky-testnet",
+          "http-relay"
+        ],
+        "stars": 2
+      }
+    ],
+    "direct": [
+      {
+        "repo": "pubky/pubky-core",
+        "chain": [
+          "pubky-core",
+          "http-relay"
+        ],
+        "stars": 76,
+        "version": "0.7.0"
+      }
+    ]
+  },
+  "crates_io_downloads": {
+    "total": 6346,
+    "recent": 861
+  }
+}

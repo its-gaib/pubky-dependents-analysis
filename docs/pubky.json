@@ -1,6 +1,6 @@
 {
   "crate": "pubky",
-  "updated_at": "2026-04-07T18:24:23.041078+00:00",
+  "updated_at": "2026-04-08T09:33:09.816691+00:00",
   "total": 18,
   "summary": {
     "direct": 17,
@@ -177,16 +177,16 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 17419,
-    "recent": 1507
+    "total": 17436,
+    "recent": 1512
   },
   "npm_downloads": {
-    "total": 15213,
-    "recent": 2201
+    "total": 15343,
+    "recent": 2325
   },
   "rn_downloads": {
-    "total": 5182,
-    "recent": 84
+    "total": 5203,
+    "recent": 105
   },
   "npm_dependents": [
     {
@@ -215,18 +215,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/blocktank-lsp-http-client",
-      "description": "Blocktank Http Api Client",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/slashtag",
       "description": "Identity, discovery, and p2p communication for Slashtags protocol.",
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/blocktank-lsp-http-client",
+      "description": "Blocktank Http Api Client",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/blocktank-lsp-btc-client",
       "description": "Blocktank BTC client",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/blocktank-lsp-ln2-client",
+      "description": "Blocktank LN2 client",
       "source": "npm_registry"
     },
     {
@@ -237,11 +242,6 @@
     {
       "package": "@synonymdev/slashdrive",
       "description": "drive",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/blocktank-lsp-ln2-client",
-      "description": "Blocktank LN2 client",
       "source": "npm_registry"
     },
     {
@@ -265,13 +265,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/blocktank-client",
-      "description": "LSP client library",
+      "package": "@synonymdev/react-native-lightning",
+      "description": "React Native wrapper for Lndmobile",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-lightning",
-      "description": "React Native wrapper for Lndmobile",
+      "package": "@synonymdev/blocktank-client",
+      "description": "LSP client library",
       "source": "npm_registry"
     },
     {
@@ -290,13 +290,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashauth",
-      "description": "Authorization using slashtags",
+      "package": "@synonymdev/feeds",
+      "description": "A library for creating and managing feeds using the web-relay",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/feeds",
-      "description": "A library for creating and managing feeds using the web-relay",
+      "package": "@synonymdev/slashauth",
+      "description": "Authorization using slashtags",
       "source": "npm_registry"
     },
     {
@@ -330,6 +330,11 @@
       "source": "npm_registry"
     },
     {
+      "package": "hackday-slashpay",
+      "description": "[Read more](https://docs.google.com/document/d/10rgPbDMer6uL7L8QZ5ve-KU_pkI_YSwSO4dmzUmjU6s/edit)",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/react-native-slashtags",
       "description": "React Native wrapper for Slashtags",
       "source": "npm_registry"
@@ -342,11 +347,6 @@
     {
       "package": "@synonymdev/react-native-keychain",
       "description": "Keychain Access for React Native",
-      "source": "npm_registry"
-    },
-    {
-      "package": "hackday-slashpay",
-      "description": "[Read more](https://docs.google.com/document/d/10rgPbDMer6uL7L8QZ5ve-KU_pkI_YSwSO4dmzUmjU6s/edit)",
       "source": "npm_registry"
     },
     {
@@ -380,13 +380,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "slashtags-feed-reader",
-      "description": "Collection of helper functions to read Slashtags feeds from a Hyperdrive.",
+      "package": "@synonymdev/slashtags-contacts",
+      "description": "Slashtags contacts management.",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-contacts",
-      "description": "Slashtags contacts management.",
+      "package": "slashtags-feed-reader",
+      "description": "Collection of helper functions to read Slashtags feeds from a Hyperdrive.",
       "source": "npm_registry"
     },
     {
@@ -412,11 +412,7 @@
       "source": "github_package_json"
     },
     {
-      "package": "aljazceru/pak",
-      "source": "github_package_json"
-    },
-    {
-      "package": "coreyphillips/geostories",
+      "package": "pubky/homegate-hackathon25",
       "source": "github_package_json"
     },
     {
@@ -424,11 +420,23 @@
       "source": "github_package_json"
     },
     {
+      "package": "pubky/pubky-app",
+      "source": "github_package_json"
+    },
+    {
       "package": "PastaGringo/pubky-roadmap",
       "source": "github_package_json"
     },
     {
-      "package": "pubky/pwpw",
+      "package": "aljazceru/pak",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/pubky-canva",
+      "source": "github_package_json"
+    },
+    {
+      "package": "coreyphillips/geostories",
       "source": "github_package_json"
     },
     {
@@ -440,11 +448,7 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/homegate-hackathon25",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/pubky-canva",
+      "package": "pubky/workshop",
       "source": "github_package_json"
     },
     {
@@ -452,19 +456,15 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/workshop",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pubky-ai-bot",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pubky-app",
+      "package": "pubky/pwpw",
       "source": "github_package_json"
     },
     {
       "package": "pubky/arcade",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-ai-bot",
       "source": "github_package_json"
     }
   ]

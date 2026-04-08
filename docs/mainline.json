@@ -1,10 +1,10 @@
 {
   "crate": "mainline",
-  "updated_at": "2026-04-07T18:32:02.177454+00:00",
-  "total": 194,
+  "updated_at": "2026-04-08T09:41:28.695847+00:00",
+  "total": 201,
   "summary": {
-    "pkarr": 152,
-    "direct": 30,
+    "pkarr": 156,
+    "direct": 33,
     "distributed-topic-tracker": 3,
     "gosh-dl": 2,
     "unknown": 1,
@@ -14,6 +14,16 @@
   },
   "lists": {
     "pkarr": [
+      {
+        "repo": "A-Archives-and-Forks/spacedrive",
+        "chain": [
+          "sd-core-cloud-services",
+          "iroh",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
+      },
       {
         "repo": "AI-Robotic-Labs/Self-Sovereign-AI",
         "chain": [
@@ -146,7 +156,7 @@
       {
         "repo": "KingYoSun/kukuri",
         "chain": [
-          "kukuri-transport",
+          "kukuri-app-api",
           "pkarr",
           "mainline"
         ],
@@ -789,10 +799,30 @@
         "stars": 0
       },
       {
+        "repo": "gecakou/spacedrive",
+        "chain": [
+          "sd-core-cloud-services",
+          "iroh-net",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
+      },
+      {
         "repo": "gillohner/pubky-canva",
         "chain": [
           "canva-indexer",
           "pubky",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
+      },
+      {
+        "repo": "gnostr-org/gnostr-clone",
+        "chain": [
+          "gnostr-clone",
+          "iroh-net",
           "pkarr",
           "mainline"
         ],
@@ -845,7 +875,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 4
+        "stars": 5
       },
       {
         "repo": "iyadhtoumia/iroh-P2P",
@@ -1020,7 +1050,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 8184
+        "stars": 8187
       },
       {
         "repo": "n0-computer/iroh-examples",
@@ -1123,6 +1153,16 @@
         "stars": 0
       },
       {
+        "repo": "priemskiyyy/iroh-gossip-cli",
+        "chain": [
+          "iroh-gossip-cli",
+          "iroh",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
+      },
+      {
         "repo": "pubky/pkdns",
         "chain": [
           "pkdns",
@@ -1198,7 +1238,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 27
+        "stars": 26
       },
       {
         "repo": "resolution-comms/monorepo",
@@ -1383,7 +1423,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 37692
+        "stars": 37703
       },
       {
         "repo": "sunbeamdotpt/marathon",
@@ -1598,7 +1638,7 @@
       {
         "repo": "KaraZajac/DHT_Crawler",
         "chain": [
-          "dht_crawler",
+          "sim",
           "mainline"
         ],
         "stars": 0,
@@ -1617,11 +1657,15 @@
       {
         "repo": "Mic92/tincr",
         "chain": [
-          "tincd",
+          "tincr",
           "mainline"
         ],
         "stars": 0,
-        "version": "workspace"
+        "version": "6.0",
+        "features": [
+          "node"
+        ],
+        "default_features": false
       },
       {
         "repo": "Nehliin/vortex",
@@ -1682,9 +1726,18 @@
         ]
       },
       {
+        "repo": "ariqfraser/rtd",
+        "chain": [
+          "rtdownloader",
+          "mainline"
+        ],
+        "stars": 1,
+        "version": "2.0.1"
+      },
+      {
         "repo": "brittonr/aspen",
         "chain": [
-          "aspen",
+          "aspen-federation",
           "mainline"
         ],
         "stars": 6,
@@ -1714,6 +1767,18 @@
         "version": "6.0.1"
       },
       {
+        "repo": "donglora/bridge",
+        "chain": [
+          "donglora-bridge",
+          "mainline"
+        ],
+        "stars": 0,
+        "version": "6",
+        "features": [
+          "async"
+        ]
+      },
+      {
         "repo": "goshitsarch-eng/gosh-dl",
         "chain": [
           "gosh-dl",
@@ -1732,6 +1797,22 @@
         "stars": 3,
         "version": "6",
         "optional": true
+      },
+      {
+        "repo": "kevinjdinicola/iroh",
+        "chain": [
+          "iroh-dns-server",
+          "mainline"
+        ],
+        "stars": 0
+      },
+      {
+        "repo": "kevinjdinicola/pkarr",
+        "chain": [
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
       },
       {
         "repo": "kislball/reverb",
@@ -1825,18 +1906,6 @@
         "default_features": false
       },
       {
-        "repo": "swaits/donglora-bridge",
-        "chain": [
-          "donglora-bridge",
-          "mainline"
-        ],
-        "stars": 1,
-        "version": "6",
-        "features": [
-          "async"
-        ]
-      },
-      {
         "repo": "v0l/dtan-server",
         "chain": [
           "dtan-server",
@@ -1850,7 +1919,7 @@
       {
         "repo": "developing-today/code",
         "chain": [
-          "dht",
+          "id",
           "distributed-topic-tracker",
           "mainline"
         ],
@@ -1966,7 +2035,7 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 243715,
-    "recent": 67113
+    "total": 244087,
+    "recent": 66728
   }
 }
