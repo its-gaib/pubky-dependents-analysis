@@ -1,9 +1,9 @@
 {
   "crate": "mainline",
-  "updated_at": "2026-04-08T09:41:28.695847+00:00",
-  "total": 201,
+  "updated_at": "2026-04-13T09:49:37.663424+00:00",
+  "total": 206,
   "summary": {
-    "pkarr": 156,
+    "pkarr": 161,
     "direct": 33,
     "distributed-topic-tracker": 3,
     "gosh-dl": 2,
@@ -70,7 +70,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 46
+        "stars": 47
       },
       {
         "repo": "Daelyte/iroh-dumppipe",
@@ -294,6 +294,7 @@
       {
         "repo": "RealDummy/localfirst",
         "chain": [
+          "relay",
           "iroh",
           "pkarr",
           "mainline"
@@ -673,6 +674,17 @@
         "stars": 13
       },
       {
+        "repo": "elsirion/paper-ecash-web",
+        "chain": [
+          "paper-ecash-web",
+          "fedimint-connectors",
+          "iroh",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
+      },
+      {
         "repo": "elsirion/satshunt",
         "chain": [
           "satshunt",
@@ -742,7 +754,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 680
+        "stars": 681
       },
       {
         "repo": "fedimint/fedimint-sdk-ffi",
@@ -764,7 +776,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 71
+        "stars": 74
       },
       {
         "repo": "fishfolk/bones",
@@ -774,7 +786,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 294
+        "stars": 295
       },
       {
         "repo": "fishfolk/jumpy",
@@ -785,7 +797,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 1826
+        "stars": 1828
       },
       {
         "repo": "frankhinek/simple-fedimint-wallet",
@@ -822,6 +834,16 @@
         "repo": "gnostr-org/gnostr-clone",
         "chain": [
           "gnostr-clone",
+          "iroh-net",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
+      },
+      {
+        "repo": "gnostr-org/gnostr-templates",
+        "chain": [
+          "dumbpipe",
           "iroh-net",
           "pkarr",
           "mainline"
@@ -909,6 +931,15 @@
         "stars": 2
       },
       {
+        "repo": "johnzilla/blindjoin",
+        "chain": [
+          "client",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
+      },
+      {
         "repo": "johnzilla/cclink",
         "chain": [
           "cclink",
@@ -927,6 +958,17 @@
         "stars": 0
       },
       {
+        "repo": "joschisan/conduit",
+        "chain": [
+          "conduit",
+          "fedimint-connectors",
+          "iroh",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 3
+      },
+      {
         "repo": "julianbuettner/zeco",
         "chain": [
           "zeco",
@@ -934,7 +976,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 64
+        "stars": 66
       },
       {
         "repo": "katharostech/striker-ball",
@@ -1050,7 +1092,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 8187
+        "stars": 8216
       },
       {
         "repo": "n0-computer/iroh-examples",
@@ -1169,7 +1211,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 189
+        "stars": 190
       },
       {
         "repo": "pubky/pkdns-publisher",
@@ -1206,7 +1248,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 8
+        "stars": 7
       },
       {
         "repo": "rand/mnemosyne",
@@ -1423,7 +1465,17 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 37703
+        "stars": 37755
+      },
+      {
+        "repo": "sternelee/sendme-app",
+        "chain": [
+          "app",
+          "iroh",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
       },
       {
         "repo": "sunbeamdotpt/marathon",
@@ -1502,7 +1554,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 382
+        "stars": 381
       },
       {
         "repo": "xenouem/iroh",
@@ -1580,7 +1632,7 @@
       {
         "repo": "AI1379/actinium-cast",
         "chain": [
-          "gateway",
+          "client-cli",
           "mainline"
         ],
         "stars": 0,
@@ -1631,14 +1683,14 @@
           "superseedr",
           "mainline"
         ],
-        "stars": 554,
+        "stars": 557,
         "version": "6.1.0",
         "optional": true
       },
       {
         "repo": "KaraZajac/DHT_Crawler",
         "chain": [
-          "sim",
+          "dht_crawler",
           "mainline"
         ],
         "stars": 0,
@@ -1737,7 +1789,7 @@
       {
         "repo": "brittonr/aspen",
         "chain": [
-          "aspen-federation",
+          "aspen",
           "mainline"
         ],
         "stars": 6,
@@ -1772,7 +1824,7 @@
           "donglora-bridge",
           "mainline"
         ],
-        "stars": 0,
+        "stars": 1,
         "version": "6",
         "features": [
           "async"
@@ -1784,7 +1836,7 @@
           "gosh-dl",
           "mainline"
         ],
-        "stars": 20,
+        "stars": 21,
         "version": "6.1.0",
         "optional": true
       },
@@ -1870,7 +1922,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 392,
+        "stars": 391,
         "version": "6.1.1",
         "optional": true
       },
@@ -1898,7 +1950,7 @@
           "distributed-topic-tracker",
           "mainline"
         ],
-        "stars": 26,
+        "stars": 27,
         "version": "6",
         "features": [
           "async"
@@ -1941,7 +1993,7 @@
           "distributed-topic-tracker",
           "mainline"
         ],
-        "stars": 156
+        "stars": 157
       }
     ],
     "gosh-dl": [
@@ -2035,7 +2087,7 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 244087,
-    "recent": 66728
+    "total": 248002,
+    "recent": 68824
   }
 }

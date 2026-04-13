@@ -1,9 +1,9 @@
 {
   "crate": "pubky",
-  "updated_at": "2026-04-08T09:33:09.816691+00:00",
-  "total": 18,
+  "updated_at": "2026-04-13T09:42:17.452656+00:00",
+  "total": 19,
   "summary": {
-    "direct": 17,
+    "direct": 18,
     "pubky-messenger": 1
   },
   "lists": {
@@ -83,6 +83,15 @@
         "version": "0.4.2"
       },
       {
+        "repo": "gillohner/mapky-nexus-plugin",
+        "chain": [
+          "mapky-nexus-plugin",
+          "pubky"
+        ],
+        "stars": 0,
+        "version": "0.7.0"
+      },
+      {
         "repo": "gillohner/pubky-canva",
         "chain": [
           "canva-indexer",
@@ -139,11 +148,11 @@
       {
         "repo": "pubky/pubky-nexus",
         "chain": [
-          "pubky-nexus",
+          "nexus-webapi",
           "pubky"
         ],
         "stars": 19,
-        "version": "0.7.0"
+        "version": "workspace"
       },
       {
         "repo": "pubky/pubky-noise",
@@ -177,16 +186,16 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 17436,
-    "recent": 1512
+    "total": 17496,
+    "recent": 1477
   },
   "npm_downloads": {
-    "total": 15343,
-    "recent": 2325
+    "total": 16046,
+    "recent": 2984
   },
   "rn_downloads": {
-    "total": 5203,
-    "recent": 105
+    "total": 5228,
+    "recent": 131
   },
   "npm_dependents": [
     {
@@ -195,13 +204,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "lightning",
-      "description": "Lightning Network client library",
+      "package": "@synonymdev/react-native-pubky",
+      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-pubky",
-      "description": "React Native Implementation of Pubky",
+      "package": "lightning",
+      "description": "Lightning Network client library",
       "source": "npm_registry"
     },
     {
@@ -220,18 +229,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/blocktank-lsp-http-client",
-      "description": "Blocktank Http Api Client",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/blocktank-lsp-btc-client",
       "description": "Blocktank BTC client",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/blocktank-lsp-ln2-client",
-      "description": "Blocktank LN2 client",
+      "package": "@synonymdev/blocktank-lsp-http-client",
+      "description": "Blocktank Http Api Client",
       "source": "npm_registry"
     },
     {
@@ -240,8 +244,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/blocktank-lsp-ln2-client",
+      "description": "Blocktank LN2 client",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/slashdrive",
       "description": "drive",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/raw-transaction-decoder",
+      "description": "Decodes Raw Bitcoin Transactions",
       "source": "npm_registry"
     },
     {
@@ -257,11 +271,6 @@
     {
       "package": "@synonymdev/react-native-lnurl",
       "description": "React Native wrapper for LNURL",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/raw-transaction-decoder",
-      "description": "Decodes Raw Bitcoin Transactions",
       "source": "npm_registry"
     },
     {
@@ -290,8 +299,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/feeds",
-      "description": "A library for creating and managing feeds using the web-relay",
+      "package": "@synonymdev/slashtags-core-data",
+      "description": "Slashtags Core Data is abstraction library that encapsulates logic related to managing data on Slashtags.",
       "source": "npm_registry"
     },
     {
@@ -305,18 +314,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-core-data",
-      "description": "Slashtags Core Data is abstraction library that encapsulates logic related to managing data on Slashtags.",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/blocktank-worker2",
       "description": "",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/web-relay",
-      "description": "Slashtags Web Relay is a powerful abstraction library designed to simplify the management of data on Slashtags.",
       "source": "npm_registry"
     },
     {
@@ -330,8 +329,23 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/web-relay",
+      "description": "Slashtags Web Relay is a powerful abstraction library designed to simplify the management of data on Slashtags.",
+      "source": "npm_registry"
+    },
+    {
       "package": "hackday-slashpay",
       "description": "[Read more](https://docs.google.com/document/d/10rgPbDMer6uL7L8QZ5ve-KU_pkI_YSwSO4dmzUmjU6s/edit)",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/feeds",
+      "description": "A library for creating and managing feeds using the web-relay",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/react-native-keychain",
+      "description": "Keychain Access for React Native",
       "source": "npm_registry"
     },
     {
@@ -345,13 +359,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-keychain",
-      "description": "Keychain Access for React Native",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/blocktank-util-slack-client",
-      "description": "Blocktank Slack client",
+      "package": "@synonymdev/selfie-records",
+      "description": "SDK for interacting with the Selfie-Records DNS TXT records.",
       "source": "npm_registry"
     },
     {
@@ -360,18 +369,13 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/blocktank-util-slack-client",
+      "description": "Blocktank Slack client",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/ln-constr-parser",
       "description": "Lightning Connection String Parser",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/selfie-records",
-      "description": "SDK for interacting with the Selfie-Records DNS TXT records.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/bitkit-notification-client",
-      "description": "Bitkit Notification Server client",
       "source": "npm_registry"
     },
     {
@@ -380,8 +384,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-contacts",
-      "description": "Slashtags contacts management.",
+      "package": "@synonymdev/bitkit-notification-client",
+      "description": "Bitkit Notification Server client",
       "source": "npm_registry"
     },
     {
@@ -390,13 +394,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "react-native-libsodium-expo-plugin",
-      "description": "The Sodium crypto library for React Native.",
+      "package": "@synonymdev/slashtags-contacts",
+      "description": "Slashtags contacts management.",
       "source": "npm_registry"
     },
     {
       "package": "@synonymdev/lightning-channel-id",
       "description": "Convert lightning channel id formats",
+      "source": "npm_registry"
+    },
+    {
+      "package": "react-native-libsodium-expo-plugin",
+      "description": "The Sodium crypto library for React Native.",
       "source": "npm_registry"
     },
     {
@@ -412,11 +421,7 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/homegate-hackathon25",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/loombot_web",
+      "package": "coreyphillips/geostories",
       "source": "github_package_json"
     },
     {
@@ -424,19 +429,15 @@
       "source": "github_package_json"
     },
     {
-      "package": "PastaGringo/pubky-roadmap",
-      "source": "github_package_json"
-    },
-    {
       "package": "aljazceru/pak",
       "source": "github_package_json"
     },
     {
-      "package": "gillohner/pubky-canva",
+      "package": "PastaGringo/pubky-roadmap",
       "source": "github_package_json"
     },
     {
-      "package": "coreyphillips/geostories",
+      "package": "gillohner/loombot_web",
       "source": "github_package_json"
     },
     {
@@ -448,15 +449,23 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/workshop",
-      "source": "github_package_json"
-    },
-    {
       "package": "gillohner/eventky",
       "source": "github_package_json"
     },
     {
-      "package": "pubky/pwpw",
+      "package": "pubky/workshop",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/pubky-canva",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/homegate-hackathon25",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-ai-bot",
       "source": "github_package_json"
     },
     {
@@ -464,7 +473,7 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/pubky-ai-bot",
+      "package": "pubky/pwpw",
       "source": "github_package_json"
     }
   ]

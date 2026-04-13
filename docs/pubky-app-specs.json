@@ -1,9 +1,9 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-04-08T09:33:33.839215+00:00",
-  "total": 4,
+  "updated_at": "2026-04-13T09:42:41.697541+00:00",
+  "total": 5,
   "summary": {
-    "direct": 4
+    "direct": 5
   },
   "lists": {
     "direct": [
@@ -24,6 +24,15 @@
         ],
         "stars": 2,
         "version": "0.4"
+      },
+      {
+        "repo": "gillohner/mapky-nexus-plugin",
+        "chain": [
+          "mapky-nexus-plugin",
+          "pubky-app-specs"
+        ],
+        "stars": 0,
+        "version": "workspace"
       },
       {
         "repo": "pubky/pubky-nexus",
@@ -49,12 +58,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 8254,
-    "recent": 387
+    "total": 8268,
+    "recent": 396
   },
   "npm_downloads": {
-    "total": 11650,
-    "recent": 2153
+    "total": 12345,
+    "recent": 2797
   },
   "npm_dependents": [
     {
@@ -73,13 +82,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "device-specs",
-      "description": "A list of devices that can be emulated using Chrome DevTools.",
+      "package": "@synonymdev/pubky",
+      "description": "Pubky client",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/pubky",
-      "description": "Pubky client",
+      "package": "device-specs",
+      "description": "A list of devices that can be emulated using Chrome DevTools.",
       "source": "npm_registry"
     },
     {
@@ -98,11 +107,6 @@
       "source": "npm_registry"
     },
     {
-      "package": "@eventky/pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
-      "source": "npm_registry"
-    },
-    {
       "package": "@metamask/api-specs",
       "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
       "source": "npm_registry"
@@ -115,6 +119,11 @@
     {
       "package": "stop-only",
       "description": "Detects '.only' left in the code accidentally",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
       "source": "npm_registry"
     },
     {
@@ -148,23 +157,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "grunt-contrib-jasmine",
-      "description": "Run jasmine specs headlessly through Headless Chrome",
-      "source": "npm_registry"
-    },
-    {
-      "package": "css-shorthand-properties",
-      "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
-      "source": "npm_registry"
-    },
-    {
-      "package": "json-joy",
-      "description": "Collection of libraries for building collaborative editing apps.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@webcomponents/custom-elements",
-      "description": "HTML Custom Elements Polyfill",
+      "package": "graphology",
+      "description": "A robust and multipurpose Graph object for JavaScript.",
       "source": "npm_registry"
     },
     {
@@ -173,13 +167,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "graphology",
-      "description": "A robust and multipurpose Graph object for JavaScript.",
+      "package": "@webcomponents/custom-elements",
+      "description": "HTML Custom Elements Polyfill",
       "source": "npm_registry"
     },
     {
-      "package": "@replit/oidc-provider",
-      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
+      "package": "css-shorthand-properties",
+      "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
+      "source": "npm_registry"
+    },
+    {
+      "package": "grunt-contrib-jasmine",
+      "description": "Run jasmine specs headlessly through Headless Chrome",
+      "source": "npm_registry"
+    },
+    {
+      "package": "json-joy",
+      "description": "Collection of libraries for building collaborative editing apps.",
       "source": "npm_registry"
     },
     {
@@ -193,6 +197,16 @@
       "source": "npm_registry"
     },
     {
+      "package": "@replit/oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@atproto/syntax",
+      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
+      "source": "npm_registry"
+    },
+    {
       "package": "elm-spec-runner",
       "description": "Node CLI for Elm-Spec",
       "source": "npm_registry"
@@ -203,53 +217,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@atproto/syntax",
-      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
-      "source": "npm_registry"
-    },
-    {
-      "package": "officecrypto-tool",
-      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@perma/map",
-      "description": "Immutable hash maps implemented as hash array papped tries",
-      "source": "npm_registry"
-    },
-    {
-      "package": "jasmine",
-      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
-      "source": "npm_registry"
-    },
-    {
-      "package": "libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
-      "source": "npm_registry"
-    },
-    {
       "package": "@markuplint/react-spec",
       "description": "Extended specification for tags and attributes in React",
-      "source": "npm_registry"
-    },
-    {
-      "package": "pwa-asset-generator",
-      "description": "Automates PWA asset generation and image declaration. Automatically generates icon and splash screen images, favicons and mstile images. Updates manifest.json and index.html files with the generated images according to Web App Manifest specs and Apple Hum",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@asyncapi/specs",
-      "description": "AsyncAPI schema versions",
-      "source": "npm_registry"
-    },
-    {
-      "package": "applicationinsights",
-      "description": "Microsoft Application Insights module for Node.js",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@darwinia/types-known",
-      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
       "source": "npm_registry"
     },
     {
@@ -258,13 +227,58 @@
       "source": "npm_registry"
     },
     {
-      "package": "@azure/avocado",
-      "description": "A validator of OpenAPI configurations",
+      "package": "officecrypto-tool",
+      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@asyncapi/specs",
+      "description": "AsyncAPI schema versions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
+      "package": "jasmine",
+      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
+      "source": "npm_registry"
+    },
+    {
+      "package": "applicationinsights",
+      "description": "Microsoft Application Insights module for Node.js",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@perma/map",
+      "description": "Immutable hash maps implemented as hash array papped tries",
+      "source": "npm_registry"
+    },
+    {
+      "package": "pwa-asset-generator",
+      "description": "Automates PWA asset generation and image declaration. Automatically generates icon and splash screen images, favicons and mstile images. Updates manifest.json and index.html files with the generated images according to Web App Manifest specs and Apple Hum",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@darwinia/types-known",
+      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
       "source": "npm_registry"
     },
     {
       "package": "datocms-structured-text-utils",
       "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@azure/avocado",
+      "description": "A validator of OpenAPI configurations",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@elastic/opentelemetry-node",
+      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
       "source": "npm_registry"
     },
     {
@@ -283,23 +297,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@elastic/opentelemetry-node",
-      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@libp2p/gossipsub",
-      "description": "A typescript implementation of gossipsub",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@grafana/openapi",
-      "description": "Grafana OpenApi Library",
-      "source": "npm_registry"
-    },
-    {
       "package": "@withfig/autocomplete",
       "description": "Fig Autocomplete Specs",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@typespec/spector",
+      "description": "Typespec Core Tool to validate, run mock api, collect coverage.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "cypress-cucumber-preprocessor",
+      "description": "Run gherkin-syntaxed specs with cypress.io",
       "source": "npm_registry"
     },
     {

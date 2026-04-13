@@ -1,6 +1,6 @@
 {
   "crate": "http-relay",
-  "updated_at": "2026-04-08T09:42:27.179682+00:00",
+  "updated_at": "2026-04-13T09:50:01.738087+00:00",
   "total": 6,
   "summary": {
     "pubky-testnet": 5,
@@ -67,7 +67,7 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 6346,
-    "recent": 861
+    "total": 6416,
+    "recent": 922
   }
 }
