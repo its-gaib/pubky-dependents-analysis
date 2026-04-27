@@ -1,6 +1,6 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-04-20T08:48:22.274377+00:00",
+  "updated_at": "2026-04-27T10:01:06.853668+00:00",
   "total": 5,
   "summary": {
     "direct": 5
@@ -58,12 +58,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 8293,
-    "recent": 403
+    "total": 8673,
+    "recent": 722
   },
   "npm_downloads": {
-    "total": 12482,
-    "recent": 2856
+    "total": 13541,
+    "recent": 3171
   },
   "npm_dependents": [
     {
@@ -87,13 +87,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "device-specs",
-      "description": "A list of devices that can be emulated using Chrome DevTools.",
+      "package": "oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
       "source": "npm_registry"
     },
     {
-      "package": "oidc-provider",
-      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
+      "package": "device-specs",
+      "description": "A list of devices that can be emulated using Chrome DevTools.",
       "source": "npm_registry"
     },
     {
@@ -122,13 +122,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "expo-updates",
-      "description": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
       "source": "npm_registry"
     },
     {
-      "package": "@eventky/pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
+      "package": "expo-updates",
+      "description": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
       "source": "npm_registry"
     },
     {
@@ -157,13 +157,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "graphology",
-      "description": "A robust and multipurpose Graph object for JavaScript.",
+      "package": "json-joy",
+      "description": "Collection of libraries for building collaborative editing apps.",
       "source": "npm_registry"
     },
     {
-      "package": "css-shorthand-properties",
-      "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
+      "package": "graphology",
+      "description": "A robust and multipurpose Graph object for JavaScript.",
       "source": "npm_registry"
     },
     {
@@ -172,13 +172,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@polkadot/types-known",
-      "description": "Known type definitions",
+      "package": "css-shorthand-properties",
+      "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
       "source": "npm_registry"
     },
     {
-      "package": "json-joy",
-      "description": "Collection of libraries for building collaborative editing apps.",
+      "package": "@polkadot/types-known",
+      "description": "Known type definitions",
       "source": "npm_registry"
     },
     {
@@ -187,13 +187,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "instantsearch.css",
-      "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
+      "package": "@chainsafe/libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
       "source": "npm_registry"
     },
     {
-      "package": "@chainsafe/libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
+      "package": "instantsearch.css",
+      "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
       "source": "npm_registry"
     },
     {
@@ -202,13 +202,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@microsoft/agents-activity",
-      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
+      "package": "@atproto/syntax",
+      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
       "source": "npm_registry"
     },
     {
-      "package": "@atproto/syntax",
-      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
+      "package": "libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
       "source": "npm_registry"
     },
     {
@@ -217,13 +217,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "@microsoft/agents-activity",
+      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
+      "source": "npm_registry"
+    },
+    {
       "package": "@markuplint/react-spec",
       "description": "Extended specification for tags and attributes in React",
       "source": "npm_registry"
     },
     {
-      "package": "libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
+      "package": "@perma/map",
+      "description": "Immutable hash maps implemented as hash array papped tries",
       "source": "npm_registry"
     },
     {
@@ -237,13 +242,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@asyncapi/specs",
-      "description": "AsyncAPI schema versions",
+      "package": "officecrypto-tool",
+      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
       "source": "npm_registry"
     },
     {
-      "package": "@perma/map",
-      "description": "Immutable hash maps implemented as hash array papped tries",
+      "package": "@asyncapi/specs",
+      "description": "AsyncAPI schema versions",
       "source": "npm_registry"
     },
     {
@@ -252,18 +257,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "officecrypto-tool",
-      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
-      "source": "npm_registry"
-    },
-    {
       "package": "pwa-asset-generator",
       "description": "Automates PWA asset generation and image declaration. Automatically generates icon and splash screen images, favicons and mstile images. Updates manifest.json and index.html files with the generated images according to Web App Manifest specs and Apple Hum",
-      "source": "npm_registry"
-    },
-    {
-      "package": "datocms-structured-text-utils",
-      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
       "source": "npm_registry"
     },
     {
@@ -272,8 +267,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "datocms-structured-text-utils",
+      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
+      "source": "npm_registry"
+    },
+    {
       "package": "@darwinia/types-known",
       "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@grafana/openapi",
+      "description": "Grafana OpenApi Library",
       "source": "npm_registry"
     },
     {
@@ -282,18 +287,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@azure/oad",
-      "description": "OpenApi Specification Diff tool",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@elastic/opentelemetry-node",
-      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@withfig/autocomplete",
-      "description": "Fig Autocomplete Specs",
+      "package": "openspec-playwright",
+      "description": "OpenSpec + Playwright E2E verification setup tool for Claude Code",
       "source": "npm_registry"
     },
     {
@@ -307,8 +302,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "openspec-playwright",
-      "description": "OpenSpec + Playwright E2E verification setup tool for Claude Code",
+      "package": "@withfig/autocomplete",
+      "description": "Fig Autocomplete Specs",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@libp2p/gossipsub",
+      "description": "A typescript implementation of gossipsub",
       "source": "npm_registry"
     },
     {
