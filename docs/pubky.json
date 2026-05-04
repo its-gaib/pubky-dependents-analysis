@@ -1,9 +1,9 @@
 {
   "crate": "pubky",
-  "updated_at": "2026-04-27T10:00:41.977074+00:00",
-  "total": 19,
+  "updated_at": "2026-05-04T10:56:04.135885+00:00",
+  "total": 20,
   "summary": {
-    "direct": 18,
+    "direct": 19,
     "pubky-messenger": 1
   },
   "lists": {
@@ -24,7 +24,7 @@
           "pubky-noise",
           "pubky"
         ],
-        "stars": 2,
+        "stars": 3,
         "version": "workspace",
         "optional": true
       },
@@ -70,7 +70,7 @@
           "pubky-private-messenger",
           "pubky"
         ],
-        "stars": 8,
+        "stars": 9,
         "version": "0.4.2"
       },
       {
@@ -81,6 +81,15 @@
         ],
         "stars": 3,
         "version": "0.4.2"
+      },
+      {
+        "repo": "gillohner/mapky-app-specs",
+        "chain": [
+          "mapky-app-specs",
+          "pubky"
+        ],
+        "stars": 0,
+        "version": "0.5"
       },
       {
         "repo": "gillohner/mapky-nexus-plugin",
@@ -148,7 +157,7 @@
       {
         "repo": "pubky/pubky-nexus",
         "chain": [
-          "nexus-webapi",
+          "nexus-watcher",
           "pubky"
         ],
         "stars": 19,
@@ -186,16 +195,16 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 18177,
-    "recent": 1871
+    "total": 18360,
+    "recent": 1936
   },
   "npm_downloads": {
-    "total": 16618,
-    "recent": 3165
+    "total": 16844,
+    "recent": 2652
   },
   "rn_downloads": {
-    "total": 5182,
-    "recent": 124
+    "total": 5193,
+    "recent": 137
   },
   "npm_dependents": [
     {
@@ -229,8 +238,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtag",
-      "description": "Identity, discovery, and p2p communication for Slashtags protocol.",
+      "package": "@synonymdev/slashtags-auth",
+      "description": "P2P authorization and bidirectional authentication with holepunching through Hyperswarm.",
       "source": "npm_registry"
     },
     {
@@ -239,13 +248,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-auth",
-      "description": "P2P authorization and bidirectional authentication with holepunching through Hyperswarm.",
+      "package": "@synonymdev/slashtag",
+      "description": "Identity, discovery, and p2p communication for Slashtags protocol.",
       "source": "npm_registry"
     },
     {
       "package": "@synonymdev/raw-transaction-decoder",
       "description": "Decodes Raw Bitcoin Transactions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/blocktank-client",
+      "description": "LSP client library",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/react-native-lightning",
+      "description": "React Native wrapper for Lndmobile",
       "source": "npm_registry"
     },
     {
@@ -259,11 +278,6 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-lightning",
-      "description": "React Native wrapper for Lndmobile",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/slashtags-url",
       "description": "Encodes and decodes Slashtags URLs",
       "source": "npm_registry"
@@ -274,18 +288,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/blocktank-client",
-      "description": "LSP client library",
+      "package": "@synonymdev/slashtags-rpc",
+      "description": "helper module for creating RPCs using Slashtags nodes",
       "source": "npm_registry"
     },
     {
       "package": "@synonymdev/slashtags-keychain",
       "description": "A utility module for generating keyPairs for Slashtags",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/slashtags-rpc",
-      "description": "helper module for creating RPCs using Slashtags nodes",
       "source": "npm_registry"
     },
     {
@@ -299,13 +308,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/slashtags-actions",
+      "description": "Packaged handlers for Slashtags actions",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/slashtags-core-data",
       "description": "Slashtags Core Data is abstraction library that encapsulates logic related to managing data on Slashtags.",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-actions",
-      "description": "Packaged handlers for Slashtags actions",
+      "package": "@synonymdev/react-native-slashtags",
+      "description": "React Native wrapper for Slashtags",
       "source": "npm_registry"
     },
     {
@@ -329,48 +343,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "hackday-slashpay",
-      "description": "[Read more](https://docs.google.com/document/d/10rgPbDMer6uL7L8QZ5ve-KU_pkI_YSwSO4dmzUmjU6s/edit)",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/feeds",
       "description": "A library for creating and managing feeds using the web-relay",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/blocktank-worker2",
-      "description": "",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/pkarr",
-      "description": "Public-Key Addressable Resource Records (Pkarr); publish and resolve DNS records over Mainline DHT",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/blocktank-util-slack-client",
-      "description": "Blocktank Slack client",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/react-native-slashtags",
-      "description": "React Native wrapper for Slashtags",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/feeds-daemon",
-      "description": "A simple HTTP RPC deamon to enable publishing Slashtags Exchange Feeds.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/slashauth",
-      "description": "Authorization using slashtags",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/bitkit-notification-client",
-      "description": "Bitkit Notification Server client",
       "source": "npm_registry"
     },
     {
@@ -379,13 +353,28 @@
       "source": "npm_registry"
     },
     {
-      "package": "slashtags-feed-reader",
-      "description": "Collection of helper functions to read Slashtags feeds from a Hyperdrive.",
+      "package": "@synonymdev/slashauth",
+      "description": "Authorization using slashtags",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-keychain",
-      "description": "Keychain Access for React Native",
+      "package": "@synonymdev/blocktank-worker2",
+      "description": "",
+      "source": "npm_registry"
+    },
+    {
+      "package": "hackday-slashpay",
+      "description": "[Read more](https://docs.google.com/document/d/10rgPbDMer6uL7L8QZ5ve-KU_pkI_YSwSO4dmzUmjU6s/edit)",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/blocktank-util-slack-client",
+      "description": "Blocktank Slack client",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/bitkit-notification-client",
+      "description": "Bitkit Notification Server client",
       "source": "npm_registry"
     },
     {
@@ -394,8 +383,33 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/feeds-daemon",
+      "description": "A simple HTTP RPC deamon to enable publishing Slashtags Exchange Feeds.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/react-native-keychain",
+      "description": "Keychain Access for React Native",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/lightning-channel-id",
       "description": "Convert lightning channel id formats",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/pkarr",
+      "description": "Public-Key Addressable Resource Records (Pkarr); publish and resolve DNS records over Mainline DHT",
+      "source": "npm_registry"
+    },
+    {
+      "package": "slashtags-feed-reader",
+      "description": "Collection of helper functions to read Slashtags feeds from a Hyperdrive.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/slashtags-contacts",
+      "description": "Slashtags contacts management.",
       "source": "npm_registry"
     },
     {
@@ -404,8 +418,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-contacts",
-      "description": "Slashtags contacts management.",
+      "package": "mapky-app-specs",
+      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
       "source": "npm_registry"
     },
     {

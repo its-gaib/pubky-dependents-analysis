@@ -1,9 +1,9 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-04-27T10:01:06.853668+00:00",
-  "total": 5,
+  "updated_at": "2026-05-04T10:56:29.345125+00:00",
+  "total": 6,
   "summary": {
-    "direct": 5
+    "direct": 6
   },
   "lists": {
     "direct": [
@@ -23,6 +23,15 @@
           "pubky-app-specs"
         ],
         "stars": 2,
+        "version": "0.4"
+      },
+      {
+        "repo": "gillohner/mapky-app-specs",
+        "chain": [
+          "mapky-app-specs",
+          "pubky-app-specs"
+        ],
+        "stars": 0,
         "version": "0.4"
       },
       {
@@ -58,12 +67,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 8673,
-    "recent": 722
+    "total": 8713,
+    "recent": 724
   },
   "npm_downloads": {
-    "total": 13541,
-    "recent": 3171
+    "total": 13987,
+    "recent": 2624
   },
   "npm_dependents": [
     {
@@ -102,6 +111,11 @@
       "source": "npm_registry"
     },
     {
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
+      "source": "npm_registry"
+    },
+    {
       "package": "cypress-repeat",
       "description": "Run Cypress multiple times in a row",
       "source": "npm_registry"
@@ -119,11 +133,6 @@
     {
       "package": "stop-only",
       "description": "Detects '.only' left in the code accidentally",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@eventky/pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
       "source": "npm_registry"
     },
     {
@@ -167,8 +176,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@webcomponents/custom-elements",
-      "description": "HTML Custom Elements Polyfill",
+      "package": "@replit/oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
       "source": "npm_registry"
     },
     {
@@ -177,18 +186,13 @@
       "source": "npm_registry"
     },
     {
+      "package": "@webcomponents/custom-elements",
+      "description": "HTML Custom Elements Polyfill",
+      "source": "npm_registry"
+    },
+    {
       "package": "@polkadot/types-known",
       "description": "Known type definitions",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@replit/oidc-provider",
-      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@chainsafe/libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
       "source": "npm_registry"
     },
     {
@@ -202,13 +206,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@atproto/syntax",
-      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
+      "package": "@microsoft/agents-activity",
+      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
       "source": "npm_registry"
     },
     {
-      "package": "libp2p-gossipsub",
+      "package": "@chainsafe/libp2p-gossipsub",
       "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@atproto/syntax",
+      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
       "source": "npm_registry"
     },
     {
@@ -217,8 +226,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@microsoft/agents-activity",
-      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
+      "package": "@ideal-postcodes/openapi",
+      "description": "Ideal Postcodes OpenAPI v3 specifications",
       "source": "npm_registry"
     },
     {
@@ -227,28 +236,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@perma/map",
-      "description": "Immutable hash maps implemented as hash array papped tries",
-      "source": "npm_registry"
-    },
-    {
-      "package": "jasmine",
-      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@ideal-postcodes/openapi",
-      "description": "Ideal Postcodes OpenAPI v3 specifications",
-      "source": "npm_registry"
-    },
-    {
       "package": "officecrypto-tool",
       "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
       "source": "npm_registry"
     },
     {
+      "package": "libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
       "package": "@asyncapi/specs",
       "description": "AsyncAPI schema versions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "jasmine",
+      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
       "source": "npm_registry"
     },
     {
@@ -262,13 +266,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "aws-cron-parser",
-      "description": "A util to parse cron expressions used by AWS services",
-      "source": "npm_registry"
-    },
-    {
-      "package": "datocms-structured-text-utils",
-      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
+      "package": "@perma/map",
+      "description": "Immutable hash maps implemented as hash array papped tries",
       "source": "npm_registry"
     },
     {
@@ -277,28 +276,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@grafana/openapi",
-      "description": "Grafana OpenApi Library",
+      "package": "datocms-structured-text-utils",
+      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
       "source": "npm_registry"
     },
     {
-      "package": "@azure/avocado",
-      "description": "A validator of OpenAPI configurations",
-      "source": "npm_registry"
-    },
-    {
-      "package": "openspec-playwright",
-      "description": "OpenSpec + Playwright E2E verification setup tool for Claude Code",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@typespec/spector",
-      "description": "Typespec Core Tool to validate, run mock api, collect coverage.",
+      "package": "aws-cron-parser",
+      "description": "A util to parse cron expressions used by AWS services",
       "source": "npm_registry"
     },
     {
       "package": "@markuplint/vue-spec",
       "description": "Extended specification for tags and attributes in Vue",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@elastic/opentelemetry-node",
+      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
       "source": "npm_registry"
     },
     {
@@ -309,6 +303,21 @@
     {
       "package": "@libp2p/gossipsub",
       "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@typespec/spector",
+      "description": "Typespec Core Tool to validate, run mock api, collect coverage.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "cypress-vite",
+      "description": "Run Cypress specs using Vite",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@azure/oad",
+      "description": "OpenApi Specification Diff tool",
       "source": "npm_registry"
     },
     {

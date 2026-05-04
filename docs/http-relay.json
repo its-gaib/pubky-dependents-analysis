@@ -1,6 +1,6 @@
 {
   "crate": "http-relay",
-  "updated_at": "2026-04-27T10:08:41.124072+00:00",
+  "updated_at": "2026-05-04T11:05:46.321836+00:00",
   "total": 6,
   "summary": {
     "pubky-testnet": 5,
@@ -61,13 +61,13 @@
           "pubky-core",
           "http-relay"
         ],
-        "stars": 76,
+        "stars": 77,
         "version": "0.7.0"
       }
     ]
   },
   "crates_io_downloads": {
-    "total": 7005,
-    "recent": 1450
+    "total": 7112,
+    "recent": 1535
   }
 }
