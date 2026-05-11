@@ -1,6 +1,6 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-05-04T10:56:29.345125+00:00",
+  "updated_at": "2026-05-11T10:35:58.862806+00:00",
   "total": 6,
   "summary": {
     "direct": 6
@@ -67,12 +67,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 8713,
-    "recent": 724
+    "total": 8747,
+    "recent": 721
   },
   "npm_downloads": {
-    "total": 13987,
-    "recent": 2624
+    "total": 14621,
+    "recent": 2300
   },
   "npm_dependents": [
     {
@@ -101,18 +101,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "device-specs",
-      "description": "A list of devices that can be emulated using Chrome DevTools.",
-      "source": "npm_registry"
-    },
-    {
       "package": "cypress-split",
       "description": "Split Cypress specs across parallel CI machines for speed",
       "source": "npm_registry"
     },
     {
-      "package": "@eventky/pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
+      "package": "device-specs",
+      "description": "A list of devices that can be emulated using Chrome DevTools.",
       "source": "npm_registry"
     },
     {
@@ -131,6 +126,11 @@
       "source": "npm_registry"
     },
     {
+      "package": "mapky-app-specs",
+      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
+      "source": "npm_registry"
+    },
+    {
       "package": "stop-only",
       "description": "Detects '.only' left in the code accidentally",
       "source": "npm_registry"
@@ -138,6 +138,11 @@
     {
       "package": "expo-updates",
       "description": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
       "source": "npm_registry"
     },
     {
@@ -161,6 +166,11 @@
       "source": "npm_registry"
     },
     {
+      "package": "@replit/oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
+      "source": "npm_registry"
+    },
+    {
       "package": "@standard-schema/spec",
       "description": "A family of specs for interoperable TypeScript",
       "source": "npm_registry"
@@ -176,18 +186,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@replit/oidc-provider",
-      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
-      "source": "npm_registry"
-    },
-    {
       "package": "css-shorthand-properties",
       "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@webcomponents/custom-elements",
-      "description": "HTML Custom Elements Polyfill",
       "source": "npm_registry"
     },
     {
@@ -196,13 +196,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "instantsearch.css",
-      "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
+      "package": "@webcomponents/custom-elements",
+      "description": "HTML Custom Elements Polyfill",
       "source": "npm_registry"
     },
     {
-      "package": "elm-spec-runner",
-      "description": "Node CLI for Elm-Spec",
+      "package": "instantsearch.css",
+      "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
       "source": "npm_registry"
     },
     {
@@ -211,18 +211,38 @@
       "source": "npm_registry"
     },
     {
-      "package": "@chainsafe/libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
-      "source": "npm_registry"
-    },
-    {
       "package": "@atproto/syntax",
       "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
       "source": "npm_registry"
     },
     {
+      "package": "officecrypto-tool",
+      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@chainsafe/libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
+      "package": "elm-spec-runner",
+      "description": "Node CLI for Elm-Spec",
+      "source": "npm_registry"
+    },
+    {
       "package": "grunt-contrib-jasmine",
       "description": "Run jasmine specs headlessly through Headless Chrome",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@asyncapi/specs",
+      "description": "AsyncAPI schema versions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "applicationinsights",
+      "description": "Microsoft Application Insights module for Node.js",
       "source": "npm_registry"
     },
     {
@@ -236,28 +256,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "officecrypto-tool",
-      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@asyncapi/specs",
-      "description": "AsyncAPI schema versions",
-      "source": "npm_registry"
-    },
-    {
-      "package": "jasmine",
-      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
-      "source": "npm_registry"
-    },
-    {
-      "package": "applicationinsights",
-      "description": "Microsoft Application Insights module for Node.js",
+      "package": "@darwinia/types-known",
+      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
       "source": "npm_registry"
     },
     {
@@ -266,13 +266,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@perma/map",
-      "description": "Immutable hash maps implemented as hash array papped tries",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@darwinia/types-known",
-      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "package": "jasmine",
+      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
       "source": "npm_registry"
     },
     {
@@ -281,23 +276,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "aws-cron-parser",
-      "description": "A util to parse cron expressions used by AWS services",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@markuplint/vue-spec",
-      "description": "Extended specification for tags and attributes in Vue",
-      "source": "npm_registry"
-    },
-    {
       "package": "@elastic/opentelemetry-node",
       "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
       "source": "npm_registry"
     },
     {
-      "package": "@withfig/autocomplete",
-      "description": "Fig Autocomplete Specs",
+      "package": "libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@perma/map",
+      "description": "Immutable hash maps implemented as hash array papped tries",
+      "source": "npm_registry"
+    },
+    {
+      "package": "aws-cron-parser",
+      "description": "A util to parse cron expressions used by AWS services",
       "source": "npm_registry"
     },
     {
@@ -306,18 +301,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@typespec/spector",
-      "description": "Typespec Core Tool to validate, run mock api, collect coverage.",
-      "source": "npm_registry"
-    },
-    {
       "package": "cypress-vite",
       "description": "Run Cypress specs using Vite",
       "source": "npm_registry"
     },
     {
-      "package": "@azure/oad",
-      "description": "OpenApi Specification Diff tool",
+      "package": "@typespec/spector",
+      "description": "Typespec Core Tool to validate, run mock api, collect coverage.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@withfig/autocomplete",
+      "description": "Fig Autocomplete Specs",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@markuplint/vue-spec",
+      "description": "Extended specification for tags and attributes in Vue",
       "source": "npm_registry"
     },
     {
