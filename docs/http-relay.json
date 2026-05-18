@@ -1,6 +1,6 @@
 {
   "crate": "http-relay",
-  "updated_at": "2026-05-11T10:45:38.397179+00:00",
+  "updated_at": "2026-05-18T10:58:56.062563+00:00",
   "total": 6,
   "summary": {
     "pubky-testnet": 5,
@@ -24,7 +24,7 @@
           "pubky-testnet",
           "http-relay"
         ],
-        "stars": 3
+        "stars": 4
       },
       {
         "repo": "pubky/pubky-cli",
@@ -67,7 +67,7 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 7169,
-    "recent": 1566
+    "total": 7299,
+    "recent": 1683
   }
 }

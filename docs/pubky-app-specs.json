@@ -1,6 +1,6 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-05-11T10:35:58.862806+00:00",
+  "updated_at": "2026-05-18T10:49:54.070039+00:00",
   "total": 6,
   "summary": {
     "direct": 6
@@ -67,12 +67,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 8747,
-    "recent": 721
+    "total": 8804,
+    "recent": 756
   },
   "npm_downloads": {
-    "total": 14621,
-    "recent": 2300
+    "total": 15290,
+    "recent": 2808
   },
   "npm_dependents": [
     {
@@ -86,6 +86,11 @@
       "source": "npm_registry"
     },
     {
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
+      "source": "npm_registry"
+    },
+    {
       "package": "setimmediate",
       "description": "A shim for the setImmediate efficient script yielding API",
       "source": "npm_registry"
@@ -93,6 +98,11 @@
     {
       "package": "@synonymdev/pubky",
       "description": "Pubky client",
+      "source": "npm_registry"
+    },
+    {
+      "package": "mapky-app-specs",
+      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
       "source": "npm_registry"
     },
     {
@@ -126,11 +136,6 @@
       "source": "npm_registry"
     },
     {
-      "package": "mapky-app-specs",
-      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
-      "source": "npm_registry"
-    },
-    {
       "package": "stop-only",
       "description": "Detects '.only' left in the code accidentally",
       "source": "npm_registry"
@@ -141,18 +146,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@eventky/pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
-      "source": "npm_registry"
-    },
-    {
       "package": "expo-structured-headers",
       "description": "Expo module implementation of a parser based on https://httpwg.org/specs/rfc8941.html",
-      "source": "npm_registry"
-    },
-    {
-      "package": "openapi-schema-validator",
-      "description": "A validator for OpenAPI documents.",
       "source": "npm_registry"
     },
     {
@@ -161,8 +156,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@rails/webpacker",
-      "description": "Use webpack to manage app-like JavaScript modules in Rails",
+      "package": "openapi-schema-validator",
+      "description": "A validator for OpenAPI documents.",
       "source": "npm_registry"
     },
     {
@@ -171,13 +166,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@standard-schema/spec",
-      "description": "A family of specs for interoperable TypeScript",
+      "package": "@rails/webpacker",
+      "description": "Use webpack to manage app-like JavaScript modules in Rails",
       "source": "npm_registry"
     },
     {
       "package": "json-joy",
       "description": "Collection of libraries for building collaborative editing apps.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@standard-schema/spec",
+      "description": "A family of specs for interoperable TypeScript",
       "source": "npm_registry"
     },
     {
@@ -206,13 +206,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "@atproto/syntax",
+      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
+      "source": "npm_registry"
+    },
+    {
       "package": "@microsoft/agents-activity",
       "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
       "source": "npm_registry"
     },
     {
-      "package": "@atproto/syntax",
-      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
+      "package": "@synonymdev/react-native-pubky",
+      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
@@ -226,13 +231,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "elm-spec-runner",
-      "description": "Node CLI for Elm-Spec",
-      "source": "npm_registry"
-    },
-    {
-      "package": "grunt-contrib-jasmine",
-      "description": "Run jasmine specs headlessly through Headless Chrome",
+      "package": "@ideal-postcodes/openapi",
+      "description": "Ideal Postcodes OpenAPI v3 specifications",
       "source": "npm_registry"
     },
     {
@@ -246,8 +246,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@ideal-postcodes/openapi",
-      "description": "Ideal Postcodes OpenAPI v3 specifications",
+      "package": "grunt-contrib-jasmine",
+      "description": "Run jasmine specs headlessly through Headless Chrome",
       "source": "npm_registry"
     },
     {
@@ -266,11 +266,6 @@
       "source": "npm_registry"
     },
     {
-      "package": "jasmine",
-      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
-      "source": "npm_registry"
-    },
-    {
       "package": "datocms-structured-text-utils",
       "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
       "source": "npm_registry"
@@ -281,13 +276,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
+      "package": "jasmine",
+      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
+      "source": "npm_registry"
+    },
+    {
+      "package": "elm-spec-runner",
+      "description": "Node CLI for Elm-Spec",
       "source": "npm_registry"
     },
     {
       "package": "@perma/map",
       "description": "Immutable hash maps implemented as hash array papped tries",
+      "source": "npm_registry"
+    },
+    {
+      "package": "libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
       "source": "npm_registry"
     },
     {
@@ -301,23 +306,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "cypress-vite",
-      "description": "Run Cypress specs using Vite",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@typespec/spector",
-      "description": "Typespec Core Tool to validate, run mock api, collect coverage.",
-      "source": "npm_registry"
-    },
-    {
       "package": "@withfig/autocomplete",
       "description": "Fig Autocomplete Specs",
       "source": "npm_registry"
     },
     {
-      "package": "@markuplint/vue-spec",
-      "description": "Extended specification for tags and attributes in Vue",
+      "package": "cypress-vite",
+      "description": "Run Cypress specs using Vite",
+      "source": "npm_registry"
+    },
+    {
+      "package": "cypress-cucumber-preprocessor",
+      "description": "Run gherkin-syntaxed specs with cypress.io",
       "source": "npm_registry"
     },
     {
