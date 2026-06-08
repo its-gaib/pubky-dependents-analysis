@@ -1,6 +1,6 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-05-18T10:49:54.070039+00:00",
+  "updated_at": "2026-06-08T13:15:47.495738+00:00",
   "total": 6,
   "summary": {
     "direct": 6
@@ -32,7 +32,10 @@
           "pubky-app-specs"
         ],
         "stars": 0,
-        "version": "0.4"
+        "version": "0.5.2",
+        "features": [
+          "openapi"
+        ]
       },
       {
         "repo": "gillohner/mapky-nexus-plugin",
@@ -41,7 +44,10 @@
           "pubky-app-specs"
         ],
         "stars": 0,
-        "version": "workspace"
+        "version": "0.5.2",
+        "features": [
+          "openapi"
+        ]
       },
       {
         "repo": "pubky/pubky-nexus",
@@ -49,8 +55,8 @@
           "pubky-nexus",
           "pubky-app-specs"
         ],
-        "stars": 19,
-        "version": "workspace",
+        "stars": 20,
+        "version": "0.5.2",
         "features": [
           "openapi"
         ]
@@ -67,12 +73,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 8804,
-    "recent": 756
+    "total": 9130,
+    "recent": 1006
   },
   "npm_downloads": {
-    "total": 15290,
-    "recent": 2808
+    "total": 18934,
+    "recent": 4658
   },
   "npm_dependents": [
     {
@@ -111,13 +117,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "device-specs",
+      "description": "A list of devices that can be emulated using Chrome DevTools.",
+      "source": "npm_registry"
+    },
+    {
       "package": "cypress-split",
       "description": "Split Cypress specs across parallel CI machines for speed",
       "source": "npm_registry"
     },
     {
-      "package": "device-specs",
-      "description": "A list of devices that can be emulated using Chrome DevTools.",
+      "package": "@metamask/api-specs",
+      "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
       "source": "npm_registry"
     },
     {
@@ -126,8 +137,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@metamask/api-specs",
-      "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
+      "package": "eventky-app-specs",
+      "description": "Eventky Data Model Specifications",
       "source": "npm_registry"
     },
     {
@@ -151,8 +162,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@substrate/connect-known-chains",
-      "description": "Substrate-connect well known chain specifications",
+      "package": "@synonymdev/react-native-pubky",
+      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
@@ -161,18 +172,13 @@
       "source": "npm_registry"
     },
     {
+      "package": "@substrate/connect-known-chains",
+      "description": "Substrate-connect well known chain specifications",
+      "source": "npm_registry"
+    },
+    {
       "package": "@replit/oidc-provider",
       "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@rails/webpacker",
-      "description": "Use webpack to manage app-like JavaScript modules in Rails",
-      "source": "npm_registry"
-    },
-    {
-      "package": "json-joy",
-      "description": "Collection of libraries for building collaborative editing apps.",
       "source": "npm_registry"
     },
     {
@@ -181,13 +187,23 @@
       "source": "npm_registry"
     },
     {
+      "package": "json-joy",
+      "description": "Collection of libraries for building collaborative editing apps.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@rails/webpacker",
+      "description": "Use webpack to manage app-like JavaScript modules in Rails",
+      "source": "npm_registry"
+    },
+    {
       "package": "graphology",
       "description": "A robust and multipurpose Graph object for JavaScript.",
       "source": "npm_registry"
     },
     {
-      "package": "css-shorthand-properties",
-      "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
+      "package": "@webcomponents/custom-elements",
+      "description": "HTML Custom Elements Polyfill",
       "source": "npm_registry"
     },
     {
@@ -196,8 +212,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@webcomponents/custom-elements",
-      "description": "HTML Custom Elements Polyfill",
+      "package": "css-shorthand-properties",
+      "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
       "source": "npm_registry"
     },
     {
@@ -211,23 +227,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@microsoft/agents-activity",
-      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/react-native-pubky",
-      "description": "React Native Implementation of Pubky",
-      "source": "npm_registry"
-    },
-    {
-      "package": "officecrypto-tool",
-      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
-      "source": "npm_registry"
-    },
-    {
       "package": "@chainsafe/libp2p-gossipsub",
       "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@elastic/opentelemetry-node",
+      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@asyncapi/specs",
+      "description": "AsyncAPI schema versions",
       "source": "npm_registry"
     },
     {
@@ -236,8 +247,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@asyncapi/specs",
-      "description": "AsyncAPI schema versions",
+      "package": "@microsoft/agents-activity",
+      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@markuplint/react-spec",
+      "description": "Extended specification for tags and attributes in React",
+      "source": "npm_registry"
+    },
+    {
+      "package": "officecrypto-tool",
+      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
       "source": "npm_registry"
     },
     {
@@ -251,38 +272,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@markuplint/react-spec",
-      "description": "Extended specification for tags and attributes in React",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@darwinia/types-known",
-      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
-      "source": "npm_registry"
-    },
-    {
       "package": "pwa-asset-generator",
       "description": "Automates PWA asset generation and image declaration. Automatically generates icon and splash screen images, favicons and mstile images. Updates manifest.json and index.html files with the generated images according to Web App Manifest specs and Apple Hum",
-      "source": "npm_registry"
-    },
-    {
-      "package": "datocms-structured-text-utils",
-      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@elastic/opentelemetry-node",
-      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
-      "source": "npm_registry"
-    },
-    {
-      "package": "jasmine",
-      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
-      "source": "npm_registry"
-    },
-    {
-      "package": "elm-spec-runner",
-      "description": "Node CLI for Elm-Spec",
       "source": "npm_registry"
     },
     {
@@ -291,8 +282,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
+      "package": "@withfig/autocomplete",
+      "description": "Fig Autocomplete Specs",
+      "source": "npm_registry"
+    },
+    {
+      "package": "jasmine",
+      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@darwinia/types-known",
+      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "source": "npm_registry"
+    },
+    {
+      "package": "datocms-structured-text-utils",
+      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
       "source": "npm_registry"
     },
     {
@@ -301,13 +307,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@libp2p/gossipsub",
-      "description": "A typescript implementation of gossipsub",
+      "package": "@exodus/xqa",
+      "description": "AI-powered QA CLI tool for autonomous mobile app testing",
       "source": "npm_registry"
     },
     {
-      "package": "@withfig/autocomplete",
-      "description": "Fig Autocomplete Specs",
+      "package": "elm-spec-runner",
+      "description": "Node CLI for Elm-Spec",
+      "source": "npm_registry"
+    },
+    {
+      "package": "libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
       "source": "npm_registry"
     },
     {
@@ -316,16 +327,7 @@
       "source": "npm_registry"
     },
     {
-      "package": "cypress-cucumber-preprocessor",
-      "description": "Run gherkin-syntaxed specs with cypress.io",
-      "source": "npm_registry"
-    },
-    {
       "package": "pubky/pubky-app-specs",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/eventky",
       "source": "github_package_json"
     },
     {
@@ -333,11 +335,7 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/pubky-app",
-      "source": "github_package_json"
-    },
-    {
-      "package": "PastaGringo/pubky-homeserver",
+      "package": "gillohner/pubky-ical-poc",
       "source": "github_package_json"
     },
     {
@@ -345,7 +343,11 @@
       "source": "github_package_json"
     },
     {
-      "package": "gillohner/pubky-ical-poc",
+      "package": "PastaGringo/pubky-homeserver",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-app",
       "source": "github_package_json"
     }
   ]

@@ -1,16 +1,14 @@
 {
   "crate": "mainline",
-  "updated_at": "2026-05-18T10:58:30.403409+00:00",
-  "total": 221,
+  "updated_at": "2026-06-08T15:38:52.944619+00:00",
+  "total": 135,
   "summary": {
-    "pkarr": 164,
-    "direct": 40,
-    "distributed-topic-tracker": 4,
-    "iroh": 4,
-    "gosh-dl": 2,
+    "pkarr": 86,
+    "direct": 42,
+    "iroh": 2,
     "unknown": 1,
     "mosaic-core": 1,
-    "pubky-testnet": 4,
+    "pubky-testnet": 2,
     "iroh-mainline-content-discovery": 1
   },
   "lists": {
@@ -32,70 +30,11 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 10
-      },
-      {
-        "repo": "ARA-Marketplace/ara-marketplace",
-        "chain": [
-          "ara-marketplace-app",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "BitcoinErrorLog/paykit-rs",
-        "chain": [
-          "paykit-demo-web",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 1
-      },
-      {
-        "repo": "BitcoinErrorLog/pubky-noise",
-        "chain": [
-          "pubky-noise",
-          "pubky",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 3
-      },
-      {
-        "repo": "Byteingpython/tic-tac-tiroh",
-        "chain": [
-          "tic-tac-tiroh",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 1
-      },
-      {
-        "repo": "CICCADA-CORP/SoundTime",
-        "chain": [
-          "soundtime-p2p",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 50
+        "stars": 11
       },
       {
         "repo": "Daelyte/iroh-dumppipe",
         "chain": [
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "DrippLab/dripp-backend",
-        "chain": [
-          "dripp_backend",
           "iroh",
           "pkarr",
           "mainline"
@@ -124,17 +63,6 @@
         "stars": 177
       },
       {
-        "repo": "IroncladDev/tuimint",
-        "chain": [
-          "tuimint",
-          "fedimint-api-client",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 8
-      },
-      {
         "repo": "KaitouKid1412/gossip",
         "chain": [
           "gossip",
@@ -143,16 +71,6 @@
           "mainline"
         ],
         "stars": 1
-      },
-      {
-        "repo": "KarthikB-dev/MazeRs",
-        "chain": [
-          "tank_maze",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
       },
       {
         "repo": "KickedDroid/blendnet",
@@ -165,14 +83,13 @@
         "stars": 2
       },
       {
-        "repo": "Kiwilus/p2pchat",
+        "repo": "KingYoSun/kukuri",
         "chain": [
-          "p2pchat",
-          "iroh",
+          "kukuri-app-api",
           "pkarr",
           "mainline"
         ],
-        "stars": 0
+        "stars": 4
       },
       {
         "repo": "LeonardNolting/p2pmc_webrtc",
@@ -206,55 +123,6 @@
         "stars": 0
       },
       {
-        "repo": "MeeFoundation/mdn-repos",
-        "chain": [
-          "mee_data_sync",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "MiguelMedeiros/ghostly",
-        "chain": [
-          "ghostly",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 8
-      },
-      {
-        "repo": "MrImmortal09/fedimint-tauri-SDK",
-        "chain": [
-          "fedimint-api-client",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "MrImmortal09/tauri-SDK",
-        "chain": [
-          "fedimint-api-client",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "MyLobster-ai/clawnet",
-        "chain": [
-          "clawnet",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "NexusSocial/identity",
         "chain": [
           "did-pkarr",
@@ -270,17 +138,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 69
-      },
-      {
-        "repo": "Onyx-Void-Labs/onyx-legacy",
-        "chain": [
-          "onyx",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
+        "stars": 79
       },
       {
         "repo": "OpenArchive/save-dweb-backend",
@@ -305,16 +163,6 @@
         "stars": 4
       },
       {
-        "repo": "RealDummy/localfirst",
-        "chain": [
-          "relay",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "SeverinAlexB/pknames",
         "chain": [
           "pknames_core",
@@ -322,27 +170,6 @@
           "mainline"
         ],
         "stars": 10
-      },
-      {
-        "repo": "SiVy1/sivycord",
-        "chain": [
-          "app",
-          "iroh",
-          "iroh-net",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "Skidamek/Redstoh",
-        "chain": [
-          "peerun",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 8
       },
       {
         "repo": "Sonat-Consulting/rust_20250131",
@@ -353,35 +180,6 @@
           "mainline"
         ],
         "stars": 0
-      },
-      {
-        "repo": "UYUYANMARUL/indexer",
-        "chain": [
-          "indexer",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "Udhayan27-Dev/p2p-chat-rs",
-        "chain": [
-          "p2p-chat-rs",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "UniMusic-app/unimusic-sync",
-        "chain": [
-          "unimusic-sync",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 2
       },
       {
         "repo": "Uomocosa/lele",
@@ -416,26 +214,6 @@
         "stars": 0
       },
       {
-        "repo": "ahmed-crt9/rust--stm32",
-        "chain": [
-          "tauri-app-ahmedbk",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "alex-soldatkin/payload-expo-tauri",
-        "chain": [
-          "sd-core",
-          "iroh-net",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "anchalshivank/iroh-librqbit-peer-protocol",
         "chain": [
           "iroh-librqbit-peer-protocol",
@@ -456,26 +234,6 @@
         "stars": 3
       },
       {
-        "repo": "arcinston/synkro",
-        "chain": [
-          "fastsync",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 5
-      },
-      {
-        "repo": "benbot/spaceronic",
-        "chain": [
-          "space-networking",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "bitolodeonai7/spacedrive",
         "chain": [
           "sd-core-cloud-services",
@@ -484,56 +242,6 @@
           "mainline"
         ],
         "stars": 1
-      },
-      {
-        "repo": "bluestarburst/cf-iroh-signaling",
-        "chain": [
-          "iroh-cf-link",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "brittonr/aspen-pijul",
-        "chain": [
-          "aspen-auth",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "brittonr/drift",
-        "chain": [
-          "aspen-auth",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "brittonr/irohscii",
-        "chain": [
-          "aspen-auth",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 2
-      },
-      {
-        "repo": "chikof/sisifo",
-        "chain": [
-          "node",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 4
       },
       {
         "repo": "codingwatching/FishFight",
@@ -545,33 +253,6 @@
           "mainline"
         ],
         "stars": 1
-      },
-      {
-        "repo": "coreyphillips/bitcoin-batch-coordinator",
-        "chain": [
-          "common",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "coreyphillips/pubky-messenger",
-        "chain": [
-          "pubky-messenger",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 2
-      },
-      {
-        "repo": "coreyphillips/pubky-private-messenger",
-        "chain": [
-          "pubky-private-messenger",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 8
       },
       {
         "repo": "coreyphillips/vanity-pubky",
@@ -587,26 +268,6 @@
         "repo": "cpiprint/spacedrive",
         "chain": [
           "sd-core-cloud-services",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 1
-      },
-      {
-        "repo": "crrrr30/nex-frontend",
-        "chain": [
-          "nex-common",
-          "iroh-cli",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "dendisuhubdy/clawnet",
-        "chain": [
-          "clawnet",
           "iroh",
           "pkarr",
           "mainline"
@@ -639,75 +300,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 112
-      },
-      {
-        "repo": "elsirion/blitzi",
-        "chain": [
-          "blitzi",
-          "fedimint-client",
-          "fedimint-api-client",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 1
-      },
-      {
-        "repo": "elsirion/candypi",
-        "chain": [
-          "candypi",
-          "fedimint-client",
-          "fedimint-api-client",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 6
-      },
-      {
-        "repo": "elsirion/fedimint-observer",
-        "chain": [
-          "fmo_server",
-          "fedimint-api-client",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 14
-      },
-      {
-        "repo": "elsirion/paper-ecash-web",
-        "chain": [
-          "paper-ecash-web",
-          "fedimint-connectors",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "elsirion/satshunt",
-        "chain": [
-          "satshunt",
-          "blitzi",
-          "fedimint-client",
-          "fedimint-api-client",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 3
-      },
-      {
-        "repo": "emanuelbertey/Gtool",
-        "chain": [
-          "Gtool",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 1
+        "stars": 113
       },
       {
         "repo": "epicDavid-private/spacedrive",
@@ -730,6 +323,15 @@
         "stars": 1
       },
       {
+        "repo": "fedibtc/fedimint",
+        "chain": [
+          "fedimint-server",
+          "pkarr",
+          "mainline"
+        ],
+        "stars": 0
+      },
+      {
         "repo": "fedibtc/fedimint-observer",
         "chain": [
           "fmo_server",
@@ -750,46 +352,24 @@
         "stars": 0
       },
       {
-        "repo": "fedimint/ecash-app",
-        "chain": [
-          "ecashapp",
-          "fedimint-connectors",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 27
-      },
-      {
         "repo": "fedimint/fedimint",
         "chain": [
           "fedimint-server",
           "pkarr",
           "mainline"
         ],
-        "stars": 686
+        "stars": 688
       },
       {
-        "repo": "fedimint/fedimint-sdk-ffi",
+        "repo": "fedimint/fedimint-observer",
         "chain": [
-          "fedimint-client-uniffi",
-          "fedimint-connectors",
+          "fmo_server",
+          "fedimint-api-client",
           "iroh",
           "pkarr",
           "mainline"
         ],
-        "stars": 0
-      },
-      {
-        "repo": "fedixyz/fedi",
-        "chain": [
-          "bridge",
-          "fedimint-connectors",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 77
+        "stars": 14
       },
       {
         "repo": "fishfolk/bones",
@@ -810,34 +390,13 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 1840
-      },
-      {
-        "repo": "frankhinek/simple-fedimint-wallet",
-        "chain": [
-          "simple-fedimint-wallet",
-          "fedimint-api-client",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
+        "stars": 1842
       },
       {
         "repo": "gecakou/spacedrive",
         "chain": [
           "sd-core-cloud-services",
           "iroh-net",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "gillohner/pubky-canva",
-        "chain": [
-          "canva-indexer",
-          "pubky",
           "pkarr",
           "mainline"
         ],
@@ -864,53 +423,13 @@
         "stars": 0
       },
       {
-        "repo": "gold-silver-copper/gamik",
-        "chain": [
-          "gamik",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "gosuda/BiBeam",
         "chain": [
           "bibeam-discovery",
           "pkarr",
           "mainline"
         ],
-        "stars": 1
-      },
-      {
-        "repo": "heisfer/nixdot",
-        "chain": [
-          "sd-core-cloud-services",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 8
-      },
-      {
-        "repo": "imlyzh/hachimi_cat",
-        "chain": [
-          "hachimi_cat",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 1
-      },
-      {
-        "repo": "iohzrd/proscenium",
-        "chain": [
-          "proscenium",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 7
+        "stars": 2
       },
       {
         "repo": "iyadhtoumia/iroh-P2P",
@@ -950,7 +469,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 0
+        "stars": 2
       },
       {
         "repo": "johnzilla/cclink",
@@ -959,7 +478,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 3
+        "stars": 4
       },
       {
         "repo": "johnzilla/cipherpost",
@@ -968,33 +487,12 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 2
+        "stars": 3
       },
       {
         "repo": "johnzilla/pktap",
         "chain": [
           "pktap-core",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "joschisan/conduit",
-        "chain": [
-          "conduit",
-          "fedimint-connectors",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 3
-      },
-      {
-        "repo": "jrmatherly/spacebot",
-        "chain": [
-          "sd-core",
-          "iroh-net",
           "pkarr",
           "mainline"
         ],
@@ -1008,46 +506,13 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 69
-      },
-      {
-        "repo": "katharostech/striker-ball",
-        "chain": [
-          "striker_ball",
-          "bones_framework",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 5
+        "stars": 70
       },
       {
         "repo": "korefs/p2p-chat",
         "chain": [
           "p2p-chat",
           "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "lessuselesss/cirx-swap-clean",
-        "chain": [
-          "iroh-bridge",
-          "iroh",
-          "iroh-net",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "litsdm/iroh-peico-tester",
-        "chain": [
-          "magicnode",
-          "iroh",
-          "iroh-net",
           "pkarr",
           "mainline"
         ],
@@ -1076,17 +541,6 @@
         "stars": 0
       },
       {
-        "repo": "m1sterc001guy/fedimintd-mobile",
-        "chain": [
-          "fedimintd_mobile",
-          "fedimintd",
-          "fedimint-server",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 2
-      },
-      {
         "repo": "maacl/iroh-gossip-chat",
         "chain": [
           "iroh-gossip-chat",
@@ -1107,46 +561,6 @@
         "stars": 0
       },
       {
-        "repo": "minmoto/fmcd",
-        "chain": [
-          "fmcd",
-          "fedimint-api-client",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "n0-computer/iroh-examples",
-        "chain": [
-          "frosty",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 189
-      },
-      {
-        "repo": "n0-computer/iroh-experiments",
-        "chain": [
-          "iroh-content-discovery",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 42
-      },
-      {
-        "repo": "n0-computer/iroh-workshop-39c3",
-        "chain": [
-          "echo1",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 2
-      },
-      {
         "repo": "n0-computer/iroh-workshop-jonthebeach",
         "chain": [
           "chat1",
@@ -1165,16 +579,6 @@
           "mainline"
         ],
         "stars": 4
-      },
-      {
-        "repo": "n0-computer/iroh-workshop-omniopencon2025",
-        "chain": [
-          "echo1",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
       },
       {
         "repo": "n0-computer/iroh-workshop-web3summit",
@@ -1198,37 +602,6 @@
         "stars": 0
       },
       {
-        "repo": "numtide/nix-fleet",
-        "chain": [
-          "flt_lib",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 41
-      },
-      {
-        "repo": "overspend1/oversync",
-        "chain": [
-          "oversync",
-          "iroh",
-          "iroh-net",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "prekucki/iroh-proxy",
-        "chain": [
-          "iroh-proxy",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "priemskiyyy/iroh-gossip-cli",
         "chain": [
           "iroh-gossip-cli",
@@ -1245,7 +618,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 189
+        "stars": 192
       },
       {
         "repo": "pubky/pkdns-publisher",
@@ -1276,50 +649,9 @@
         "stars": 2
       },
       {
-        "repo": "pubky/pubky-tls-proxy",
-        "chain": [
-          "pubky-tls-proxy",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 7
-      },
-      {
-        "repo": "rand/mnemosyne",
-        "chain": [
-          "mnemosyne",
-          "iroh",
-          "iroh-net",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 19
-      },
-      {
         "repo": "reaudito/iroh-api",
         "chain": [
           "iroh-api",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "recallnet/rust-recall",
-        "chain": [
-          "recall_provider",
-          "iroh",
-          "iroh-net",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 27
-      },
-      {
-        "repo": "resolution-comms/monorepo",
-        "chain": [
-          "resolution-common",
           "iroh",
           "pkarr",
           "mainline"
@@ -1355,26 +687,6 @@
           "mainline"
         ],
         "stars": 2
-      },
-      {
-        "repo": "rklaehn/iroh-workshop-monerokon2025",
-        "chain": [
-          "echo1",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "rklaehn/iroh-workshop-web3summit2025",
-        "chain": [
-          "echo1",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 8
       },
       {
         "repo": "rklaehn/munin",
@@ -1453,35 +765,6 @@
         "stars": 0
       },
       {
-        "repo": "shedrackgodstime/irosh",
-        "chain": [
-          "irosh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "sid995/p2p-cli",
-        "chain": [
-          "p2p-cli",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "soni-sourav/priv-chat-android",
-        "chain": [
-          "deltachat",
-          "iroh-net",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "space-operator/flow-backend",
         "chain": [
           "flow-rpc",
@@ -1501,26 +784,6 @@
         "stars": 0
       },
       {
-        "repo": "spacedriveapp/spacedrive",
-        "chain": [
-          "sd-core",
-          "iroh-net",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 38044
-      },
-      {
-        "repo": "sternelee/sendme-app",
-        "chain": [
-          "app",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "sunbeamdotpt/marathon",
         "chain": [
           "libmarathon",
@@ -1528,25 +791,6 @@
           "mainline"
         ],
         "stars": 2
-      },
-      {
-        "repo": "sunbeamdotpt/sunbeam",
-        "chain": [
-          "libmarathon",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "sunrosa/iroh-chat",
-        "chain": [
-          "iroh_test",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
       },
       {
         "repo": "suryatmodulus/spacedrive",
@@ -1569,16 +813,6 @@
         "stars": 5
       },
       {
-        "repo": "timcash/dialtone",
-        "chain": [
-          "mesh-v3",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 4
-      },
-      {
         "repo": "tvolk131/fedimint-lnv2-remote-client",
         "chain": [
           "fedimint-cli",
@@ -1597,7 +831,7 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 385
+        "stars": 388
       },
       {
         "repo": "xenouem/iroh",
@@ -1619,16 +853,6 @@
         "stars": 0
       },
       {
-        "repo": "yuki-m0602/kastrix-project-manager",
-        "chain": [
-          "kastrix",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "yyk808/p2p-ddns",
         "chain": [
           "p2p-ddns",
@@ -1637,35 +861,22 @@
           "mainline"
         ],
         "stars": 3
-      },
-      {
-        "repo": "zmanian/cometbft-mempool",
-        "chain": [
-          "cometbft-mempool",
-          "mosaik",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "zmanian/near-intents",
-        "chain": [
-          "near-intents",
-          "mosaik",
-          "iroh",
-          "pkarr",
-          "mainline"
-        ],
-        "stars": 0
       }
     ],
     "direct": [
       {
         "repo": "AI1379/actinium-cast",
         "chain": [
-          "client-cli",
+          "gateway",
+          "mainline"
+        ],
+        "stars": 0,
+        "version": "6"
+      },
+      {
+        "repo": "Arsinine/Hoardbook",
+        "chain": [
+          "hb-app",
           "mainline"
         ],
         "stars": 0,
@@ -1720,15 +931,6 @@
         "version": "workspace"
       },
       {
-        "repo": "KingYoSun/kukuri",
-        "chain": [
-          "kukuri",
-          "mainline"
-        ],
-        "stars": 4,
-        "version": "6.0.1"
-      },
-      {
         "repo": "LiranCohen/pkdns",
         "chain": [
           "pkarr",
@@ -1739,17 +941,28 @@
         "optional": true
       },
       {
+        "repo": "Mearman/cascade",
+        "chain": [
+          "cascade-p2p",
+          "mainline"
+        ],
+        "stars": 2,
+        "version": "6.2.0",
+        "features": [
+          "async",
+          "node"
+        ],
+        "optional": true,
+        "default_features": false
+      },
+      {
         "repo": "Mic92/tincr",
         "chain": [
-          "tincr",
+          "tincd",
           "mainline"
         ],
         "stars": 4,
-        "version": "6.0",
-        "features": [
-          "node"
-        ],
-        "default_features": false
+        "version": "workspace"
       },
       {
         "repo": "Nehliin/vortex",
@@ -1771,7 +984,7 @@
           "mainline"
         ],
         "stars": 208,
-        "version": "6.1.1",
+        "version": "6.2.0",
         "features": [
           "async"
         ]
@@ -1837,7 +1050,7 @@
           "aspen-cluster",
           "mainline"
         ],
-        "stars": 7,
+        "stars": 8,
         "version": "6.0",
         "features": [
           "async"
@@ -1855,15 +1068,6 @@
         "version": "6.0.0"
       },
       {
-        "repo": "deme-plata/q-narwhalknight",
-        "chain": [
-          "q-bep44-discovery",
-          "mainline"
-        ],
-        "stars": 2,
-        "version": "2.0"
-      },
-      {
         "repo": "dev-dhanushkumar/Decentralized-pkarr-chat-POC",
         "chain": [
           "decentralized_chat_pkarr",
@@ -1873,12 +1077,21 @@
         "version": "6.0.1"
       },
       {
+        "repo": "godver3/mediastorm",
+        "chain": [
+          "iroh-direct-spike",
+          "mainline"
+        ],
+        "stars": 112,
+        "version": "6"
+      },
+      {
         "repo": "goshitsarch-eng/gosh-dl",
         "chain": [
           "gosh-dl",
           "mainline"
         ],
-        "stars": 23,
+        "stars": 26,
         "version": "6.1.0",
         "optional": true
       },
@@ -1901,6 +1114,15 @@
         "stars": 3,
         "version": "6",
         "optional": true
+      },
+      {
+        "repo": "jbr/routefinder",
+        "chain": [
+          "routefinder",
+          "mainline"
+        ],
+        "stars": 14,
+        "version": "workspace"
       },
       {
         "repo": "kevinjdinicola/iroh",
@@ -1962,7 +1184,7 @@
           "mediafusion-api",
           "mainline"
         ],
-        "stars": 859,
+        "stars": 881,
         "version": "6"
       },
       {
@@ -1983,7 +1205,7 @@
           "iroh-dns-server",
           "mainline"
         ],
-        "stars": 8582,
+        "stars": 8689,
         "version": "6"
       },
       {
@@ -2000,8 +1222,8 @@
           "pkarr",
           "mainline"
         ],
-        "stars": 407,
-        "version": "6.1.2",
+        "stars": 415,
+        "version": "6.2.0",
         "features": [
           "async"
         ],
@@ -2024,7 +1246,7 @@
           "mainline"
         ],
         "stars": 77,
-        "version": "6.1.1"
+        "version": "6"
       },
       {
         "repo": "rustonbsd/distributed-topic-tracker",
@@ -2069,75 +1291,19 @@
           "dtan-server",
           "mainline"
         ],
-        "stars": 18,
+        "stars": 21,
         "version": "6.0"
-      }
-    ],
-    "distributed-topic-tracker": [
-      {
-        "repo": "Elacity/elastos-runtime",
-        "chain": [
-          "elastos-server",
-          "distributed-topic-tracker",
-          "mainline"
-        ],
-        "stars": 2
-      },
-      {
-        "repo": "developing-today/code",
-        "chain": [
-          "dht",
-          "distributed-topic-tracker",
-          "mainline"
-        ],
-        "stars": 1
-      },
-      {
-        "repo": "meta-introspector/zos-plugin-iroh-gossip",
-        "chain": [
-          "zos-plugin-iroh-gossip",
-          "distributed-topic-tracker",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
-        "repo": "rustonbsd/iroh-lan",
-        "chain": [
-          "iroh-lan",
-          "distributed-topic-tracker",
-          "mainline"
-        ],
-        "stars": 168
       }
     ],
     "iroh": [
       {
-        "repo": "RoganMatrivski/exec-sendrecv",
+        "repo": "intendednull/willow",
         "chain": [
-          "exec-sendrecv",
+          "willow-network",
           "iroh",
           "mainline"
         ],
-        "stars": 0
-      },
-      {
-        "repo": "Slyb00ts/TentaFlow",
-        "chain": [
-          "tentaflow-core",
-          "iroh",
-          "mainline"
-        ],
-        "stars": 4
-      },
-      {
-        "repo": "cyberfly-io/mobile-node",
-        "chain": [
-          "rust_lib_cyberfly_mobile_node",
-          "iroh",
-          "mainline"
-        ],
-        "stars": 4
+        "stars": 1
       },
       {
         "repo": "zhangxichang/pupu",
@@ -2147,26 +1313,6 @@
           "mainline"
         ],
         "stars": 5
-      }
-    ],
-    "gosh-dl": [
-      {
-        "repo": "goshitsarch-eng/Gosh-Fetch",
-        "chain": [
-          "gosh-fetch-engine",
-          "gosh-dl",
-          "mainline"
-        ],
-        "stars": 2
-      },
-      {
-        "repo": "goshitsarch-eng/gosh-dl-cli",
-        "chain": [
-          "gosh-dl-cli",
-          "gosh-dl",
-          "mainline"
-        ],
-        "stars": 9
       }
     ],
     "unknown": [
@@ -2191,31 +1337,13 @@
     ],
     "pubky-testnet": [
       {
-        "repo": "pubky/paykit-rs",
-        "chain": [
-          "paykit-lib",
-          "pubky-testnet",
-          "mainline"
-        ],
-        "stars": 4
-      },
-      {
-        "repo": "pubky/pubky-cli",
-        "chain": [
-          "pubky-cli",
-          "pubky-testnet",
-          "mainline"
-        ],
-        "stars": 0
-      },
-      {
         "repo": "pubky/pubky-nexus",
         "chain": [
           "nexus-watcher",
           "pubky-testnet",
           "mainline"
         ],
-        "stars": 19
+        "stars": 20
       },
       {
         "repo": "pubky/pubky-noise",
@@ -2240,7 +1368,7 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 288131,
-    "recent": 89942
+    "total": 318465,
+    "recent": 103967
   }
 }

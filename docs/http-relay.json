@@ -1,10 +1,11 @@
 {
   "crate": "http-relay",
-  "updated_at": "2026-05-18T10:58:56.062563+00:00",
-  "total": 6,
+  "updated_at": "2026-06-08T15:42:59.360039+00:00",
+  "total": 8,
   "summary": {
-    "pubky-testnet": 5,
-    "direct": 1
+    "pubky-testnet": 6,
+    "direct": 1,
+    "unknown": 1
   },
   "lists": {
     "pubky-testnet": [
@@ -27,6 +28,15 @@
         "stars": 4
       },
       {
+        "repo": "pubky/pubky-backup",
+        "chain": [
+          "pubky-backup-core",
+          "pubky-testnet",
+          "http-relay"
+        ],
+        "stars": 1
+      },
+      {
         "repo": "pubky/pubky-cli",
         "chain": [
           "pubky-cli",
@@ -42,7 +52,7 @@
           "pubky-testnet",
           "http-relay"
         ],
-        "stars": 19
+        "stars": 20
       },
       {
         "repo": "pubky/pubky-noise",
@@ -62,12 +72,19 @@
           "http-relay"
         ],
         "stars": 77,
-        "version": "0.7.0"
+        "version": "0.7"
+      }
+    ],
+    "unknown": [
+      {
+        "repo": "ryannzander/hush",
+        "chain": [],
+        "stars": 1
       }
     ]
   },
   "crates_io_downloads": {
-    "total": 7299,
-    "recent": 1683
+    "total": 7836,
+    "recent": 2081
   }
 }
