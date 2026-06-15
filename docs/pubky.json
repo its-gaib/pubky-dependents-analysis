@@ -1,6 +1,6 @@
 {
   "crate": "pubky",
-  "updated_at": "2026-06-08T11:18:14.593771+00:00",
+  "updated_at": "2026-06-15T13:05:21.242556+00:00",
   "total": 22,
   "summary": {
     "direct": 21,
@@ -121,7 +121,7 @@
       {
         "repo": "pubky/paykit-rs",
         "chain": [
-          "paykit-lib",
+          "paykit-ffi",
           "pubky"
         ],
         "stars": 4,
@@ -139,7 +139,7 @@
       {
         "repo": "pubky/pubky-backup",
         "chain": [
-          "pubky-backup-core",
+          "pubky-backup",
           "pubky"
         ],
         "stars": 1,
@@ -161,7 +161,7 @@
           "pubky"
         ],
         "stars": 2,
-        "version": "0.6.0-rc.6"
+        "version": "0.9.1"
       },
       {
         "repo": "pubky/pubky-knowledge-base-v2",
@@ -178,11 +178,11 @@
       {
         "repo": "pubky/pubky-nexus",
         "chain": [
-          "nexus-webapi",
+          "pubky-nexus",
           "pubky"
         ],
         "stars": 20,
-        "version": "workspace"
+        "version": "0.9.1"
       },
       {
         "repo": "pubky/pubky-noise",
@@ -216,16 +216,16 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 19376,
-    "recent": 2511
+    "total": 19565,
+    "recent": 2630
   },
   "npm_downloads": {
-    "total": 21592,
-    "recent": 4611
+    "total": 22610,
+    "recent": 4867
   },
   "rn_downloads": {
-    "total": 4932,
-    "recent": 715
+    "total": 5276,
+    "recent": 930
   },
   "npm_dependents": [
     {
@@ -244,11 +244,6 @@
       "source": "npm_registry"
     },
     {
-      "package": "mapky-app-specs",
-      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
-      "source": "npm_registry"
-    },
-    {
       "package": "astra-lightning",
       "description": "Lightning Network client library",
       "source": "npm_registry"
@@ -259,18 +254,13 @@
       "source": "npm_registry"
     },
     {
+      "package": "mapky-app-specs",
+      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/slashdrive",
       "description": "drive",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/blocktank-lsp-ln2-client",
-      "description": "Blocktank LN2 client",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/slashtags-auth",
-      "description": "P2P authorization and bidirectional authentication with holepunching through Hyperswarm.",
       "source": "npm_registry"
     },
     {
@@ -284,13 +274,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-lnurl",
-      "description": "React Native wrapper for LNURL",
+      "package": "@synonymdev/blocktank-lsp-ln2-client",
+      "description": "Blocktank LN2 client",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/slashtags-auth",
+      "description": "P2P authorization and bidirectional authentication with holepunching through Hyperswarm.",
       "source": "npm_registry"
     },
     {
       "package": "@synonymdev/blocktank-client",
       "description": "LSP client library",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/react-native-lnurl",
+      "description": "React Native wrapper for LNURL",
       "source": "npm_registry"
     },
     {
@@ -319,8 +319,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-url",
-      "description": "Encodes and decodes Slashtags URLs",
+      "package": "@synonymdev/slashtags-core-data",
+      "description": "Slashtags Core Data is abstraction library that encapsulates logic related to managing data on Slashtags.",
       "source": "npm_registry"
     },
     {
@@ -329,8 +329,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-core-data",
-      "description": "Slashtags Core Data is abstraction library that encapsulates logic related to managing data on Slashtags.",
+      "package": "@synonymdev/slashtags-url",
+      "description": "Encodes and decodes Slashtags URLs",
       "source": "npm_registry"
     },
     {
@@ -339,23 +339,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-actions",
-      "description": "Packaged handlers for Slashtags actions",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/react-native-slashtags",
       "description": "React Native wrapper for Slashtags",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/web-relay",
-      "description": "Slashtags Web Relay is a powerful abstraction library designed to simplify the management of data on Slashtags.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/feeds",
-      "description": "A library for creating and managing feeds using the web-relay",
       "source": "npm_registry"
     },
     {
@@ -364,8 +349,28 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/web-relay",
+      "description": "Slashtags Web Relay is a powerful abstraction library designed to simplify the management of data on Slashtags.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/slashtags-actions",
+      "description": "Packaged handlers for Slashtags actions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/ln-constr-parser",
+      "description": "Lightning Connection String Parser",
+      "source": "npm_registry"
+    },
+    {
       "package": "@eventky/pubky-app-specs",
       "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/feeds",
+      "description": "A library for creating and managing feeds using the web-relay",
       "source": "npm_registry"
     },
     {
@@ -384,11 +389,6 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/ln-constr-parser",
-      "description": "Lightning Connection String Parser",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/react-native-keychain",
       "description": "Keychain Access for React Native",
       "source": "npm_registry"
@@ -399,6 +399,11 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/slashtags-cli",
+      "description": "CLI for slashtags",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/selfie-records",
       "description": "SDK for interacting with the Selfie-Records DNS TXT records.",
       "source": "npm_registry"
@@ -406,11 +411,6 @@
     {
       "package": "@synonymdev/blocktank-worker2",
       "description": "",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/slashtags-cli",
-      "description": "CLI for slashtags",
       "source": "npm_registry"
     },
     {
@@ -434,13 +434,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-contacts",
-      "description": "Slashtags contacts management.",
+      "package": "slashtags-feed-reader",
+      "description": "Collection of helper functions to read Slashtags feeds from a Hyperdrive.",
       "source": "npm_registry"
     },
     {
-      "package": "slashtags-feed-reader",
-      "description": "Collection of helper functions to read Slashtags feeds from a Hyperdrive.",
+      "package": "@synonymdev/slashtags-contacts",
+      "description": "Slashtags contacts management.",
       "source": "npm_registry"
     },
     {

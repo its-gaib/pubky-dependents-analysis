@@ -1,6 +1,6 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-06-08T13:15:47.495738+00:00",
+  "updated_at": "2026-06-15T13:41:48.771065+00:00",
   "total": 6,
   "summary": {
     "direct": 6
@@ -56,7 +56,7 @@
           "pubky-app-specs"
         ],
         "stars": 20,
-        "version": "0.5.2",
+        "version": "0.5.3",
         "features": [
           "openapi"
         ]
@@ -73,12 +73,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 9130,
-    "recent": 1006
+    "total": 9214,
+    "recent": 1068
   },
   "npm_downloads": {
-    "total": 18934,
-    "recent": 4658
+    "total": 20059,
+    "recent": 4941
   },
   "npm_dependents": [
     {
@@ -97,18 +97,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "setimmediate",
-      "description": "A shim for the setImmediate efficient script yielding API",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/pubky",
       "description": "Pubky client",
       "source": "npm_registry"
     },
     {
-      "package": "mapky-app-specs",
-      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
+      "package": "setimmediate",
+      "description": "A shim for the setImmediate efficient script yielding API",
       "source": "npm_registry"
     },
     {
@@ -122,13 +117,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "cypress-split",
-      "description": "Split Cypress specs across parallel CI machines for speed",
+      "package": "@metamask/api-specs",
+      "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
       "source": "npm_registry"
     },
     {
-      "package": "@metamask/api-specs",
-      "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
+      "package": "cypress-split",
+      "description": "Split Cypress specs across parallel CI machines for speed",
       "source": "npm_registry"
     },
     {
@@ -142,13 +137,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "mapky-app-specs",
+      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
+      "source": "npm_registry"
+    },
+    {
       "package": "@types/har-format",
       "description": "TypeScript definitions for har-format",
       "source": "npm_registry"
     },
     {
-      "package": "stop-only",
-      "description": "Detects '.only' left in the code accidentally",
+      "package": "@synonymdev/react-native-pubky",
+      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
@@ -157,13 +157,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "expo-structured-headers",
-      "description": "Expo module implementation of a parser based on https://httpwg.org/specs/rfc8941.html",
+      "package": "stop-only",
+      "description": "Detects '.only' left in the code accidentally",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-pubky",
-      "description": "React Native Implementation of Pubky",
+      "package": "expo-structured-headers",
+      "description": "Expo module implementation of a parser based on https://httpwg.org/specs/rfc8941.html",
       "source": "npm_registry"
     },
     {
@@ -177,18 +177,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@replit/oidc-provider",
-      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
-      "source": "npm_registry"
-    },
-    {
       "package": "@standard-schema/spec",
       "description": "A family of specs for interoperable TypeScript",
       "source": "npm_registry"
     },
     {
-      "package": "json-joy",
-      "description": "Collection of libraries for building collaborative editing apps.",
+      "package": "@replit/oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
       "source": "npm_registry"
     },
     {
@@ -197,13 +192,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "graphology",
-      "description": "A robust and multipurpose Graph object for JavaScript.",
+      "package": "@webcomponents/custom-elements",
+      "description": "HTML Custom Elements Polyfill",
       "source": "npm_registry"
     },
     {
-      "package": "@webcomponents/custom-elements",
-      "description": "HTML Custom Elements Polyfill",
+      "package": "graphology",
+      "description": "A robust and multipurpose Graph object for JavaScript.",
       "source": "npm_registry"
     },
     {
@@ -212,8 +207,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "json-joy",
+      "description": "Collection of libraries for building collaborative editing apps.",
+      "source": "npm_registry"
+    },
+    {
       "package": "css-shorthand-properties",
       "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@withfig/autocomplete",
+      "description": "Fig Autocomplete Specs",
       "source": "npm_registry"
     },
     {
@@ -232,8 +237,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@elastic/opentelemetry-node",
-      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
+      "package": "officecrypto-tool",
+      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
       "source": "npm_registry"
     },
     {
@@ -242,23 +247,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@ideal-postcodes/openapi",
-      "description": "Ideal Postcodes OpenAPI v3 specifications",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@microsoft/agents-activity",
-      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
-      "source": "npm_registry"
-    },
-    {
       "package": "@markuplint/react-spec",
       "description": "Extended specification for tags and attributes in React",
-      "source": "npm_registry"
-    },
-    {
-      "package": "officecrypto-tool",
-      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
       "source": "npm_registry"
     },
     {
@@ -267,8 +257,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "grunt-contrib-jasmine",
-      "description": "Run jasmine specs headlessly through Headless Chrome",
+      "package": "@chainsafe/eth2-spec-tests",
+      "description": "This repository contains test vectors for the Eth 2.0 spec. Other types of testing (network, fuzzing, benchmarking, etc.) are currently a work in progress, and will be hosted in separate repositories. The intention of this repository is to provide a solid",
       "source": "npm_registry"
     },
     {
@@ -277,23 +267,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@perma/map",
-      "description": "Immutable hash maps implemented as hash array papped tries",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@withfig/autocomplete",
-      "description": "Fig Autocomplete Specs",
-      "source": "npm_registry"
-    },
-    {
-      "package": "jasmine",
-      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@darwinia/types-known",
-      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "package": "grunt-contrib-jasmine",
+      "description": "Run jasmine specs headlessly through Headless Chrome",
       "source": "npm_registry"
     },
     {
@@ -302,13 +277,33 @@
       "source": "npm_registry"
     },
     {
-      "package": "aws-cron-parser",
-      "description": "A util to parse cron expressions used by AWS services",
+      "package": "@microsoft/agents-activity",
+      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
       "source": "npm_registry"
     },
     {
-      "package": "@exodus/xqa",
-      "description": "AI-powered QA CLI tool for autonomous mobile app testing",
+      "package": "jasmine",
+      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@elastic/opentelemetry-node",
+      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@perma/map",
+      "description": "Immutable hash maps implemented as hash array papped tries",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@ideal-postcodes/openapi",
+      "description": "Ideal Postcodes OpenAPI v3 specifications",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@darwinia/types-known",
+      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
       "source": "npm_registry"
     },
     {
@@ -322,8 +317,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "cypress-vite",
-      "description": "Run Cypress specs using Vite",
+      "package": "aws-cron-parser",
+      "description": "A util to parse cron expressions used by AWS services",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@selvajs/selva",
+      "description": "Selva \u2014 self-contained Grasshopper-driven web app. Install, configure via .env, deploy.",
       "source": "npm_registry"
     },
     {
