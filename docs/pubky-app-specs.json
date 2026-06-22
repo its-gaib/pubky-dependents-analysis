@@ -1,6 +1,6 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-06-15T13:41:48.771065+00:00",
+  "updated_at": "2026-06-22T15:42:49.068803+00:00",
   "total": 6,
   "summary": {
     "direct": 6
@@ -73,12 +73,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 9214,
-    "recent": 1068
+    "total": 9315,
+    "recent": 1120
   },
   "npm_downloads": {
-    "total": 20059,
-    "recent": 4941
+    "total": 21170,
+    "recent": 4306
   },
   "npm_dependents": [
     {
@@ -117,13 +117,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@metamask/api-specs",
-      "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
+      "package": "cypress-split",
+      "description": "Split Cypress specs across parallel CI machines for speed",
       "source": "npm_registry"
     },
     {
-      "package": "cypress-split",
-      "description": "Split Cypress specs across parallel CI machines for speed",
+      "package": "@metamask/api-specs",
+      "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
       "source": "npm_registry"
     },
     {
@@ -132,23 +132,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "eventky-app-specs",
-      "description": "Eventky Data Model Specifications",
-      "source": "npm_registry"
-    },
-    {
-      "package": "mapky-app-specs",
-      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
-      "source": "npm_registry"
-    },
-    {
       "package": "@types/har-format",
       "description": "TypeScript definitions for har-format",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/react-native-pubky",
-      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
@@ -157,8 +142,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/react-native-pubky",
+      "description": "React Native Implementation of Pubky",
+      "source": "npm_registry"
+    },
+    {
       "package": "stop-only",
       "description": "Detects '.only' left in the code accidentally",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@withfig/autocomplete",
+      "description": "Fig Autocomplete Specs",
       "source": "npm_registry"
     },
     {
@@ -177,13 +172,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@standard-schema/spec",
-      "description": "A family of specs for interoperable TypeScript",
+      "package": "@replit/oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
       "source": "npm_registry"
     },
     {
-      "package": "@replit/oidc-provider",
-      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
+      "package": "@standard-schema/spec",
+      "description": "A family of specs for interoperable TypeScript",
       "source": "npm_registry"
     },
     {
@@ -207,28 +202,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "json-joy",
-      "description": "Collection of libraries for building collaborative editing apps.",
-      "source": "npm_registry"
-    },
-    {
       "package": "css-shorthand-properties",
       "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
       "source": "npm_registry"
     },
     {
-      "package": "@withfig/autocomplete",
-      "description": "Fig Autocomplete Specs",
-      "source": "npm_registry"
-    },
-    {
-      "package": "instantsearch.css",
-      "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
+      "package": "json-joy",
+      "description": "Collection of libraries for building collaborative editing apps.",
       "source": "npm_registry"
     },
     {
       "package": "@atproto/syntax",
       "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
+      "source": "npm_registry"
+    },
+    {
+      "package": "instantsearch.css",
+      "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
       "source": "npm_registry"
     },
     {
@@ -242,18 +232,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@asyncapi/specs",
-      "description": "AsyncAPI schema versions",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@markuplint/react-spec",
-      "description": "Extended specification for tags and attributes in React",
+      "package": "datocms-structured-text-utils",
+      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
       "source": "npm_registry"
     },
     {
       "package": "applicationinsights",
       "description": "Microsoft Application Insights module for Node.js",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@asyncapi/specs",
+      "description": "AsyncAPI schema versions",
       "source": "npm_registry"
     },
     {
@@ -267,18 +257,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "grunt-contrib-jasmine",
-      "description": "Run jasmine specs headlessly through Headless Chrome",
-      "source": "npm_registry"
-    },
-    {
-      "package": "datocms-structured-text-utils",
-      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
-      "source": "npm_registry"
-    },
-    {
       "package": "@microsoft/agents-activity",
       "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@fig/autocomplete-helpers",
+      "description": "Helper functions for fig completion specs",
       "source": "npm_registry"
     },
     {
@@ -287,8 +272,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@elastic/opentelemetry-node",
-      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
+      "package": "@markuplint/react-spec",
+      "description": "Extended specification for tags and attributes in React",
+      "source": "npm_registry"
+    },
+    {
+      "package": "grunt-contrib-jasmine",
+      "description": "Run jasmine specs headlessly through Headless Chrome",
       "source": "npm_registry"
     },
     {
@@ -297,23 +287,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@ideal-postcodes/openapi",
-      "description": "Ideal Postcodes OpenAPI v3 specifications",
-      "source": "npm_registry"
-    },
-    {
       "package": "@darwinia/types-known",
       "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
       "source": "npm_registry"
     },
     {
-      "package": "elm-spec-runner",
-      "description": "Node CLI for Elm-Spec",
-      "source": "npm_registry"
-    },
-    {
-      "package": "libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
+      "package": "@ideal-postcodes/openapi",
+      "description": "Ideal Postcodes OpenAPI v3 specifications",
       "source": "npm_registry"
     },
     {
@@ -322,8 +302,28 @@
       "source": "npm_registry"
     },
     {
+      "package": "elm-spec-runner",
+      "description": "Node CLI for Elm-Spec",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@elastic/opentelemetry-node",
+      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
+      "source": "npm_registry"
+    },
+    {
       "package": "@selvajs/selva",
       "description": "Selva \u2014 self-contained Grasshopper-driven web app. Install, configure via .env, deploy.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "cypress-vite",
+      "description": "Run Cypress specs using Vite",
+      "source": "npm_registry"
+    },
+    {
+      "package": "cypress-cucumber-preprocessor",
+      "description": "Run gherkin-syntaxed specs with cypress.io",
       "source": "npm_registry"
     },
     {
