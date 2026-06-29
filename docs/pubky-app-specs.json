@@ -1,6 +1,6 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-06-22T15:42:49.068803+00:00",
+  "updated_at": "2026-06-29T11:45:36.476734+00:00",
   "total": 6,
   "summary": {
     "direct": 6
@@ -73,12 +73,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 9315,
-    "recent": 1120
+    "total": 9402,
+    "recent": 1171
   },
   "npm_downloads": {
-    "total": 21170,
-    "recent": 4306
+    "total": 22067,
+    "recent": 4018
   },
   "npm_dependents": [
     {
@@ -137,6 +137,11 @@
       "source": "npm_registry"
     },
     {
+      "package": "@withfig/autocomplete",
+      "description": "Fig Autocomplete Specs",
+      "source": "npm_registry"
+    },
+    {
       "package": "expo-updates",
       "description": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
       "source": "npm_registry"
@@ -149,11 +154,6 @@
     {
       "package": "stop-only",
       "description": "Detects '.only' left in the code accidentally",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@withfig/autocomplete",
-      "description": "Fig Autocomplete Specs",
       "source": "npm_registry"
     },
     {
@@ -172,11 +172,6 @@
       "source": "npm_registry"
     },
     {
-      "package": "@replit/oidc-provider",
-      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
-      "source": "npm_registry"
-    },
-    {
       "package": "@standard-schema/spec",
       "description": "A family of specs for interoperable TypeScript",
       "source": "npm_registry"
@@ -184,6 +179,11 @@
     {
       "package": "@rails/webpacker",
       "description": "Use webpack to manage app-like JavaScript modules in Rails",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@replit/oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
       "source": "npm_registry"
     },
     {
@@ -212,6 +212,11 @@
       "source": "npm_registry"
     },
     {
+      "package": "officecrypto-tool",
+      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
+      "source": "npm_registry"
+    },
+    {
       "package": "@atproto/syntax",
       "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
       "source": "npm_registry"
@@ -222,18 +227,23 @@
       "source": "npm_registry"
     },
     {
+      "package": "@fig/autocomplete-helpers",
+      "description": "Helper functions for fig completion specs",
+      "source": "npm_registry"
+    },
+    {
       "package": "@chainsafe/libp2p-gossipsub",
       "description": "A typescript implementation of gossipsub",
       "source": "npm_registry"
     },
     {
-      "package": "officecrypto-tool",
-      "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
+      "package": "datocms-structured-text-utils",
+      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
       "source": "npm_registry"
     },
     {
-      "package": "datocms-structured-text-utils",
-      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
+      "package": "@chainsafe/eth2-spec-tests",
+      "description": "This repository contains test vectors for the Eth 2.0 spec. Other types of testing (network, fuzzing, benchmarking, etc.) are currently a work in progress, and will be hosted in separate repositories. The intention of this repository is to provide a solid",
       "source": "npm_registry"
     },
     {
@@ -247,23 +257,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@chainsafe/eth2-spec-tests",
-      "description": "This repository contains test vectors for the Eth 2.0 spec. Other types of testing (network, fuzzing, benchmarking, etc.) are currently a work in progress, and will be hosted in separate repositories. The intention of this repository is to provide a solid",
-      "source": "npm_registry"
-    },
-    {
       "package": "pwa-asset-generator",
       "description": "Automates PWA asset generation and image declaration. Automatically generates icon and splash screen images, favicons and mstile images. Updates manifest.json and index.html files with the generated images according to Web App Manifest specs and Apple Hum",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@microsoft/agents-activity",
-      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@fig/autocomplete-helpers",
-      "description": "Helper functions for fig completion specs",
       "source": "npm_registry"
     },
     {
@@ -272,13 +267,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@markuplint/react-spec",
-      "description": "Extended specification for tags and attributes in React",
-      "source": "npm_registry"
-    },
-    {
-      "package": "grunt-contrib-jasmine",
-      "description": "Run jasmine specs headlessly through Headless Chrome",
+      "package": "@microsoft/agents-activity",
+      "description": "Microsoft 365 Agents SDK for JavaScript. Activity Protocol serialization and deserialization.",
       "source": "npm_registry"
     },
     {
@@ -289,6 +279,16 @@
     {
       "package": "@darwinia/types-known",
       "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@markuplint/react-spec",
+      "description": "Extended specification for tags and attributes in React",
+      "source": "npm_registry"
+    },
+    {
+      "package": "grunt-contrib-jasmine",
+      "description": "Run jasmine specs headlessly through Headless Chrome",
       "source": "npm_registry"
     },
     {
@@ -307,23 +307,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@elastic/opentelemetry-node",
-      "description": "Elastic Distribution of OpenTelemetry Node.js (EDOT Node.js)",
-      "source": "npm_registry"
-    },
-    {
       "package": "@selvajs/selva",
       "description": "Selva \u2014 self-contained Grasshopper-driven web app. Install, configure via .env, deploy.",
       "source": "npm_registry"
     },
     {
-      "package": "cypress-vite",
-      "description": "Run Cypress specs using Vite",
+      "package": "@libp2p/peer-record",
+      "description": "Used to transfer signed peer data across the network",
       "source": "npm_registry"
     },
     {
       "package": "cypress-cucumber-preprocessor",
       "description": "Run gherkin-syntaxed specs with cypress.io",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@stoplight/prism-http",
+      "description": "This package provides a HTTP client featuring the ability to:",
       "source": "npm_registry"
     },
     {
