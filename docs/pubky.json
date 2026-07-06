@@ -1,9 +1,9 @@
 {
   "crate": "pubky",
-  "updated_at": "2026-06-29T11:41:09.609240+00:00",
-  "total": 23,
+  "updated_at": "2026-07-06T10:27:44.186398+00:00",
+  "total": 18,
   "summary": {
-    "direct": 21,
+    "direct": 16,
     "pubky-messenger": 2
   },
   "lists": {
@@ -11,11 +11,10 @@
       {
         "repo": "BitcoinErrorLog/paykit-rs",
         "chain": [
-          "paykit-interactive",
+          "paykit-demo-cli",
           "pubky"
         ],
-        "stars": 1,
-        "version": "workspace"
+        "stars": 1
       },
       {
         "repo": "BitcoinErrorLog/pubky-noise",
@@ -26,33 +25,6 @@
         "stars": 3,
         "version": "workspace",
         "optional": true
-      },
-      {
-        "repo": "MiguelMedeiros/ai-rand",
-        "chain": [
-          "client-pubky",
-          "pubky"
-        ],
-        "stars": 3,
-        "version": "0.4.2"
-      },
-      {
-        "repo": "SHAcollision/pubky-vibes",
-        "chain": [
-          "pubky-swiss-knife",
-          "pubky"
-        ],
-        "stars": 2,
-        "version": "0.6.0-rc.6"
-      },
-      {
-        "repo": "TrustEdge-Labs/sealedge",
-        "chain": [
-          "sealedge-pubky",
-          "pubky"
-        ],
-        "stars": 6,
-        "version": "0.5.4"
       },
       {
         "repo": "coreyphillips/pubky-messenger",
@@ -69,8 +41,7 @@
           "pubky-private-messenger",
           "pubky"
         ],
-        "stars": 8,
-        "version": "0.4.2"
+        "stars": 8
       },
       {
         "repo": "coreyphillips/vanity-pubky",
@@ -91,40 +62,20 @@
         "version": "0.5"
       },
       {
-        "repo": "gillohner/mapky-nexus-plugin",
-        "chain": [
-          "mapky-nexus-plugin",
-          "pubky"
-        ],
-        "stars": 0,
-        "version": "0.8.0"
-      },
-      {
         "repo": "gillohner/pubky-canva",
         "chain": [
           "canva-indexer",
           "pubky"
         ],
-        "stars": 0,
-        "version": "workspace"
-      },
-      {
-        "repo": "ok300/pk-docs",
-        "chain": [
-          "pubky-snippets",
-          "pubky"
-        ],
-        "stars": 0,
-        "version": "0.6.0-rc.6"
+        "stars": 0
       },
       {
         "repo": "pubky/paykit-rs",
         "chain": [
-          "paykit-sdk",
+          "paykit-ffi",
           "pubky"
         ],
-        "stars": 4,
-        "version": "0.8.0"
+        "stars": 4
       },
       {
         "repo": "pubky/pubky-app-specs",
@@ -138,11 +89,10 @@
       {
         "repo": "pubky/pubky-backup",
         "chain": [
-          "pubky-backup-core",
+          "pubky-backup",
           "pubky"
         ],
-        "stars": 1,
-        "version": "workspace"
+        "stars": 1
       },
       {
         "repo": "pubky/pubky-cli",
@@ -168,20 +118,16 @@
           "pubky-doc-snippets",
           "pubky"
         ],
-        "stars": 0,
-        "version": "=0.9.3",
-        "features": [
-          "json"
-        ]
+        "stars": 0
       },
       {
         "repo": "pubky/pubky-nexus",
         "chain": [
-          "nexus-watcher",
+          "pubky-nexus",
           "pubky"
         ],
         "stars": 20,
-        "version": "workspace"
+        "version": "0.9.3"
       },
       {
         "repo": "pubky/pubky-noise",
@@ -189,8 +135,7 @@
           "pubky-noise",
           "pubky"
         ],
-        "stars": 2,
-        "version": "0.8.0"
+        "stars": 2
       },
       {
         "repo": "synonymdev/bitkit-core",
@@ -224,26 +169,26 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 19968,
-    "recent": 2661
+    "total": 20171,
+    "recent": 2767
   },
   "npm_downloads": {
-    "total": 25007,
-    "recent": 4623
+    "total": 25939,
+    "recent": 4495
   },
   "rn_downloads": {
-    "total": 5496,
-    "recent": 961
+    "total": 5488,
+    "recent": 870
   },
   "npm_dependents": [
     {
-      "package": "pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications",
+      "package": "@synonymdev/react-native-pubky",
+      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-pubky",
-      "description": "React Native Implementation of Pubky",
+      "package": "pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications",
       "source": "npm_registry"
     },
     {
@@ -252,13 +197,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtag",
-      "description": "Identity, discovery, and p2p communication for Slashtags protocol.",
+      "package": "@synonymdev/slashdrive",
+      "description": "drive",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashdrive",
-      "description": "drive",
+      "package": "@synonymdev/slashtags-sdk",
+      "description": "slashtags development kit",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/slashtag",
+      "description": "Identity, discovery, and p2p communication for Slashtags protocol.",
       "source": "npm_registry"
     },
     {
@@ -267,8 +217,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/result",
-      "description": "Result helper class",
+      "package": "@synonymdev/slashtags-auth",
+      "description": "P2P authorization and bidirectional authentication with holepunching through Hyperswarm.",
       "source": "npm_registry"
     },
     {
@@ -277,13 +227,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-auth",
-      "description": "P2P authorization and bidirectional authentication with holepunching through Hyperswarm.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/slashtags-sdk",
-      "description": "slashtags development kit",
+      "package": "@synonymdev/result",
+      "description": "Result helper class",
       "source": "npm_registry"
     },
     {
@@ -297,18 +242,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-lnurl",
-      "description": "React Native wrapper for LNURL",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/blocktank-lsp-btc-client",
       "description": "Blocktank BTC client",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/blocktank-lsp-http-client",
-      "description": "Blocktank Http Api Client",
+      "package": "@synonymdev/react-native-lnurl",
+      "description": "React Native wrapper for LNURL",
       "source": "npm_registry"
     },
     {
@@ -317,28 +257,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-cli",
-      "description": "CLI for slashtags",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/slashtags-core-data",
-      "description": "Slashtags Core Data is abstraction library that encapsulates logic related to managing data on Slashtags.",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/raw-transaction-decoder",
       "description": "Decodes Raw Bitcoin Transactions",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-url",
-      "description": "Encodes and decodes Slashtags URLs",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/slashtags-rpc",
-      "description": "helper module for creating RPCs using Slashtags nodes",
+      "package": "@synonymdev/slashtags-cli",
+      "description": "CLI for slashtags",
       "source": "npm_registry"
     },
     {
@@ -347,18 +272,28 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/blocktank-lsp-http-client",
+      "description": "Blocktank Http Api Client",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/slashtags-actions",
       "description": "Packaged handlers for Slashtags actions",
       "source": "npm_registry"
     },
     {
-      "package": "mapky-app-specs",
-      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
+      "package": "@synonymdev/slashtags-core-data",
+      "description": "Slashtags Core Data is abstraction library that encapsulates logic related to managing data on Slashtags.",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/feeds",
-      "description": "A library for creating and managing feeds using the web-relay",
+      "package": "@synonymdev/slashtags-rpc",
+      "description": "helper module for creating RPCs using Slashtags nodes",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/slashtags-url",
+      "description": "Encodes and decodes Slashtags URLs",
       "source": "npm_registry"
     },
     {
@@ -367,23 +302,28 @@
       "source": "npm_registry"
     },
     {
-      "package": "@eventky/pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/blocktank-util-slack-client",
       "description": "Blocktank Slack client",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashauth",
-      "description": "Authorization using slashtags",
+      "package": "@synonymdev/feeds",
+      "description": "A library for creating and managing feeds using the web-relay",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/web-relay",
-      "description": "Slashtags Web Relay is a powerful abstraction library designed to simplify the management of data on Slashtags.",
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "mapky-app-specs",
+      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/slashauth",
+      "description": "Authorization using slashtags",
       "source": "npm_registry"
     },
     {
@@ -397,8 +337,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-keychain",
-      "description": "A utility module for generating keyPairs for Slashtags",
+      "package": "@synonymdev/web-relay",
+      "description": "Slashtags Web Relay is a powerful abstraction library designed to simplify the management of data on Slashtags.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "hackday-slashpay",
+      "description": "[Read more](https://docs.google.com/document/d/10rgPbDMer6uL7L8QZ5ve-KU_pkI_YSwSO4dmzUmjU6s/edit)",
       "source": "npm_registry"
     },
     {
@@ -407,8 +352,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "hackday-slashpay",
-      "description": "[Read more](https://docs.google.com/document/d/10rgPbDMer6uL7L8QZ5ve-KU_pkI_YSwSO4dmzUmjU6s/edit)",
+      "package": "@synonymdev/slashtags-keychain",
+      "description": "A utility module for generating keyPairs for Slashtags",
       "source": "npm_registry"
     },
     {
@@ -427,18 +372,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/feeds-daemon",
-      "description": "A simple HTTP RPC deamon to enable publishing Slashtags Exchange Feeds.",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/bitkit-notification-client",
       "description": "Bitkit Notification Server client",
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/feeds-daemon",
+      "description": "A simple HTTP RPC deamon to enable publishing Slashtags Exchange Feeds.",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/lightning-channel-id",
       "description": "Convert lightning channel id formats",
+      "source": "npm_registry"
+    },
+    {
+      "package": "slashtags-feed-reader",
+      "description": "Collection of helper functions to read Slashtags feeds from a Hyperdrive.",
       "source": "npm_registry"
     },
     {
@@ -449,11 +399,6 @@
     {
       "package": "react-native-libsodium-expo-plugin",
       "description": "The Sodium crypto library for React Native.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "slashtags-feed-reader",
-      "description": "Collection of helper functions to read Slashtags feeds from a Hyperdrive.",
       "source": "npm_registry"
     },
     {
@@ -501,7 +446,27 @@
       "source": "github_package_json"
     },
     {
+      "package": "pubky/pwpw",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/pubky-tools",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-app",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-app-templates",
+      "source": "github_package_json"
+    },
+    {
       "package": "gillohner/pubky-canva",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/arcade",
       "source": "github_package_json"
     },
     {
@@ -510,22 +475,6 @@
     },
     {
       "package": "pubky/workshop",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/pubky-tools",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pwpw",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/arcade",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pubky-app",
       "source": "github_package_json"
     }
   ]
