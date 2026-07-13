@@ -1,6 +1,6 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-07-06T10:29:45.721882+00:00",
+  "updated_at": "2026-07-13T12:26:49.708562+00:00",
   "total": 6,
   "summary": {
     "direct": 6
@@ -56,7 +56,7 @@
           "pubky-app-specs"
         ],
         "stars": 20,
-        "version": "0.5.3",
+        "version": "0.6.0",
         "features": [
           "openapi"
         ]
@@ -73,12 +73,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 9476,
-    "recent": 1233
+    "total": 9553,
+    "recent": 1280
   },
   "npm_downloads": {
-    "total": 23157,
-    "recent": 4285
+    "total": 23920,
+    "recent": 4429
   },
   "npm_dependents": [
     {
@@ -87,13 +87,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@eventky/pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
+      "package": "@sigstore/protobuf-specs",
+      "description": "code-signing for npm packages",
       "source": "npm_registry"
     },
     {
-      "package": "@sigstore/protobuf-specs",
-      "description": "code-signing for npm packages",
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
       "source": "npm_registry"
     },
     {
@@ -112,13 +112,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "device-specs",
-      "description": "A list of devices that can be emulated using Chrome DevTools.",
+      "package": "cypress-split",
+      "description": "Split Cypress specs across parallel CI machines for speed",
       "source": "npm_registry"
     },
     {
-      "package": "cypress-split",
-      "description": "Split Cypress specs across parallel CI machines for speed",
+      "package": "device-specs",
+      "description": "A list of devices that can be emulated using Chrome DevTools.",
       "source": "npm_registry"
     },
     {
@@ -127,18 +127,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@types/har-format",
-      "description": "TypeScript definitions for har-format",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/react-native-pubky",
-      "description": "React Native Implementation of Pubky",
-      "source": "npm_registry"
-    },
-    {
       "package": "@metamask/api-specs",
       "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@types/har-format",
+      "description": "TypeScript definitions for har-format",
       "source": "npm_registry"
     },
     {
@@ -152,13 +147,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "stop-only",
-      "description": "Detects '.only' left in the code accidentally",
+      "package": "@synonymdev/react-native-pubky",
+      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
       "package": "expo-structured-headers",
       "description": "Expo module implementation of a parser based on https://httpwg.org/specs/rfc8941.html",
+      "source": "npm_registry"
+    },
+    {
+      "package": "stop-only",
+      "description": "Detects '.only' left in the code accidentally",
       "source": "npm_registry"
     },
     {
@@ -177,18 +177,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@rails/webpacker",
-      "description": "Use webpack to manage app-like JavaScript modules in Rails",
-      "source": "npm_registry"
-    },
-    {
       "package": "@webcomponents/custom-elements",
       "description": "HTML Custom Elements Polyfill",
       "source": "npm_registry"
     },
     {
-      "package": "@replit/oidc-provider",
-      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
+      "package": "@rails/webpacker",
+      "description": "Use webpack to manage app-like JavaScript modules in Rails",
       "source": "npm_registry"
     },
     {
@@ -199,6 +194,11 @@
     {
       "package": "graphology",
       "description": "A robust and multipurpose Graph object for JavaScript.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@replit/oidc-provider",
+      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
       "source": "npm_registry"
     },
     {
@@ -217,11 +217,6 @@
       "source": "npm_registry"
     },
     {
-      "package": "json-joy",
-      "description": "Collection of libraries for building collaborative editing apps.",
-      "source": "npm_registry"
-    },
-    {
       "package": "instantsearch.css",
       "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
       "source": "npm_registry"
@@ -229,6 +224,11 @@
     {
       "package": "datocms-structured-text-utils",
       "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "json-joy",
+      "description": "Collection of libraries for building collaborative editing apps.",
       "source": "npm_registry"
     },
     {
@@ -247,8 +247,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@chainsafe/eth2-spec-tests",
-      "description": "This repository contains test vectors for the Eth 2.0 spec. Other types of testing (network, fuzzing, benchmarking, etc.) are currently a work in progress, and will be hosted in separate repositories. The intention of this repository is to provide a solid",
+      "package": "@selvajs/selva",
+      "description": "Selva \u2014 self-contained Grasshopper-driven web app. Install, configure via .env, deploy.",
       "source": "npm_registry"
     },
     {
@@ -267,18 +267,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "jasmine",
-      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@perma/map",
-      "description": "Immutable hash maps implemented as hash array papped tries",
-      "source": "npm_registry"
-    },
-    {
       "package": "@markuplint/react-spec",
       "description": "Extended specification for tags and attributes in React",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@chainsafe/eth2-spec-tests",
+      "description": "This repository contains test vectors for the Eth 2.0 spec. Other types of testing (network, fuzzing, benchmarking, etc.) are currently a work in progress, and will be hosted in separate repositories. The intention of this repository is to provide a solid",
       "source": "npm_registry"
     },
     {
@@ -287,13 +282,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@darwinia/types-known",
-      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "package": "@perma/map",
+      "description": "Immutable hash maps implemented as hash array papped tries",
       "source": "npm_registry"
     },
     {
       "package": "@ideal-postcodes/openapi",
       "description": "Ideal Postcodes OpenAPI v3 specifications",
+      "source": "npm_registry"
+    },
+    {
+      "package": "jasmine",
+      "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@darwinia/types-known",
+      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
       "source": "npm_registry"
     },
     {
@@ -317,13 +322,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@selvajs/selva",
-      "description": "Selva \u2014 self-contained Grasshopper-driven web app. Install, configure via .env, deploy.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "elm-spec-runner",
-      "description": "Node CLI for Elm-Spec",
+      "package": "officeparser",
+      "description": "A robust, strictly-typed Node.js and Browser library for parsing office files (.docx, .pptx, .xlsx, .odt, .odp, .ods, .pdf, .rtf, .csv, .md, .html, .epub) and generating high-fidelity outputs in Markdown, HTML, CSV, RTF, PDF, EPUB, and RAG-focused chunks.",
       "source": "npm_registry"
     },
     {

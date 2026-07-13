@@ -1,10 +1,11 @@
 {
   "crate": "http-relay",
-  "updated_at": "2026-07-06T10:57:02.517596+00:00",
-  "total": 7,
+  "updated_at": "2026-07-13T12:43:25.866577+00:00",
+  "total": 8,
   "summary": {
     "pubky-testnet": 6,
-    "direct": 1
+    "direct": 1,
+    "unknown": 1
   },
   "lists": {
     "pubky-testnet": [
@@ -73,10 +74,17 @@
         "stars": 82,
         "version": "0.7"
       }
+    ],
+    "unknown": [
+      {
+        "repo": "ryannzander/hush",
+        "chain": [],
+        "stars": 1
+      }
     ]
   },
   "crates_io_downloads": {
-    "total": 8298,
-    "recent": 1959
+    "total": 8469,
+    "recent": 2043
   }
 }
