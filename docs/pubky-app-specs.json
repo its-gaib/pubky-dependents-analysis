@@ -1,9 +1,9 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-07-13T12:26:49.708562+00:00",
-  "total": 6,
+  "updated_at": "2026-07-20T10:02:09.602215+00:00",
+  "total": 7,
   "summary": {
-    "direct": 6
+    "direct": 7
   },
   "lists": {
     "direct": [
@@ -24,6 +24,15 @@
         ],
         "stars": 2,
         "version": "0.4"
+      },
+      {
+        "repo": "gillohner/eventky-app-specs",
+        "chain": [
+          "eventky-app-specs",
+          "pubky-app-specs"
+        ],
+        "stars": 0,
+        "version": "0.4.3"
       },
       {
         "repo": "gillohner/mapky-app-specs",
@@ -56,7 +65,7 @@
           "pubky-app-specs"
         ],
         "stars": 20,
-        "version": "0.6.0",
+        "version": "0.6.1",
         "features": [
           "openapi"
         ]
@@ -73,12 +82,12 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 9553,
-    "recent": 1280
+    "total": 9648,
+    "recent": 1357
   },
   "npm_downloads": {
-    "total": 23920,
-    "recent": 4429
+    "total": 25119,
+    "recent": 3997
   },
   "npm_dependents": [
     {
@@ -112,13 +121,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "cypress-split",
-      "description": "Split Cypress specs across parallel CI machines for speed",
+      "package": "device-specs",
+      "description": "A list of devices that can be emulated using Chrome DevTools.",
       "source": "npm_registry"
     },
     {
-      "package": "device-specs",
-      "description": "A list of devices that can be emulated using Chrome DevTools.",
+      "package": "cypress-split",
+      "description": "Split Cypress specs across parallel CI machines for speed",
       "source": "npm_registry"
     },
     {
@@ -137,18 +146,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@withfig/autocomplete",
-      "description": "Fig Autocomplete Specs",
-      "source": "npm_registry"
-    },
-    {
       "package": "expo-updates",
       "description": "Fetches and manages remotely-hosted assets and updates to your app's JS bundle.",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/react-native-pubky",
-      "description": "React Native Implementation of Pubky",
+      "package": "@withfig/autocomplete",
+      "description": "Fig Autocomplete Specs",
       "source": "npm_registry"
     },
     {
@@ -159,6 +163,11 @@
     {
       "package": "stop-only",
       "description": "Detects '.only' left in the code accidentally",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/react-native-pubky",
+      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
@@ -177,18 +186,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@webcomponents/custom-elements",
-      "description": "HTML Custom Elements Polyfill",
-      "source": "npm_registry"
-    },
-    {
       "package": "@rails/webpacker",
       "description": "Use webpack to manage app-like JavaScript modules in Rails",
       "source": "npm_registry"
     },
     {
-      "package": "@polkadot/types-known",
-      "description": "Known type definitions",
+      "package": "@webcomponents/custom-elements",
+      "description": "HTML Custom Elements Polyfill",
       "source": "npm_registry"
     },
     {
@@ -202,6 +206,16 @@
       "source": "npm_registry"
     },
     {
+      "package": "@polkadot/types-known",
+      "description": "Known type definitions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@scalar/helpers",
+      "description": "A collection of dependency free helpers",
+      "source": "npm_registry"
+    },
+    {
       "package": "css-shorthand-properties",
       "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
       "source": "npm_registry"
@@ -209,6 +223,11 @@
     {
       "package": "officecrypto-tool",
       "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@scalar/types",
+      "description": "Types to work with Scalar packages",
       "source": "npm_registry"
     },
     {
@@ -222,23 +241,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "datocms-structured-text-utils",
-      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
-      "source": "npm_registry"
-    },
-    {
       "package": "json-joy",
       "description": "Collection of libraries for building collaborative editing apps.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@fig/autocomplete-helpers",
-      "description": "Helper functions for fig completion specs",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@chainsafe/libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
       "source": "npm_registry"
     },
     {
@@ -257,6 +261,16 @@
       "source": "npm_registry"
     },
     {
+      "package": "datocms-structured-text-utils",
+      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@chainsafe/libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
       "package": "@asyncapi/specs",
       "description": "AsyncAPI schema versions",
       "source": "npm_registry"
@@ -267,23 +281,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@markuplint/react-spec",
-      "description": "Extended specification for tags and attributes in React",
+      "package": "@fig/autocomplete-helpers",
+      "description": "Helper functions for fig completion specs",
       "source": "npm_registry"
     },
     {
-      "package": "@chainsafe/eth2-spec-tests",
-      "description": "This repository contains test vectors for the Eth 2.0 spec. Other types of testing (network, fuzzing, benchmarking, etc.) are currently a work in progress, and will be hosted in separate repositories. The intention of this repository is to provide a solid",
-      "source": "npm_registry"
-    },
-    {
-      "package": "grunt-contrib-jasmine",
-      "description": "Run jasmine specs headlessly through Headless Chrome",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@perma/map",
-      "description": "Immutable hash maps implemented as hash array papped tries",
+      "package": "@scalar/schemas",
+      "description": "Schemas for Scalar packages",
       "source": "npm_registry"
     },
     {
@@ -292,8 +296,28 @@
       "source": "npm_registry"
     },
     {
+      "package": "@encore-os/eos-spec",
+      "description": "Portable, config-driven spec-pipeline engine + quality harness. One canonical engine consumed as a library (with a client-safe /pure subpath) by every Encore-OS repo.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@markuplint/react-spec",
+      "description": "Extended specification for tags and attributes in React",
+      "source": "npm_registry"
+    },
+    {
+      "package": "grunt-contrib-jasmine",
+      "description": "Run jasmine specs headlessly through Headless Chrome",
+      "source": "npm_registry"
+    },
+    {
       "package": "jasmine",
       "description": "CLI for Jasmine, a simple JavaScript testing framework for browsers and Node",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@perma/map",
+      "description": "Immutable hash maps implemented as hash array papped tries",
       "source": "npm_registry"
     },
     {
@@ -304,21 +328,6 @@
     {
       "package": "@metamask/multichain-api-middleware",
       "description": "JSON-RPC methods and middleware to support the MetaMask Multichain API",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@anselmdk/feature-spec-md",
-      "description": "Markdown specs for AI-assisted, testable spec driven development across model, feature, stack, and design documents.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "aws-cron-parser",
-      "description": "A util to parse cron expressions used by AWS services",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@libp2p/peer-record",
-      "description": "Used to transfer signed peer data across the network",
       "source": "npm_registry"
     },
     {

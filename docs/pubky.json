@@ -1,9 +1,9 @@
 {
   "crate": "pubky",
-  "updated_at": "2026-07-13T12:26:20.026915+00:00",
-  "total": 23,
+  "updated_at": "2026-07-20T09:42:37.936641+00:00",
+  "total": 24,
   "summary": {
-    "direct": 21,
+    "direct": 22,
     "pubky-messenger": 2
   },
   "lists": {
@@ -11,12 +11,11 @@
       {
         "repo": "BitcoinErrorLog/paykit-rs",
         "chain": [
-          "paykit-lib",
+          "paykit-demo-cli",
           "pubky"
         ],
         "stars": 1,
-        "version": "workspace",
-        "optional": true
+        "version": "workspace"
       },
       {
         "repo": "BitcoinErrorLog/pubky-noise",
@@ -81,6 +80,15 @@
         ],
         "stars": 3,
         "version": "0.4.2"
+      },
+      {
+        "repo": "gillohner/eventky-app-specs",
+        "chain": [
+          "eventky-app-specs",
+          "pubky"
+        ],
+        "stars": 0,
+        "version": "0.5"
       },
       {
         "repo": "gillohner/mapky-app-specs",
@@ -178,11 +186,11 @@
       {
         "repo": "pubky/pubky-nexus",
         "chain": [
-          "pubky-nexus",
+          "nexus-watcher",
           "pubky"
         ],
         "stars": 20,
-        "version": "0.9.3"
+        "version": "workspace"
       },
       {
         "repo": "pubky/pubky-noise",
@@ -225,16 +233,16 @@
     ]
   },
   "crates_io_downloads": {
-    "total": 20393,
-    "recent": 2889
+    "total": 20684,
+    "recent": 3009
   },
   "npm_downloads": {
-    "total": 26518,
-    "recent": 4677
+    "total": 27554,
+    "recent": 4314
   },
   "rn_downloads": {
-    "total": 5572,
-    "recent": 611
+    "total": 5662,
+    "recent": 620
   },
   "npm_dependents": [
     {
@@ -258,13 +266,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashdrive",
-      "description": "drive",
+      "package": "@synonymdev/pkarr",
+      "description": "Public-Key Addressable Resource Records (Pkarr); publish and resolve DNS records over Mainline DHT",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/result",
-      "description": "Result helper class",
+      "package": "@synonymdev/slashdrive",
+      "description": "drive",
       "source": "npm_registry"
     },
     {
@@ -273,13 +281,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/slashtags-auth",
-      "description": "P2P authorization and bidirectional authentication with holepunching through Hyperswarm.",
+      "package": "@synonymdev/result",
+      "description": "Result helper class",
       "source": "npm_registry"
     },
     {
       "package": "@synonymdev/slashtags-sdk",
       "description": "slashtags development kit",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/slashtags-auth",
+      "description": "P2P authorization and bidirectional authentication with holepunching through Hyperswarm.",
       "source": "npm_registry"
     },
     {
@@ -318,6 +331,11 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/blocktank-lsp-http-client",
+      "description": "Blocktank Http Api Client",
+      "source": "npm_registry"
+    },
+    {
       "package": "@synonymdev/raw-transaction-decoder",
       "description": "Decodes Raw Bitcoin Transactions",
       "source": "npm_registry"
@@ -325,6 +343,11 @@
     {
       "package": "@synonymdev/react-native-slashtags",
       "description": "React Native wrapper for Slashtags",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/slashtags-core-data",
+      "description": "Slashtags Core Data is abstraction library that encapsulates logic related to managing data on Slashtags.",
       "source": "npm_registry"
     },
     {
@@ -343,23 +366,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/blocktank-lsp-http-client",
-      "description": "Blocktank Http Api Client",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/slashtags-core-data",
-      "description": "Slashtags Core Data is abstraction library that encapsulates logic related to managing data on Slashtags.",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/ln-constr-parser",
       "description": "Lightning Connection String Parser",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/blocktank-util-slack-client",
-      "description": "Blocktank Slack client",
       "source": "npm_registry"
     },
     {
@@ -368,8 +376,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "mapky-app-specs",
-      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
+      "package": "@synonymdev/feeds",
+      "description": "A library for creating and managing feeds using the web-relay",
       "source": "npm_registry"
     },
     {
@@ -378,18 +386,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/feeds",
-      "description": "A library for creating and managing feeds using the web-relay",
+      "package": "@synonymdev/blocktank-util-slack-client",
+      "description": "Blocktank Slack client",
       "source": "npm_registry"
     },
     {
-      "package": "@eventky/pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/slashauth",
-      "description": "Authorization using slashtags",
+      "package": "mapky-app-specs",
+      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
       "source": "npm_registry"
     },
     {
@@ -398,8 +401,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "@synonymdev/slashauth",
+      "description": "Authorization using slashtags",
+      "source": "npm_registry"
+    },
+    {
       "package": "noskey",
       "description": "generate nostr key",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
       "source": "npm_registry"
     },
     {
@@ -408,18 +421,13 @@
       "source": "npm_registry"
     },
     {
-      "package": "eventky-app-specs",
-      "description": "Eventky Data Model Specifications",
-      "source": "npm_registry"
-    },
-    {
       "package": "@synonymdev/slashtags-keychain",
       "description": "A utility module for generating keyPairs for Slashtags",
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/pkarr",
-      "description": "Public-Key Addressable Resource Records (Pkarr); publish and resolve DNS records over Mainline DHT",
+      "package": "eventky-app-specs",
+      "description": "Eventky Data Model Specifications",
       "source": "npm_registry"
     },
     {
@@ -470,15 +478,15 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/homegate-hackathon25",
-      "source": "github_package_json"
-    },
-    {
-      "package": "PastaGringo/pubky-roadmap",
+      "package": "aljazceru/pak",
       "source": "github_package_json"
     },
     {
       "package": "coreyphillips/geostories",
+      "source": "github_package_json"
+    },
+    {
+      "package": "PastaGringo/pubky-roadmap",
       "source": "github_package_json"
     },
     {
@@ -490,35 +498,15 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/pubky-knowledge-base-v2",
+      "package": "pubky/arcade",
       "source": "github_package_json"
     },
     {
-      "package": "pubky/pubky-app-templates",
+      "package": "pubky/homegate-hackathon25",
       "source": "github_package_json"
     },
     {
-      "package": "aljazceru/pak",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/pubky-canva",
-      "source": "github_package_json"
-    },
-    {
-      "package": "gillohner/pubky-tools",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pwpw",
-      "source": "github_package_json"
-    },
-    {
-      "package": "pubky/pubky-explorer",
-      "source": "github_package_json"
-    },
-    {
-      "package": "PastaGringo/pubky-homeserver",
+      "package": "pubky/pubky-app",
       "source": "github_package_json"
     },
     {
@@ -526,7 +514,7 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/arcade",
+      "package": "PastaGringo/pubky-homeserver",
       "source": "github_package_json"
     },
     {
@@ -534,7 +522,27 @@
       "source": "github_package_json"
     },
     {
-      "package": "pubky/pubky-app",
+      "package": "gillohner/pubky-canva",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-knowledge-base-v2",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pwpw",
+      "source": "github_package_json"
+    },
+    {
+      "package": "gillohner/pubky-tools",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-app-templates",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-explorer",
       "source": "github_package_json"
     }
   ]
