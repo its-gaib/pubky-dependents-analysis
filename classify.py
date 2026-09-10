@@ -72,7 +72,7 @@ def classify_cargo_toml(content: str, target_crate: str) -> Classification | Non
         return _parse_direct_dep(dep)
 
     # Check [target.<cfg>.dependencies] and [target.<cfg>.dev-dependencies]
-    for _target_name, target_deps in data.get("target", {}).items():
+    for target_deps in data.get("target", {}).values():
         if not isinstance(target_deps, dict):
             continue
         for section in ("dependencies", "dev-dependencies", "build-dependencies"):
@@ -110,7 +110,10 @@ def trace_chains(cargo_lock_content: str, target_crate: str) -> list[list[str]]:
     Returns a list of chains, where each chain is a list of crate names
     from a root crate to the target crate (inclusive).
     """
-    packages = _parse_cargo_lock(cargo_lock_content)
+    try:
+        packages = _parse_cargo_lock(cargo_lock_content)
+    except tomllib.TOMLDecodeError:
+        return []
 
     # Build reverse adjacency: child -> {parents}
     reverse_deps: dict[str, set[str]] = defaultdict(set)
@@ -180,7 +183,7 @@ def _find_in_feature_flags(data: dict, target_crate: str) -> str | None:
     all_deps += list(data.get("dev-dependencies", {}).items())
     all_deps += list(data.get("build-dependencies", {}).items())
     all_deps += list(data.get("workspace", {}).get("dependencies", {}).items())
-    for _target_name, target_deps in data.get("target", {}).items():
+    for target_deps in data.get("target", {}).values():
         if not isinstance(target_deps, dict):
             continue
         for section in ("dependencies", "dev-dependencies", "build-dependencies"):
