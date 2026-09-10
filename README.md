@@ -66,3 +66,27 @@ Example: `"chain": ["moq-cli", "moq-native", "web-transport-iroh", "iroh", "pkar
 ## Limitations
 
 This analysis only tracks **public / open-source projects**. Private and proprietary projects that depend on these crates are not visible through GitHub's dependency graph or code search. The `crates_io_downloads` field provides a rough indicator of total adoption (public + private), since download counts include all usage — CI pipelines, proprietary builds, etc.
+
+## Development checks
+
+Use Python 3.11 or newer (the analysis uses the standard-library `tomllib`) and Node.js 24 for the dashboard checks:
+
+```sh
+python3 -m venv .venv
+. .venv/bin/activate
+python -m pip install -r requirements-dev.txt
+python -m ruff check .
+python -m ruff format --check .
+python -m pytest -v
+node --test tests/dashboard.test.cjs
+```
+
+The tests run offline using saved Cargo fixtures and mocked HTTP/CLI responses. They cover classification, analysis output, source error handling, published JSON consistency, and dashboard rendering. The dashboard tests use Node's built-in test runner and require no npm dependencies.
+
+Lint and Tests run on pull requests targeting `main` and pushes to `main`, with read-only repository permissions. CI checks Ruff lint/format, tests Python 3.11–3.14, runs the dashboard checks, and validates all GitHub Actions workflows and their shell scripts with actionlint 1.7.12. To run the workflow check locally with Docker:
+
+```sh
+docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.12 -color
+```
+
+Pages deploys the checked commit only after both workflows pass. The scheduled analysis also validates its generated JSON before committing and publishing it.

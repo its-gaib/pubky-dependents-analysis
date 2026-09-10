@@ -130,14 +130,8 @@ def search_github_cargo_lock(crate_name: str) -> list[RepoMatch]:
 
 def _is_gh_rate_limited(result: subprocess.CompletedProcess) -> bool:
     """Check if a gh CLI result indicates a rate limit (HTTP 429 or 403 abuse)."""
-    combined = (result.stderr or "") + (result.stdout or "")
-    if "429" in combined:
-        return True
-    if "abuse" in combined.lower() or "rate limit" in combined.lower():
-        return True
-    if "secondary rate limit" in combined.lower():
-        return True
-    return False
+    combined = ((result.stderr or "") + (result.stdout or "")).lower()
+    return "429" in combined or "abuse" in combined or "rate limit" in combined
 
 
 def _run_gh(
@@ -154,7 +148,7 @@ def _run_gh(
     while True:
         try:
             result = subprocess.run(
-                cmd, capture_output=True, text=True, timeout=timeout
+                cmd, capture_output=True, text=True, timeout=timeout, check=False
             )
             if result.returncode == 0:
                 return result
@@ -310,7 +304,7 @@ def fetch_file_content(repo: str, path: str) -> str | None:
 
     try:
         return base64.b64decode(result.stdout.strip()).decode("utf-8", errors="replace")
-    except Exception:
+    except ValueError:
         return _fetch_raw(repo, path)
 
 

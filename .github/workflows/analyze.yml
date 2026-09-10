@@ -5,10 +5,11 @@ on:
     - cron: '0 6 * * 1'  # Weekly Monday 6am UTC
   workflow_dispatch:
 
-permissions:
-  contents: write
-  pages: write
-  id-token: write
+permissions: {}
+
+defaults:
+  run:
+    shell: bash
 
 concurrency:
   group: pages
@@ -18,9 +19,11 @@ jobs:
   analyze:
     runs-on: ubuntu-latest
     timeout-minutes: 1440
+    permissions:
+      contents: write
     steps:
-      - uses: actions/checkout@v4
-      - uses: actions/setup-python@v5
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
         with:
           python-version: '3.12'
       - run: pip install -r requirements.txt
@@ -38,6 +41,8 @@ jobs:
             grep 'hit the 1000-result API cap' analysis.log
             exit 1
           fi
+      - name: Validate generated data
+        run: python -m pytest tests/test_data.py -v
       - name: Commit & push results
         run: |
           git config user.name "github-actions[bot]"
@@ -46,16 +51,19 @@ jobs:
           git diff --cached --quiet || git commit -m "Update dependents data"
           git pull --rebase
           git push
-      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/upload-pages-artifact@v5
         with:
           path: docs/
 
   deploy:
     needs: analyze
     runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
     steps:
       - id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5

@@ -125,5 +125,5 @@ def test_chain_preserved_in_output():
         ),
     ]
     result = categorize(repos, "pkarr")
-    http_nu = [r for r in result["iroh"] if r.repo == "cablehead/http-nu"][0]
+    http_nu = next(r for r in result["iroh"] if r.repo == "cablehead/http-nu")
     assert http_nu.chain == ["http-nu", "cross-stream", "iroh", "pkarr"]

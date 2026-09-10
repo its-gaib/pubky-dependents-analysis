@@ -5,7 +5,7 @@ import logging
 import sys
 import time
 import tomllib
-from datetime import datetime, timezone
+from datetime import UTC, datetime
 from pathlib import Path
 
 from classify import (
@@ -199,7 +199,7 @@ def _extract_crate_name(toml_content: str) -> str | None:
     try:
         data = tomllib.loads(toml_content)
         return data.get("package", {}).get("name")
-    except Exception:
+    except (tomllib.TOMLDecodeError, AttributeError):
         return None
 
 
@@ -224,7 +224,7 @@ def _write_output(
 
     output = {
         "crate": crate_name,
-        "updated_at": datetime.now(timezone.utc).isoformat(),
+        "updated_at": datetime.now(UTC).isoformat(),
         "total": total,
         "summary": summary,
         "lists": serialized,
