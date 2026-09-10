@@ -3,7 +3,14 @@ name: Analyze Dependents
 on:
   schedule:
     - cron: '0 6 * * 1'  # Weekly Monday 6am UTC
+    - cron: '0 12,18 * * 1'  # Bounded recovery attempts Monday noon and 6pm UTC
+    - cron: '0 0 * * 2'  # Final recovery attempt Tuesday midnight UTC
   workflow_dispatch:
+    inputs:
+      allow_large_decrease:
+        description: Accept an independently verified large decrease
+        type: boolean
+        default: false
 
 permissions: {}
 
@@ -12,17 +19,20 @@ defaults:
     shell: bash
 
 concurrency:
-  group: pages
-  cancel-in-progress: true
+  group: dependents-analysis
+  cancel-in-progress: false
 
 jobs:
   analyze:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
-    timeout-minutes: 1440
+    timeout-minutes: 330
     permissions:
       contents: write
     steps:
       - uses: actions/checkout@v7
+        with:
+          ref: main
       - uses: actions/setup-python@v7
         with:
           python-version-file: .python-version
@@ -33,20 +43,20 @@ jobs:
         run: |
           python -m pip install -r requirements-dev.txt
           python -m pip check
+      - name: Check whether this weekly cycle needs analysis
+        id: cycle
+        run: python publication.py >> "$GITHUB_OUTPUT"
       - name: Run analysis
+        if: github.event_name == 'workflow_dispatch' || steps.cycle.outputs.due == 'true'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        run: python analyze.py 2>&1 | tee analysis.log
-      - name: Check for API cap
+          ALLOW_LARGE_DECREASE: ${{ inputs.allow_large_decrease == true }}
         run: |
-          if grep -q 'hit the 1000-result API cap' analysis.log; then
-            echo "ERROR: GitHub code search returned 1000 results (the API maximum)."
-            echo "Some dependents are likely missing from the analysis."
-            echo "Fix: split the gh search query in sources.py to stay under the cap."
-            echo ""
-            grep 'hit the 1000-result API cap' analysis.log
-            exit 1
+          args=()
+          if [[ "$ALLOW_LARGE_DECREASE" == "true" ]]; then
+            args+=(--allow-large-decrease)
           fi
+          python analyze.py "${args[@]}"
       - name: Validate generated data
         run: python -m pytest tests/test_data.py -v
       - name: Commit & push results
@@ -67,6 +77,9 @@ jobs:
     permissions:
       pages: write
       id-token: write
+    concurrency:
+      group: pages
+      cancel-in-progress: false
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}

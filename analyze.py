@@ -1,12 +1,16 @@
 """Main entry point for crate dependents analysis."""
 
+import argparse
 import json
 import logging
+import re
 import sys
 import time
 import tomllib
 from datetime import UTC, datetime
 from pathlib import Path
+from tempfile import TemporaryDirectory
+from urllib.parse import urlsplit
 
 from classify import (
     CategorizedEntry,
@@ -16,6 +20,7 @@ from classify import (
     classify_cargo_toml,
     trace_chains,
 )
+from publication import validate_candidate
 from sources import (
     RepoMatch,
     fetch_crates_io_downloads,
@@ -40,13 +45,17 @@ def analyze_crate(
     github_repo: str,
     npm_package: str | None = None,
     react_native_package: str | None = None,
+    *,
+    output_dir: str = "docs",
+    run_id: str | None = None,
 ) -> str:
     """Run the full analysis pipeline for a single crate."""
     log.info("=== Analyzing %s (%s) ===", crate_name, github_repo)
 
     # Phase 1: Gather dependents from all sources
     log.info("Phase 1: Gathering dependents...")
-    all_repos = _gather_repos(crate_name, github_repo)
+    source_counts = {}
+    all_repos = _gather_repos(crate_name, github_repo, source_counts)
     log.info("Total unique repos to classify: %d", len(all_repos))
 
     # Phase 2: Classify each repo
@@ -70,6 +79,8 @@ def analyze_crate(
     if npm_package:
         log.info("Searching npm dependents for %s...", npm_package)
         npm_deps = search_npm_dependents(npm_package)
+        for source in ("npm_registry", "github_package_json"):
+            source_counts[source] = sum(dep["source"] == source for dep in npm_deps)
         log.info("Found %d npm dependents", len(npm_deps))
 
     log.info("Fetching download counts...")
@@ -80,7 +91,18 @@ def analyze_crate(
     )
 
     output_path = _write_output(
-        crate_name, categorized, npm_deps, downloads, npm_downloads, rn_downloads
+        crate_name,
+        categorized,
+        npm_deps,
+        downloads,
+        npm_downloads,
+        rn_downloads,
+        output_dir=output_dir,
+        collection={
+            "status": "complete",
+            "run_id": run_id or datetime.now(UTC).isoformat(),
+            "sources": source_counts,
+        },
     )
     log.info("Wrote %s", output_path)
 
@@ -90,7 +112,9 @@ def analyze_crate(
     return output_path
 
 
-def _gather_repos(crate_name: str, github_repo: str) -> dict[str, RepoMatch]:
+def _gather_repos(
+    crate_name: str, github_repo: str, source_counts: dict | None = None
+) -> dict[str, RepoMatch]:
     """Gather repos from all sources into a unified set."""
     log.info("  Fetching crates.io reverse deps...")
     crates_io_deps = fetch_crates_io_reverse_deps(crate_name)
@@ -107,6 +131,15 @@ def _gather_repos(crate_name: str, github_repo: str) -> dict[str, RepoMatch]:
     log.info("  Scraping GitHub dependents page...")
     dependents = scrape_github_dependents(github_repo)
     log.info("  Found %d repos on dependents page", len(dependents))
+    if source_counts is not None:
+        source_counts.update(
+            {
+                "crates_io": len(crates_io_deps),
+                "github_cargo_toml": len(toml_matches),
+                "github_cargo_lock": len(lock_matches),
+                "github_dependents": len(dependents),
+            }
+        )
 
     all_repos: dict[str, RepoMatch] = {}
 
@@ -125,10 +158,15 @@ def _gather_repos(crate_name: str, github_repo: str) -> dict[str, RepoMatch]:
 
     for dep in crates_io_deps:
         repo_url = dep.get("repository") or ""
-        if "github.com/" in repo_url:
-            repo_name = repo_url.rstrip("/").split("github.com/")[-1]
-            repo_name = repo_name.removesuffix(".git")
-            if repo_name not in all_repos:
+        parsed = urlsplit(repo_url)
+        if parsed.hostname == "github.com":
+            repo_name = "/".join(parsed.path.strip("/").split("/")[:2]).removesuffix(
+                ".git"
+            )
+            if (
+                re.fullmatch(r"[A-Za-z0-9-]+/[A-Za-z0-9_.-]+", repo_name)
+                and repo_name not in all_repos
+            ):
                 all_repos[repo_name] = RepoMatch(repo=repo_name, source="crates_io")
 
     all_repos.pop(github_repo, None)
@@ -211,6 +249,7 @@ def _write_output(
     npm_downloads: dict | None,
     rn_downloads: dict | None = None,
     output_dir: str = "docs",
+    collection: dict | None = None,
 ) -> str:
     """Write categorized dependents to a JSON file."""
     Path(output_dir).mkdir(parents=True, exist_ok=True)
@@ -229,6 +268,8 @@ def _write_output(
         "summary": summary,
         "lists": serialized,
     }
+    if collection is not None:
+        output["collection"] = collection
 
     if downloads:
         output["crates_io_downloads"] = downloads
@@ -239,7 +280,7 @@ def _write_output(
     if rn_downloads:
         output["rn_downloads"] = rn_downloads
 
-    if npm_dependents:
+    if npm_dependents or (collection and "npm_registry" in collection["sources"]):
         output["npm_dependents"] = npm_dependents
 
     path = Path(output_dir) / f"{crate_name}.json"
@@ -247,7 +288,7 @@ def _write_output(
     return str(path)
 
 
-def main():
+def main(argv: list[str] | None = None):
     logging.basicConfig(
         level=logging.INFO,
         format="%(message)s",
@@ -260,17 +301,42 @@ def main():
 
     crates = json.loads(config_path.read_text())
 
-    filter_crate = sys.argv[1] if len(sys.argv) > 1 else None
-
-    for crate_config in crates:
-        if filter_crate and crate_config["crate"] != filter_crate:
-            continue
-        analyze_crate(
-            crate_config["crate"],
-            crate_config["github_repo"],
-            npm_package=crate_config.get("npm_package"),
-            react_native_package=crate_config.get("react_native_package"),
-        )
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("crate", nargs="?", help="Analyze just this crate locally")
+    parser.add_argument(
+        "--allow-large-decrease",
+        action="store_true",
+        help="Accept an independently verified decrease; never bypasses source validation",
+    )
+    args = parser.parse_args(argv)
+    selected = [c for c in crates if not args.crate or c["crate"] == args.crate]
+    if not selected:
+        parser.error("Unknown crate")
+    run_id = datetime.now(UTC).isoformat()
+    # Do not touch any published file unless every candidate has succeeded and
+    # passed validation. Git's single commit then publishes the complete batch.
+    with TemporaryDirectory(prefix="dependents-") as staging:
+        paths = []
+        for crate_config in selected:
+            path = Path(
+                analyze_crate(
+                    crate_config["crate"],
+                    crate_config["github_repo"],
+                    npm_package=crate_config.get("npm_package"),
+                    react_native_package=crate_config.get("react_native_package"),
+                    output_dir=staging,
+                    run_id=run_id,
+                )
+            )
+            validate_candidate(
+                path, Path("docs"), crate_config, args.allow_large_decrease
+            )
+            if json.loads(path.read_text())["collection"]["run_id"] != run_id:
+                raise ValueError("Candidate belongs to a different analysis run")
+            paths.append(path)
+        Path("docs").mkdir(exist_ok=True)
+        for path in paths:
+            (Path("docs") / path.name).write_bytes(path.read_bytes())
 
 
 if __name__ == "__main__":

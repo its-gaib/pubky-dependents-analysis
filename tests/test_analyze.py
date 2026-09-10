@@ -38,7 +38,14 @@ def test_gather_merges_sources_preserves_paths_and_excludes_target(monkeypatch):
     for name, results in sources.items():
         monkeypatch.setattr(analyze, name, Mock(return_value=results))
 
-    repos = analyze._gather_repos("pkarr", "pubky/pkarr")
+    source_counts = {}
+    repos = analyze._gather_repos("pkarr", "pubky/pkarr", source_counts)
+    assert source_counts == {
+        "crates_io": 4,
+        "github_cargo_toml": 2,
+        "github_cargo_lock": 2,
+        "github_dependents": 3,
+    }
 
     assert set(repos) == {
         "example/shared",
@@ -95,6 +102,10 @@ def test_pipeline_writes_categorized_json_offline(
     assert Path(output_path) == Path("docs/pkarr.json")
     output = json.loads(Path(output_path).read_text())
     assert output["crate"] == "pkarr"
+    assert output["collection"]["status"] == "complete"
+    assert datetime.fromisoformat(
+        output["collection"]["run_id"]
+    ).utcoffset() == timedelta(0)
     assert datetime.fromisoformat(output["updated_at"]).utcoffset() == timedelta(0)
     assert output["total"] == 2
     assert output["summary"] == {"direct": 1, "iroh": 1}
@@ -150,3 +161,20 @@ def test_classify_repo_skips_malformed_lockfile_and_uses_next_match(monkeypatch)
     assert result is not None
     assert result.repo == "cablehead/http-nu"
     assert result.chain == ["http-nu", "cross-stream", "iroh", "pkarr"]
+
+
+def test_empty_configured_npm_sample_is_explicit(tmp_path):
+    output = analyze._write_output(
+        "pkarr",
+        {},
+        [],
+        None,
+        None,
+        output_dir=str(tmp_path),
+        collection={
+            "status": "complete",
+            "run_id": "2026-08-31T06:00:00Z",
+            "sources": {"npm_registry": 0, "github_package_json": 0},
+        },
+    )
+    assert json.loads(Path(output).read_text())["npm_dependents"] == []
