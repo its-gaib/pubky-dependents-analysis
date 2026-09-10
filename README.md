@@ -69,12 +69,13 @@ This analysis only tracks **public / open-source projects**. Private and proprie
 
 ## Development checks
 
-Use Python 3.11 or newer (the analysis uses the standard-library `tomllib`) and Node.js 24 for the dashboard checks:
+Python 3.14 is recommended and selected by `.python-version` for the scheduled analyzer and lint job. Python 3.11–3.14 remains supported and tested. Node.js 24 LTS is selected by `.nvmrc` for the dashboard checks; run `nvm use` if you use nvm. CI selects the latest patch release within each configured version.
 
 ```sh
 python3 -m venv .venv
 . .venv/bin/activate
 python -m pip install -r requirements-dev.txt
+python -m pip check
 python -m ruff check .
 python -m ruff format --check .
 python -m pytest -v
@@ -90,3 +91,11 @@ docker run --rm -v "$PWD:/repo" -w /repo rhysd/actionlint:1.7.12 -color
 ```
 
 Pages deploys the checked commit only after both workflows pass. The scheduled analysis also validates its generated JSON before committing and publishing it.
+
+## Dependency maintenance
+
+`requirements.txt` pins Requests and its runtime dependencies. `requirements-dev.txt` includes those pins plus pytest, Ruff, and their dependencies. Install the runtime file to run the analyzer locally, or the development file to run the checks. The scheduled job installs the development file because it validates generated data with pytest before publishing.
+
+For dependency updates, check available releases with `python -m pip list --outdated`, update the relevant pins in both requirements files, and run the development checks above in a fresh virtual environment. Keep the Windows-only `colorama` marker when updating pytest's dependencies.
+
+Review `.python-version` and `.nvmrc` when adopting a new stable Python or Node LTS release, and keep the Python test matrix aligned with the supported versions. Check GitHub Actions and actionlint releases when updating CI tooling; update the actionlint image in the workflow and local command together.

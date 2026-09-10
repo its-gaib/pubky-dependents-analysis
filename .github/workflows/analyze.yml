@@ -25,8 +25,14 @@ jobs:
       - uses: actions/checkout@v7
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.12'
-      - run: pip install -r requirements.txt
+          python-version-file: .python-version
+          check-latest: true
+          cache: pip
+          cache-dependency-path: requirements*.txt
+      - name: Install analysis and validation dependencies
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m pip check
       - name: Run analysis
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
