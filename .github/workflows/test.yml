@@ -29,10 +29,13 @@ jobs:
       - uses: actions/setup-python@v7
         with:
           python-version: ${{ matrix.python-version }}
+          check-latest: true
           cache: pip
           cache-dependency-path: requirements*.txt
       - name: Install development dependencies
-        run: python -m pip install -r requirements-dev.txt
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m pip check
       - name: Run offline tests and validate published data
         run: python -m pytest -v
 
@@ -46,6 +49,7 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-node@v7
         with:
-          node-version: '24'
+          node-version-file: .nvmrc
+          check-latest: true
       - name: Test dashboard scripts and rendering
         run: node --test tests/dashboard.test.cjs

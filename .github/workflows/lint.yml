@@ -24,11 +24,14 @@ jobs:
           persist-credentials: false
       - uses: actions/setup-python@v7
         with:
-          python-version: '3.12'
+          python-version-file: .python-version
+          check-latest: true
           cache: pip
           cache-dependency-path: requirements*.txt
       - name: Install development dependencies
-        run: python -m pip install -r requirements-dev.txt
+        run: |
+          python -m pip install -r requirements-dev.txt
+          python -m pip check
       - name: Lint Python
         run: python -m ruff check .
       - name: Check Python formatting
