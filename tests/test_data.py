@@ -7,6 +7,8 @@ from pathlib import Path
 
 import pytest
 
+from publication import validate_snapshot
+
 ROOT = Path(__file__).resolve().parents[1]
 SNAPSHOTS = sorted((ROOT / "docs").glob("*.json"))
 REPO_PATTERN = r"[A-Za-z0-9-]+/[A-Za-z0-9_.-]+"
@@ -30,6 +32,19 @@ def test_configured_crates_have_snapshots():
         assert (ROOT / "docs" / f"{name}.json").is_file()
         names.append(name)
     assert len(names) == len(set(names)), "Duplicate configured crates"
+
+
+def test_new_publications_contain_one_complete_run_for_all_configured_crates():
+    crates = json.loads((ROOT / "crates.json").read_text())
+    snapshots = [
+        json.loads((ROOT / "docs" / f"{config['crate']}.json").read_text())
+        for config in crates
+    ]
+    if not any("collection" in data for data in snapshots):
+        return  # Existing legacy exports remain readable until the first new run.
+    for config, data in zip(crates, snapshots, strict=True):
+        validate_snapshot(data, config)
+    assert len({data["collection"]["run_id"] for data in snapshots}) == 1
 
 
 @pytest.mark.parametrize("path", SNAPSHOTS, ids=lambda path: path.name)
@@ -85,3 +100,11 @@ def test_published_snapshot_is_consistent(path):
             assert dependent["package"]
             if dependent.get("description") is not None:
                 assert isinstance(dependent["description"], str)
+
+    if "collection" in data:
+        configs = json.loads((ROOT / "crates.json").read_text())
+        config = next(
+            (config for config in configs if config["crate"] == data["crate"]),
+            {"crate": data["crate"]},
+        )
+        validate_snapshot(data, config)

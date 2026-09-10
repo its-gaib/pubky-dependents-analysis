@@ -63,6 +63,9 @@ const CRATE_META = {
   "http-relay": { github: "pubky/http-relay", display: "HTTP Relay" }
 };
 function displayName(crate) { return (CRATE_META[crate] && CRATE_META[crate].display) || crate; }
+function escapeHTML(value) {
+  return String(value).replace(/[&<>"']/g, char => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[char]);
+}
 const BASE = new URL(".", location.href).href.replace(/\/$/, "");
 const cache = {};
 const COLORS = ["#2563eb","#dc2626","#16a34a","#9333ea","#ea580c","#0891b2","#be185d","#65a30d","#6d28d9","#d97706","#4f46e5","#059669"];
@@ -86,9 +89,9 @@ async function load(crate) {
   if (!cache[crate]) {
     try {
       const r = await fetch(`${BASE}/${crate}.json`);
-      if (!r.ok) { content.innerHTML = `<p>Failed to load ${crate}.json (${r.status})</p>`; return; }
+      if (!r.ok) { content.innerHTML = `<p>Failed to load ${escapeHTML(crate)}.json (${r.status})</p>`; return; }
       cache[crate] = await r.json();
-    } catch (e) { content.innerHTML = `<p>Error: ${e.message}</p>`; return; }
+    } catch (e) { content.innerHTML = `<p>Error: ${escapeHTML(e.message)}</p>`; return; }
   }
   render(cache[crate]);
 }
@@ -96,7 +99,7 @@ async function load(crate) {
 function render(data) {
   const { summary, total, lists } = data;
   const updated = new Date(data.updated_at).toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
-  const jsonUrl = `${BASE}/${data.crate}.json`;
+  const jsonUrl = `${BASE}/${encodeURIComponent(data.crate)}.json`;
   const dl = data.crates_io_downloads;
   const ndl = data.npm_downloads;
   const rndl = data.rn_downloads;
@@ -126,7 +129,7 @@ function render(data) {
 
   // Legend
   const legend = slices.map((s, i) =>
-    `<div class="legend-item"><span class="legend-dot" style="background:${COLORS[i % COLORS.length]}"></span>${s.name} &mdash; ${s.count} (${(s.count / total * 100).toFixed(1)}%)</div>`
+    `<div class="legend-item"><span class="legend-dot" style="background:${COLORS[i % COLORS.length]}"></span>${escapeHTML(s.name)} &mdash; ${s.count} (${(s.count / total * 100).toFixed(1)}%)</div>`
   ).join("");
 
   // Categories
@@ -137,14 +140,14 @@ function render(data) {
     const pct = (count / total * 100).toFixed(1);
     const top10 = [...entries].sort((a, b) => (b.stars || 0) - (a.stars || 0)).slice(0, 10);
     const rows = top10.map(e =>
-      `<div class="repo-row"><a href="https://github.com/${e.repo}" target="_blank">${e.repo}</a><span class="stars">${e.stars != null ? e.stars.toLocaleString() + " stars" : ""}</span></div>`
+      `<div class="repo-row"><a href="https://github.com/${escapeHTML(e.repo)}" target="_blank">${escapeHTML(e.repo)}</a><span class="stars">${e.stars != null ? e.stars.toLocaleString() + " stars" : ""}</span></div>`
     ).join("");
-    return `<div class="category"><div class="cat-header"><span class="cat-name">${name}</span><span class="cat-stat">${count} repos (${pct}%)</span></div><div class="top-repos">${rows}</div></div>`;
+    return `<div class="category"><div class="cat-header"><span class="cat-name">${escapeHTML(name)}</span><span class="cat-stat">${count} repos (${pct}%)</span></div><div class="top-repos">${rows}</div></div>`;
   }).join("");
 
   const meta = CRATE_META[data.crate] || {};
   const ghDepsUrl = meta.github ? `https://github.com/${meta.github}/network/dependents` : "#";
-  const cratesUrl = `https://crates.io/crates/${data.crate}`;
+  const cratesUrl = `https://crates.io/crates/${encodeURIComponent(data.crate)}`;
   const npmUrl = meta.npm ? `https://www.npmjs.com/package/${meta.npm}` : "#";
   const rnUrl = meta.rn ? `https://www.npmjs.com/package/${meta.rn}` : "#";
 
@@ -156,8 +159,8 @@ function render(data) {
   content.innerHTML = `
     <div class="meta"><span>Updated ${updated}</span><a href="${jsonUrl}">JSON API</a></div>
     <div class="stats">${statCards}</div>
-    <div class="section-title">How projects depend on ${displayName(data.crate)}</div>
-    <div class="section-desc">Many projects don't add ${displayName(data.crate)} directly &mdash; they depend on an intermediary crate (e.g. iroh), which pulls in ${displayName(data.crate)} as a transitive dependency.</div>
+    <div class="section-title">How projects depend on ${escapeHTML(displayName(data.crate))}</div>
+    <div class="section-desc">Many projects don't add ${escapeHTML(displayName(data.crate))} directly &mdash; they depend on an intermediary crate (e.g. iroh), which pulls in ${escapeHTML(displayName(data.crate))} as a transitive dependency.</div>
     <div class="chart-row"><div class="chart-col">${svg}</div><div class="legend">${legend}</div></div>
     ${categories}
     <div class="note">This analysis only tracks public / open-source projects. Private and proprietary projects that depend on this crate are not visible. The crates.io download count above includes all usage (public and private) and serves as a rough indicator of total adoption.</div>`;

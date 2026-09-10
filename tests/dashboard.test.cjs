@@ -123,6 +123,19 @@ test('render supports a snapshot with no dependents', async () => {
   assertRendered(app.content, data);
 });
 
+test('external category names and repository text are escaped before HTML rendering', async () => {
+  const app = await dashboard();
+  const category = '<img/src=x/onerror=alert(1)>';
+  app.render({
+    crate: crates[0].crate, updated_at: '2026-04-01T00:00:00Z', total: 1,
+    summary: { [category]: 1 },
+    lists: { [category]: [{ repo: 'example/" onmouseover="alert(1)', stars: null }] },
+  });
+  assert.doesNotMatch(app.content.innerHTML, /<img|href="[^"]*" onmouseover=/);
+  assert.equal(app.content.innerHTML.split('&lt;img/src=x/onerror=alert(1)&gt;').length - 1, 2);
+  assert.match(app.content.innerHTML, /example\/&quot; onmouseover=&quot;alert\(1\)/);
+});
+
 test('load reports HTTP and network failures and permits retrying', async () => {
   let attempt = 0;
   const data = readJSON(`docs/${crates[0].crate}.json`);

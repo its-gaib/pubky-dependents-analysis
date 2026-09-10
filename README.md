@@ -20,6 +20,18 @@ Available: `pkarr.json`, `pubky.json`, `pubky-app-specs.json`
 {
   "crate": "pkarr",                    // analyzed crate name
   "updated_at": "2026-04-06T...",      // ISO 8601 timestamp of last analysis
+  "collection": {                    // present on validated new publications
+    "status": "complete",
+    "run_id": "2026-04-06T...",       // shared UTC start timestamp for all crates
+    "sources": {                     // successful discovery counts by source
+      "crates_io": 10,
+      "github_cargo_toml": 90,
+      "github_cargo_lock": 200,
+      "github_dependents": 180,
+      "npm_registry": 20,            // only when npm_package is configured
+      "github_package_json": 30
+    }
+  },
   "total": 281,                        // total number of classified dependant repos
   "summary": {                         // repo count per category
     "direct": 30,                      // repos that list this crate in their Cargo.toml
@@ -52,7 +64,7 @@ Available: `pkarr.json`, `pubky.json`, `pubky-app-specs.json`
     "total": 8871,                     // all-time downloads
     "recent": 1050                     // downloads in the last 30 days
   },
-  "npm_dependents": [...]              // npm packages referencing this crate (if applicable)
+  "npm_dependents": [...]              // explicit array, including [], when npm is configured
 }
 ```
 
@@ -66,6 +78,18 @@ Example: `"chain": ["moq-cli", "moq-native", "web-transport-iroh", "iroh", "pkar
 ## Limitations
 
 This analysis only tracks **public / open-source projects**. Private and proprietary projects that depend on these crates are not visible through GitHub's dependency graph or code search. The `crates_io_downloads` field provides a rough indicator of total adoption (public + private), since download counts include all usage — CI pipelines, proprietary builds, etc.
+
+`collection.status: "complete"` means the configured discovery requests and their validation succeeded. It does not guarantee completeness of GitHub's search index. The npm metric retains the existing sample of the first 50 npm keyword-search results and first 50 GitHub `package.json` matches, with the existing deduplication. Keyword matches are not independently verified dependency declarations. Its two source counts describe the included entries, so their sum equals `npm_dependents.length`. Rust source counts describe discoveries before merging and classification and do not sum to `total`.
+
+## Failed collections and recovery
+
+The weekly analysis starts on Monday at 06:00 UTC. Three recovery opportunities are scheduled at Monday 12:00, Monday 18:00, and Tuesday 00:00 UTC; actual GitHub Actions starts can be delayed. Once every configured crate has a validated publication from the current Monday cycle with the same `collection.run_id`, later opportunities skip analysis. They still upload and deploy the committed snapshot, allowing recovery from a failed Pages deployment. A manual **Analyze Dependents** run on `main` can retry sooner; after the final scheduled recovery, the next automatic opportunity is the following Monday.
+
+GitHub requests retry rate limits/timeouts at most four times, with delays of 30, 60, and 120 seconds. Dependents-page requests try at most three times. A workflow run is limited to 330 minutes, and a later recovery does not cancel an active analysis. Discovery failures, incomplete or truncated search responses, the GitHub 1,000-result search cap, broken dependents pagination, and classification transport errors fail the run. Optional star/download statistics can remain unavailable without invalidating dependent counts.
+
+All configured crate outputs are staged and validated before replacing any files in `docs/`; only a successful full batch is committed and deployed. `updated_at` records each crate's actual measurement completion and remains unchanged after a failed attempt. Downstream collectors should retain it, require a common run identity, and label old measurements rather than mistaking a new fetch for a new analysis. Existing JSON without `collection` is legacy data with unverified completeness; this change does not rewrite historical counts.
+
+A drop of more than 25% and at least 20 in a crate's classified total, npm sample, or previously recorded source count blocks publication. This is an anomaly guard, not a rule that adoption cannot decrease. Inspect the source failure and run logs first. For an independently verified genuine decline, run **Analyze Dependents** manually on `main` with **allow_large_decrease** enabled (locally: `python analyze.py --allow-large-decrease`). This bypasses only the decline guard; source completeness and schema validation still apply. A filtered local run (`python analyze.py pkarr`) is useful for investigation but cannot pass the full-batch publication check alongside snapshots from a different run.
 
 ## Development checks
 
