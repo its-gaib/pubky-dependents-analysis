@@ -1,6 +1,8 @@
 """Source adapter behavior with no HTTP requests, subprocesses, or real waits."""
 
+import base64
 import json
+import logging
 import subprocess
 from unittest.mock import Mock
 
@@ -10,11 +12,23 @@ import requests
 import sources
 
 
+@pytest.fixture(autouse=True)
+def no_real_waits(monkeypatch):
+    monkeypatch.setattr(sources.time, "sleep", Mock())
+
+
 def _response(status, payload=None):
     response = requests.Response()
     response.status_code = status
     response._content = json.dumps(payload).encode()
     return response
+
+
+def _gh_response(status, body="", headers=None, *, newline="\r\n"):
+    header_lines = [f"HTTP/2.0 {status} Test"]
+    header_lines.extend(f"{key}: {value}" for key, value in (headers or {}).items())
+    output = newline.join(header_lines) + newline * 2 + body
+    return subprocess.CompletedProcess([], 0 if status < 400 else 1, output, "")
 
 
 def test_gh_retries_rate_limits_and_timeouts_with_capped_backoff(monkeypatch):
@@ -38,18 +52,178 @@ def test_gh_retries_rate_limits_and_timeouts_with_capped_backoff(monkeypatch):
 
     assert [call.args[0] for call in sleep.call_args_list] == [
         5,
-        30,
         60,
         120,
         240,
         480,
         600,
         600,
+        600,
     ]
     assert run.call_count == 8
+    actual_command = run.call_args.args[0]
+    assert "--include" in actual_command
+    assert [arg for arg in actual_command if arg != "--include"] == command
     run.assert_called_with(
-        command, capture_output=True, text=True, timeout=15, check=False
+        actual_command, capture_output=True, text=True, timeout=15, check=False
     )
+
+
+def test_gh_default_pacing_respects_code_search_and_secondary_limits():
+    assert sources.GH_SEARCH_DELAY >= 6
+    assert sources.GH_RATE_LIMIT_BACKOFF >= 60
+    assert sources.GH_MAX_ATTEMPTS == 4
+    assert sources.GH_SEARCH_MAX_ATTEMPTS == 3
+
+
+@pytest.mark.parametrize("newline", ["\r\n", "\n"])
+def test_gh_include_headers_do_not_corrupt_search_json(monkeypatch, newline):
+    payload = {
+        "total_count": 1,
+        "incomplete_results": False,
+        "items": _items(1),
+    }
+    run = Mock(
+        return_value=_gh_response(
+            200,
+            json.dumps(payload),
+            {"X-RateLimit-Remaining": "9"},
+            newline=newline,
+        )
+    )
+    monkeypatch.setattr(sources.subprocess, "run", run)
+
+    matches = sources.search_github_cargo_lock("pkarr")
+
+    assert [match.repo for match in matches] == ["example/repo0"]
+    assert run.call_args.args[0].count("--include") == 1
+
+
+@pytest.mark.parametrize("newline", ["\r\n", "\n"])
+def test_gh_include_headers_do_not_corrupt_jq_output(monkeypatch, newline):
+    content = '[package]\nname = "example"\n'
+    encoded = base64.b64encode(content.encode()).decode()
+    run = Mock(
+        side_effect=[
+            _gh_response(200, encoded + "\n", newline=newline),
+            _gh_response(200, "42\n", newline=newline),
+        ]
+    )
+    raw = Mock(side_effect=AssertionError("valid API content must not fall back"))
+    monkeypatch.setattr(sources.subprocess, "run", run)
+    monkeypatch.setattr(sources, "_fetch_raw", raw)
+
+    assert sources.fetch_file_content("example/repo", "Cargo.toml") == content
+    assert sources.fetch_github_stars("example/repo") == 42
+    assert all("--include" in call.args[0] for call in run.call_args_list)
+    raw.assert_not_called()
+
+
+@pytest.mark.parametrize(
+    ("status", "headers", "expected_delay"),
+    [
+        (429, {"retry-after": "121"}, 121),
+        (429, {"Retry-After": "10"}, 60),
+        (403, {"X-RateLimit-Remaining": "0", "X-RateLimit-Reset": "1900"}, 1801),
+        (429, {"X-RateLimit-Remaining": "1", "X-RateLimit-Reset": "1900"}, 60),
+        (
+            403,
+            {
+                "Retry-After": "1900",
+                "X-RateLimit-Remaining": "0",
+                "X-RateLimit-Reset": "1900",
+            },
+            1900,
+        ),
+        (403, {"X-RateLimit-Remaining": "0", "X-RateLimit-Reset": "3700"}, 3601),
+    ],
+)
+def test_gh_waits_for_server_rate_limit_deadline(
+    monkeypatch, status, headers, expected_delay
+):
+    run = Mock(
+        side_effect=[_gh_response(status, headers=headers), _gh_response(200, "ok")]
+    )
+    sleep = Mock()
+    monkeypatch.setattr(sources.subprocess, "run", run)
+    monkeypatch.setattr(sources.time, "sleep", sleep)
+    monkeypatch.setattr(sources.time, "time", Mock(return_value=100))
+
+    assert sources._run_gh(["gh", "api", "repos/example/repo"]).stdout == "ok"
+
+    sleep.assert_called_once_with(expected_delay)
+    assert run.call_count == 2
+
+
+@pytest.mark.parametrize(
+    "headers",
+    [
+        {"Retry-After": "4000"},
+        {"X-RateLimit-Remaining": "0", "X-RateLimit-Reset": "4100"},
+        {"Retry-After": "-1"},
+        {"Retry-After": "not-a-delay"},
+        {"X-RateLimit-Remaining": "0", "X-RateLimit-Reset": "invalid"},
+    ],
+)
+def test_gh_rejects_waits_it_cannot_honor_without_retrying_early(monkeypatch, headers):
+    run = Mock(return_value=_gh_response(429, headers=headers))
+    sleep = Mock()
+    monkeypatch.setattr(sources.subprocess, "run", run)
+    monkeypatch.setattr(sources.time, "sleep", sleep)
+    monkeypatch.setattr(sources.time, "time", Mock(return_value=100))
+
+    with pytest.raises(sources.SourceError):
+        sources._run_gh(["gh", "api", "repos/example/repo"])
+
+    run.assert_called_once()
+    sleep.assert_not_called()
+
+
+def test_gh_total_wait_budget_stops_instead_of_shortening_server_delay(monkeypatch):
+    run = Mock(return_value=_gh_response(429, headers={"Retry-After": "2000"}))
+    sleep = Mock()
+    monkeypatch.setattr(sources.subprocess, "run", run)
+    monkeypatch.setattr(sources.time, "sleep", sleep)
+
+    with pytest.raises(sources.SourceError):
+        sources._run_gh(["gh", "api", "repos/example/repo"])
+
+    assert run.call_count == 2
+    sleep.assert_called_once_with(2000)
+
+
+def test_gh_rate_limit_diagnostics_never_expose_response_secrets(monkeypatch, caplog):
+    secret = "secret-response-token-123"
+    response = _gh_response(
+        429,
+        json.dumps({"message": "rate limit", "secret": secret}),
+        {"Retry-After": "60", "X-Secret": secret},
+    )
+    response.stderr = f"HTTP 429: rate limited; credential={secret}"
+    monkeypatch.setattr(sources.subprocess, "run", Mock(return_value=response))
+    caplog.set_level(logging.WARNING, logger="sources")
+
+    with pytest.raises(sources.SourceError) as error:
+        sources._run_gh(["gh", "api", "repos/example/repo"])
+
+    assert "429" in caplog.text
+    assert secret not in caplog.text
+    assert secret not in str(error.value)
+
+
+def test_gh_arbitrary_body_429_does_not_turn_forbidden_into_rate_limit(monkeypatch):
+    response = _gh_response(403, json.dumps({"message": "resource 429 is private"}))
+    response.stderr = "HTTP 403: Forbidden"
+    run = Mock(return_value=response)
+    sleep = Mock()
+    monkeypatch.setattr(sources.subprocess, "run", run)
+    monkeypatch.setattr(sources.time, "sleep", sleep)
+
+    with pytest.raises(sources.SourceError):
+        sources._run_gh(["gh", "api", "repos/example/repo"])
+
+    run.assert_called_once()
+    sleep.assert_not_called()
 
 
 @pytest.mark.parametrize("failure", ["not_found", "forbidden", "invalid_json"])
@@ -231,19 +405,69 @@ def test_gh_retries_are_finite(monkeypatch, failure):
     [
         _search_response([], total=1001),
         _search_response([], total=1000),
-        _search_response([], total=8),
-        _search_response([], incomplete=True),
         _search_response([], total=True),
+        _search_response([], total=-1),
+        _search_response([], incomplete="true"),
         _search_response(
             [{"repository": {"full_name": "//evil"}, "path": "Cargo.lock"}]
         ),
+        _search_response([{"repository": {}, "path": "Cargo.lock"}]),
+        _search_response([{"repository": {"full_name": "example/repo"}}]),
+        subprocess.CompletedProcess([], 0, "not JSON", ""),
+    ],
+)
+def test_search_rejects_malformed_and_capped_results_without_retry(
+    monkeypatch, response
+):
+    run = Mock(return_value=response)
+    monkeypatch.setattr(sources, "_run_gh", run)
+    with pytest.raises(sources.SourceError):
+        sources.search_github_cargo_lock("pkarr")
+    run.assert_called_once()
+
+
+@pytest.mark.parametrize(
+    "response",
+    [
+        _search_response([], total=8),
+        _search_response([], incomplete=True),
         _search_response(_items(1) * 2),
     ],
 )
-def test_search_rejects_incomplete_malformed_and_capped_results(monkeypatch, response):
-    monkeypatch.setattr(sources, "_run_gh", Mock(return_value=response))
+def test_search_rejects_results_that_never_stabilize_after_three_attempts(
+    monkeypatch, response
+):
+    run = Mock(return_value=response)
+    sleep = Mock()
+    monkeypatch.setattr(sources, "_run_gh", run)
+    monkeypatch.setattr(sources.time, "sleep", sleep)
+
     with pytest.raises(sources.SourceError):
         sources.search_github_cargo_lock("pkarr")
+
+    assert run.call_count == 3
+    assert all("page=1" in call.args[0] for call in run.call_args_list)
+    assert [call.args[0] for call in sleep.call_args_list] == [15, 30]
+
+
+@pytest.mark.parametrize(
+    "response",
+    [
+        _search_response([], total=8),
+        _search_response(_items(1), incomplete=True),
+        _search_response(_items(1) * 2),
+    ],
+)
+def test_search_retries_transient_first_page_and_uses_only_stable_results(
+    monkeypatch, response
+):
+    run = Mock(side_effect=[response, _search_response(_items(2, 200))])
+    monkeypatch.setattr(sources, "_run_gh", run)
+
+    matches = sources.search_github_cargo_lock("pkarr")
+
+    assert [match.repo for match in matches] == ["example/repo200", "example/repo201"]
+    assert all("page=1" in call.args[0] for call in run.call_args_list)
 
 
 def test_search_verifies_every_page(monkeypatch):
@@ -268,11 +492,58 @@ def test_search_verifies_every_page(monkeypatch):
     ],
 )
 def test_later_search_page_failure_discards_earlier_results(monkeypatch, last):
-    monkeypatch.setattr(
-        sources, "_run_gh", Mock(side_effect=[_search_response(_items(100), 101), last])
-    )
+    run = Mock(side_effect=[_search_response(_items(100), 101), last] * 3)
+    monkeypatch.setattr(sources, "_run_gh", run)
     with pytest.raises(sources.SourceError):
         sources.search_github_cargo_lock("pkarr")
+    assert run.call_count == 6
+    assert [
+        next(arg for arg in call.args[0] if arg.startswith("page="))
+        for call in run.call_args_list
+    ] == ["page=1", "page=2"] * 3
+
+
+@pytest.mark.parametrize(
+    "last",
+    [
+        _search_response([], 101),
+        _search_response(_items(1), 101),
+        _search_response(_items(1, 100), 102),
+        _search_response(_items(1, 100), 101, incomplete=True),
+    ],
+)
+def test_later_search_page_instability_restarts_from_page_one(monkeypatch, last):
+    run = Mock(
+        side_effect=[
+            _search_response(_items(100), 101),
+            last,
+            _search_response(_items(100, 200), 101),
+            _search_response(_items(1, 300), 101),
+        ]
+    )
+    monkeypatch.setattr(sources, "_run_gh", run)
+
+    matches = sources.search_github_cargo_lock("pkarr")
+
+    assert {match.repo for match in matches} == {
+        f"example/repo{i}" for i in range(200, 301)
+    }
+    assert [
+        next(arg for arg in call.args[0] if arg.startswith("page="))
+        for call in run.call_args_list
+    ] == ["page=1", "page=2", "page=1", "page=2"]
+
+
+def test_search_transport_failure_does_not_multiply_http_retry_budget(monkeypatch):
+    run = Mock(
+        side_effect=sources.SourceError("GitHub request failed after 4 attempts")
+    )
+    monkeypatch.setattr(sources, "_run_gh", run)
+
+    with pytest.raises(sources.SourceError, match="after 4 attempts"):
+        sources.search_github_cargo_lock("pkarr")
+
+    run.assert_called_once()
 
 
 def test_successful_empty_search_is_allowed(monkeypatch):
