@@ -21,15 +21,22 @@ CRATES_IO_BASE = "https://crates.io/api/v1"
 CRATES_IO_DELAY = 1  # seconds between crates.io requests
 SCRAPE_DELAY = 2  # seconds between dependents page requests
 SCRAPE_MAX_RETRIES = 3  # retries per page on failure
-GH_SEARCH_DELAY = 5  # seconds to wait before each gh search code call
-GH_RATE_LIMIT_BACKOFF = 30  # initial backoff seconds on rate limit, doubles each retry
+GH_SEARCH_DELAY = 7  # stay below code search's 10 requests/minute limit
+GH_RATE_LIMIT_BACKOFF = 60  # minimum secondary-limit backoff; doubles each retry
 GH_RATE_LIMIT_MAX_BACKOFF = 600  # cap backoff at 10 minutes
+GH_RATE_LIMIT_WAIT_BUDGET = 3660  # total retry wait per request, including reset hints
 GH_MAX_ATTEMPTS = 4
 GH_SEARCH_MAX_RESULTS = 1000
+GH_SEARCH_MAX_ATTEMPTS = 3
+GH_SEARCH_RETRY_DELAY = 15  # whole-search restart delay; doubles each retry
 
 
 class SourceError(RuntimeError):
     """A required source could not be collected completely."""
+
+
+class _TransientSearchError(SourceError):
+    """Search pagination could not yield a stable, complete snapshot."""
 
 
 @dataclass
@@ -144,10 +151,90 @@ def search_github_cargo_lock(crate_name: str) -> list[RepoMatch]:
     return _gh_search_code(crate_name, "Cargo.lock", "cargo_lock_paths")
 
 
+def _gh_response(result: subprocess.CompletedProcess) -> tuple[int | None, dict, str]:
+    """Separate gh api --include headers from either JSON or --jq output."""
+    output = result.stdout or ""
+    status = None
+    headers = {}
+    while True:
+        parts = re.split(r"\r?\n\r?\n", output, maxsplit=1)
+        lines = parts[0].splitlines()
+        match = (
+            re.fullmatch(r"HTTP/[\d.]+ ([1-5][0-9]{2})(?: .*)?", lines[0])
+            if lines
+            else None
+        )
+        if len(parts) != 2 or not match:
+            break
+        status = int(match.group(1))
+        headers = {}
+        for line in lines[1:]:
+            name, colon, value = line.partition(":")
+            if colon:
+                headers[name.strip().lower()] = value.strip()
+        output = parts[1]
+    if status is None:
+        match = re.search(r"\bHTTP ([1-5][0-9]{2})\b", result.stderr or "")
+        if match:
+            status = int(match.group(1))
+    return status, headers, output
+
+
 def _is_gh_rate_limited(result: subprocess.CompletedProcess) -> bool:
-    """Check if a gh CLI result indicates a rate limit (HTTP 429 or 403 abuse)."""
-    combined = ((result.stderr or "") + (result.stdout or "")).lower()
-    return "429" in combined or "abuse" in combined or "rate limit" in combined
+    """Recognize rate-limit status/messages, never arbitrary response numbers."""
+    status, headers, body = _gh_response(result)
+    if status == 429:
+        return True
+    if status not in (None, 403):
+        return False
+    if status == 403 and headers.get("x-ratelimit-remaining") == "0":
+        return True
+    message = result.stderr or ""
+    try:
+        data = json.loads(body)
+        if isinstance(data, dict) and isinstance(data.get("message"), str):
+            message += "\n" + data["message"]
+    except (ValueError, TypeError):
+        pass
+    return any(
+        marker in message.lower()
+        for marker in ("rate limit exceeded", "secondary rate limit", "abuse detection")
+    )
+
+
+def _gh_diagnostics(category: str, status: int | None, headers: dict) -> str:
+    """Emit only categories, HTTP status, and allowlisted numeric metadata."""
+    fields = [category, f"status={status if status is not None else 'unknown'}"]
+    for name in (
+        "retry-after",
+        "x-ratelimit-limit",
+        "x-ratelimit-remaining",
+        "x-ratelimit-used",
+        "x-ratelimit-reset",
+    ):
+        value = headers.get(name, "")
+        if re.fullmatch(r"[0-9]{1,16}", value):
+            fields.append(f"{name}={int(value)}")
+    return " ".join(fields)
+
+
+def _gh_retry_delay(headers: dict, attempt: int, remaining_wait: float) -> float:
+    """Honor server delays while enforcing a total wait budget for each request."""
+    delay = min(GH_RATE_LIMIT_BACKOFF * (2**attempt), GH_RATE_LIMIT_MAX_BACKOFF)
+    for name in ("retry-after", "x-ratelimit-reset"):
+        if name not in headers:
+            continue
+        if name == "x-ratelimit-reset" and headers.get("x-ratelimit-remaining") != "0":
+            continue
+        if not re.fullmatch(r"[0-9]{1,16}", headers[name]):
+            raise SourceError("GitHub rate limit has invalid retry timing metadata")
+        wait = int(headers[name])
+        if name == "x-ratelimit-reset":
+            wait = max(0, wait - time.time() + 1)
+        delay = max(delay, wait)
+    if delay > remaining_wait:
+        raise SourceError("GitHub retry delay exceeds the request wait budget")
+    return delay
 
 
 def _run_gh(
@@ -158,41 +245,84 @@ def _run_gh(
     allow_not_found: bool = False,
 ) -> subprocess.CompletedProcess | None:
     """Run a fixed-argument gh command with bounded rate-limit/timeout retries."""
+    if cmd[:2] == ["gh", "api"] and "--include" not in cmd:
+        cmd = [*cmd[:2], "--include", *cmd[2:]]
     if pre_delay > 0:
         time.sleep(pre_delay)
 
+    waited = 0
     for attempt in range(GH_MAX_ATTEMPTS):
+        headers = {}
+        status = None
+        category = "timeout"
         try:
             result = subprocess.run(
                 cmd, capture_output=True, text=True, timeout=timeout, check=False
             )
+            status, headers, body = _gh_response(result)
             if result.returncode == 0:
+                result.stdout = body
                 return result
-            if allow_not_found and "HTTP 404" in (result.stderr or ""):
+            if allow_not_found and status == 404:
                 return None
             if not _is_gh_rate_limited(result):
-                raise SourceError("GitHub request failed; refusing partial results")
+                diagnostics = _gh_diagnostics("request_failed", status, headers)
+                raise SourceError(
+                    f"GitHub request failed; refusing partial results ({diagnostics})"
+                )
+            category = "rate_limited"
         except subprocess.TimeoutExpired:
             pass
         except FileNotFoundError as exc:
             raise SourceError("gh CLI not found") from exc
 
+        diagnostics = _gh_diagnostics(category, status, headers)
         if attempt < GH_MAX_ATTEMPTS - 1:
-            backoff = min(
-                GH_RATE_LIMIT_BACKOFF * (2**attempt),
-                GH_RATE_LIMIT_MAX_BACKOFF,
-            )
+            try:
+                backoff = _gh_retry_delay(
+                    headers, attempt, GH_RATE_LIMIT_WAIT_BUDGET - waited
+                )
+            except SourceError as exc:
+                raise SourceError(f"{exc} ({diagnostics})") from None
             log.warning(
-                "GitHub request rate limited or timed out (attempt %d/%d); retry in %ds",
+                "GitHub request %s (attempt %d/%d); retry in %.1fs",
+                diagnostics,
                 attempt + 1,
                 GH_MAX_ATTEMPTS,
                 backoff,
             )
             time.sleep(backoff)
-    raise SourceError(f"GitHub request failed after {GH_MAX_ATTEMPTS} attempts")
+            waited += backoff
+    raise SourceError(
+        f"GitHub request failed after {GH_MAX_ATTEMPTS} attempts ({diagnostics})"
+    )
 
 
 def _search_items(
+    query: str, filename: str, *, sample_limit: int | None = None
+) -> list[dict]:
+    """Retry unstable searches from page one, never retaining partial results."""
+    for attempt in range(GH_SEARCH_MAX_ATTEMPTS):
+        try:
+            return _search_items_once(query, filename, sample_limit=sample_limit)
+        except _TransientSearchError as exc:
+            if attempt == GH_SEARCH_MAX_ATTEMPTS - 1:
+                raise SourceError(
+                    f"Incomplete GitHub search after {GH_SEARCH_MAX_ATTEMPTS} attempts "
+                    f"for {query} in {filename} ({exc})"
+                ) from None
+            delay = GH_SEARCH_RETRY_DELAY * (2**attempt)
+            log.warning(
+                "GitHub search %s (attempt %d/%d); restart from page 1 in %ds",
+                exc,
+                attempt + 1,
+                GH_SEARCH_MAX_ATTEMPTS,
+                delay,
+            )
+            time.sleep(delay)
+
+
+def _search_items_once(
     query: str, filename: str, *, sample_limit: int | None = None
 ) -> list[dict]:
     """Keep GitHub's completeness metadata and verify every requested page.
@@ -231,20 +361,22 @@ def _search_items(
             if (
                 type(total) is not int
                 or total < 0
-                or data.get("incomplete_results") is not False
+                or type(data.get("incomplete_results")) is not bool
                 or not isinstance(page_items, list)
             ):
-                raise ValueError("incomplete or malformed response")
+                raise ValueError("malformed response")
             if sample_limit is None and total >= GH_SEARCH_MAX_RESULTS:
                 raise SourceError(
                     f"GitHub search for {query} in {filename} hit the 1000-result API cap; split the query"
                 )
+            if data["incomplete_results"]:
+                raise _TransientSearchError("incomplete_results")
             if expected_total is not None and total != expected_total:
-                raise ValueError("result count changed during pagination")
+                raise _TransientSearchError("changing_total")
             expected_total = total
             wanted = min(total, sample_limit) if sample_limit else total
             if len(page_items) != min(per_page, wanted - len(items)):
-                raise ValueError("truncated search page")
+                raise _TransientSearchError("truncated_page")
             for item in page_items:
                 repo = item["repository"]["full_name"]
                 path = item["path"]
@@ -257,7 +389,7 @@ def _search_items(
                     raise ValueError("invalid repository or path")
                 identity = (repo, path)
                 if identity in seen:
-                    raise ValueError("duplicate search result across pages")
+                    raise _TransientSearchError("duplicate_result")
                 seen.add(identity)
             items.extend(page_items)
         except (ValueError, KeyError, TypeError, AttributeError) as exc:
