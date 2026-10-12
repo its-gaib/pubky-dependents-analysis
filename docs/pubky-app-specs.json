@@ -1,9 +1,10 @@
 {
   "crate": "pubky-app-specs",
-  "updated_at": "2026-09-07T11:53:05.749360+00:00",
-  "total": 6,
+  "updated_at": "2026-10-12T22:29:42.069036+00:00",
+  "total": 9,
   "summary": {
-    "direct": 6
+    "direct": 8,
+    "unknown": 1
   },
   "lists": {
     "direct": [
@@ -50,6 +51,18 @@
         ]
       },
       {
+        "repo": "pubky/marketplace-nexus",
+        "chain": [
+          "marketplace-nexus",
+          "pubky-app-specs"
+        ],
+        "stars": 0,
+        "version": "workspace",
+        "features": [
+          "openapi"
+        ]
+      },
+      {
         "repo": "pubky/pubky-nexus",
         "chain": [
           "pubky-nexus",
@@ -69,18 +82,52 @@
         ],
         "stars": 5,
         "version": "0.4"
+      },
+      {
+        "repo": "synonymdev/bitkit-docker",
+        "chain": [
+          "bitkitcore",
+          "pubky-app-specs"
+        ],
+        "stars": 1
+      }
+    ],
+    "unknown": [
+      {
+        "repo": "pubky/pubky-social-specs",
+        "chain": [
+          "pubky-app-specs"
+        ],
+        "stars": 9
       }
     ]
   },
+  "collection": {
+    "status": "complete",
+    "run_id": "2026-10-12T21:41:04.856441+00:00",
+    "sources": {
+      "crates_io": 5,
+      "github_cargo_toml": 7,
+      "github_cargo_lock": 6,
+      "github_dependents": 2,
+      "npm_registry": 49,
+      "github_package_json": 9
+    }
+  },
   "crates_io_downloads": {
-    "total": 10213,
-    "recent": 1070
+    "total": 10782,
+    "recent": 1195
   },
   "npm_downloads": {
-    "total": 31095,
-    "recent": 4027
+    "total": 37700,
+    "recent": 6755
   },
   "npm_dependents": [
+    {
+      "package": "@synonymdev/pubky",
+      "description": "Decentralized identity, auth flows, and user-owned storage",
+      "source": "npm_registry"
+    },
     {
       "package": "find-cypress-specs",
       "description": "Find Cypress spec files using the config settings",
@@ -92,13 +139,23 @@
       "source": "npm_registry"
     },
     {
-      "package": "@synonymdev/pubky",
-      "description": "Decentralized identity, auth flows, and user-owned storage",
+      "package": "@synonymdev/pubky-pulse-web",
+      "description": "Pubky Pulse browser SDK",
       "source": "npm_registry"
     },
     {
       "package": "setimmediate",
       "description": "A shim for the setImmediate efficient script yielding API",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@bitcoinerrorlog/pubky-shop",
+      "description": "Typed Pubky Shop inventory SDK, deterministic import/export codecs, and seller CLI",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@eventky/pubky-app-specs",
+      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
       "source": "npm_registry"
     },
     {
@@ -112,8 +169,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@eventky/pubky-app-specs",
-      "description": "Pubky.app Data Model Specifications including Eventky.app Extensions",
+      "package": "@types/har-format",
+      "description": "TypeScript definitions for har-format",
       "source": "npm_registry"
     },
     {
@@ -122,8 +179,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@types/har-format",
-      "description": "TypeScript definitions for har-format",
+      "package": "@synonymdev/react-native-pubky",
+      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
@@ -137,23 +194,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@metamask/api-specs",
-      "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
-      "source": "npm_registry"
-    },
-    {
       "package": "@react-native/codegen",
       "description": "Code generation tools for React Native",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@scalar/api-reference",
-      "description": "Generate beautiful API references from OpenAPI documents",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@synonymdev/react-native-pubky",
-      "description": "React Native Implementation of Pubky",
       "source": "npm_registry"
     },
     {
@@ -162,8 +204,18 @@
       "source": "npm_registry"
     },
     {
-      "package": "stop-only",
-      "description": "Detects '.only' left in the code accidentally",
+      "package": "@metamask/api-specs",
+      "description": "This repository contains the OpenRPC specification for MetaMask's Wallet JSON-RPC API. You can view the specs in the following formats:",
+      "source": "npm_registry"
+    },
+    {
+      "package": "mapky-app-specs",
+      "description": "Mapky Data Model Specifications \u2014 decentralized social layer over OpenStreetMap on Pubky",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@synonymdev/locks-sdk",
+      "description": "Browser JS/WASM bindings for the Pubky Locks Creator SDK",
       "source": "npm_registry"
     },
     {
@@ -172,33 +224,13 @@
       "source": "npm_registry"
     },
     {
+      "package": "stop-only",
+      "description": "Detects '.only' left in the code accidentally",
+      "source": "npm_registry"
+    },
+    {
       "package": "@standard-schema/spec",
       "description": "A family of specs for interoperable TypeScript",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@substrate/connect-known-chains",
-      "description": "Substrate-connect well known chain specifications",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@webcomponents/custom-elements",
-      "description": "HTML Custom Elements Polyfill",
-      "source": "npm_registry"
-    },
-    {
-      "package": "json-joy",
-      "description": "Collection of libraries for building collaborative editing apps.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "graphology",
-      "description": "A robust and multipurpose Graph object for JavaScript.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@rails/webpacker",
-      "description": "Use webpack to manage app-like JavaScript modules in Rails",
       "source": "npm_registry"
     },
     {
@@ -207,33 +239,23 @@
       "source": "npm_registry"
     },
     {
+      "package": "@substrate/connect-known-chains",
+      "description": "Substrate-connect well known chain specifications",
+      "source": "npm_registry"
+    },
+    {
       "package": "officecrypto-tool",
       "description": "officeCrypto is a library for node.js that can be used to decrypt and encrypt excel files.",
       "source": "npm_registry"
     },
     {
-      "package": "css-shorthand-properties",
-      "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
+      "package": "@webcomponents/custom-elements",
+      "description": "HTML Custom Elements Polyfill",
       "source": "npm_registry"
     },
     {
-      "package": "@polkadot/types-known",
-      "description": "Known type definitions",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@atproto/syntax",
-      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@replit/oidc-provider",
-      "description": "OAuth 2.0 Authorization Server implementation for Node.js with OpenID Connect",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@scalar/types",
-      "description": "Types to work with Scalar packages",
+      "package": "@rails/webpacker",
+      "description": "Use webpack to manage app-like JavaScript modules in Rails",
       "source": "npm_registry"
     },
     {
@@ -242,13 +264,53 @@
       "source": "npm_registry"
     },
     {
-      "package": "instantsearch.css",
-      "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
+      "package": "graphology",
+      "description": "A robust and multipurpose Graph object for JavaScript.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "css-shorthand-properties",
+      "description": "A simple list of CSS shorthand properties and which longhand properties they expand to",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@scalar/types",
+      "description": "Types to work with Scalar packages",
       "source": "npm_registry"
     },
     {
       "package": "@scalar/schemas",
       "description": "Schemas for Scalar packages",
+      "source": "npm_registry"
+    },
+    {
+      "package": "json-joy",
+      "description": "Collection of libraries for building collaborative editing apps.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@atproto/syntax",
+      "description": "Validation for atproto identifiers and formats: DID, handle, NSID, AT URI, etc",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@polkadot/types-known",
+      "description": "Known type definitions",
+      "source": "npm_registry"
+    },
+    {
+      "package": "datocms-structured-text-utils",
+      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "instantsearch.css",
+      "description": "InstantSearch.css is a CSS library to style InstantSearch-powered search experiences.",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@withfig/autocomplete",
+      "description": "Fig Autocomplete Specs",
       "source": "npm_registry"
     },
     {
@@ -262,28 +324,18 @@
       "source": "npm_registry"
     },
     {
+      "package": "@chainsafe/libp2p-gossipsub",
+      "description": "A typescript implementation of gossipsub",
+      "source": "npm_registry"
+    },
+    {
       "package": "pwa-asset-generator",
       "description": "Automates PWA asset generation and image declaration. Automatically generates icon and splash screen images, favicons and mstile images. Updates manifest.json and index.html files with the generated images according to Web App Manifest specs and Apple Hum",
       "source": "npm_registry"
     },
     {
-      "package": "@encore-os/eos-spec",
-      "description": "Portable, config-driven spec-pipeline engine + quality harness. One canonical engine consumed as a library (with a client-safe /pure subpath) by every Encore-OS repo.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@ideal-postcodes/openapi",
-      "description": "Ideal Postcodes OpenAPI v3 specifications",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@withfig/autocomplete",
-      "description": "Fig Autocomplete Specs",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@chainsafe/libp2p-gossipsub",
-      "description": "A typescript implementation of gossipsub",
+      "package": "@scalar/oas-utils",
+      "description": "Open API spec and Yaml handling utilities",
       "source": "npm_registry"
     },
     {
@@ -292,8 +344,8 @@
       "source": "npm_registry"
     },
     {
-      "package": "@libp2p/gossipsub",
-      "description": "A typescript implementation of gossipsub",
+      "package": "@scalar/themes",
+      "description": "the default CSS variables for all Scalar packages",
       "source": "npm_registry"
     },
     {
@@ -302,32 +354,22 @@
       "source": "npm_registry"
     },
     {
-      "package": "datocms-structured-text-utils",
-      "description": "A set of Typescript types and helpers to work with DatoCMS Structured Text fields.",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@react-native/eslint-plugin-specs",
-      "description": "ESLint rules to validate NativeModule and Component Specs",
-      "source": "npm_registry"
-    },
-    {
-      "package": "grunt-contrib-jasmine",
-      "description": "Run jasmine specs headlessly through Headless Chrome",
-      "source": "npm_registry"
-    },
-    {
-      "package": "@perma/map",
-      "description": "Immutable hash maps implemented as hash array papped tries",
-      "source": "npm_registry"
-    },
-    {
       "package": "@atproto/lex-json",
       "description": "Lexicon encoding utilities for AT Lexicon data in JSON format",
       "source": "npm_registry"
     },
     {
-      "package": "pubky/pubky-app-specs",
+      "package": "@scalar/code-highlight",
+      "description": "Central methods and themes for code highlighting in Scalar projects",
+      "source": "npm_registry"
+    },
+    {
+      "package": "@darwinia/types-known",
+      "description": "A JavaScript wrapper for the Polkadot JsonRPC interface",
+      "source": "npm_registry"
+    },
+    {
+      "package": "pubky/pubky-social-specs",
       "source": "github_package_json"
     },
     {
@@ -336,6 +378,10 @@
     },
     {
       "package": "PastaGringo/pubky-roadmap",
+      "source": "github_package_json"
+    },
+    {
+      "package": "pubky/pubky-marketplace",
       "source": "github_package_json"
     },
     {

@@ -1,10 +1,11 @@
 {
   "crate": "http-relay",
-  "updated_at": "2026-09-07T12:05:01.366190+00:00",
-  "total": 9,
+  "updated_at": "2026-10-12T22:54:11.517496+00:00",
+  "total": 13,
   "summary": {
-    "pubky-testnet": 6,
-    "direct": 3
+    "pubky-testnet": 9,
+    "direct": 3,
+    "unknown": 1
   },
   "lists": {
     "pubky-testnet": [
@@ -18,9 +19,36 @@
         "stars": 1
       },
       {
+        "repo": "coreyphillips/pubky-messenger",
+        "chain": [
+          "pubky-messenger",
+          "pubky-testnet",
+          "http-relay"
+        ],
+        "stars": 2
+      },
+      {
+        "repo": "coreyphillips/pubky-swap",
+        "chain": [
+          "pubky-transport",
+          "pubky-testnet",
+          "http-relay"
+        ],
+        "stars": 0
+      },
+      {
         "repo": "icota/pubky-migrate",
         "chain": [
           "pubky-migrate",
+          "pubky-testnet",
+          "http-relay"
+        ],
+        "stars": 0
+      },
+      {
+        "repo": "pubky/marketplace-nexus",
+        "chain": [
+          "nexus-watcher",
           "pubky-testnet",
           "http-relay"
         ],
@@ -60,7 +88,7 @@
           "pubky-testnet",
           "http-relay"
         ],
-        "stars": 3
+        "stars": 4
       }
     ],
     "direct": [
@@ -99,10 +127,29 @@
         "stars": 87,
         "version": "0.7"
       }
+    ],
+    "unknown": [
+      {
+        "repo": "wasmCloud/wasmCloud",
+        "chain": [
+          "http-relay"
+        ],
+        "stars": 2456
+      }
     ]
   },
+  "collection": {
+    "status": "complete",
+    "run_id": "2026-10-12T21:41:04.856441+00:00",
+    "sources": {
+      "crates_io": 1,
+      "github_cargo_toml": 10,
+      "github_cargo_lock": 18,
+      "github_dependents": 4
+    }
+  },
   "crates_io_downloads": {
-    "total": 10636,
-    "recent": 2727
+    "total": 14481,
+    "recent": 5967
   }
 }
