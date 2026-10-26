@@ -21,11 +21,11 @@ CRATES_IO_BASE = "https://crates.io/api/v1"
 CRATES_IO_DELAY = 1  # seconds between crates.io requests
 SCRAPE_DELAY = 2  # seconds between dependents page requests
 SCRAPE_MAX_RETRIES = 3  # retries per page on failure
-GH_SEARCH_DELAY = 7  # stay below code search's 10 requests/minute limit
+GH_SEARCH_DELAY = 15  # leave headroom below code search's 10 requests/minute limit
 GH_RATE_LIMIT_BACKOFF = 60  # minimum secondary-limit backoff; doubles each retry
 GH_RATE_LIMIT_MAX_BACKOFF = 600  # cap backoff at 10 minutes
 GH_RATE_LIMIT_WAIT_BUDGET = 3660  # total retry wait per request, including reset hints
-GH_MAX_ATTEMPTS = 4
+GH_MAX_ATTEMPTS = 10
 GH_SEARCH_MAX_RESULTS = 1000
 GH_SEARCH_MAX_ATTEMPTS = 3
 GH_SEARCH_RETRY_DELAY = 15  # whole-search restart delay; doubles each retry
@@ -202,9 +202,53 @@ def _is_gh_rate_limited(result: subprocess.CompletedProcess) -> bool:
     )
 
 
-def _gh_diagnostics(category: str, status: int | None, headers: dict) -> str:
-    """Emit only categories, HTTP status, and allowlisted numeric metadata."""
+def _gh_rate_limit_category(result: subprocess.CompletedProcess) -> str:
+    """Classify upstream errors without exposing their potentially sensitive text."""
+    _, headers, body = _gh_response(result)
+    if headers.get("x-ratelimit-remaining") == "0":
+        return "primary"
+    message = result.stderr or ""
+    try:
+        data = json.loads(body)
+        if isinstance(data, dict) and isinstance(data.get("message"), str):
+            message += "\n" + data["message"]
+    except (ValueError, TypeError):
+        pass
+    if any(
+        marker in message.lower()
+        for marker in ("secondary rate limit", "abuse detection")
+    ):
+        return "secondary"
+    return "unknown"
+
+
+def _gh_diagnostics(
+    category: str,
+    status: int | None,
+    headers: dict,
+    *,
+    rate_limit: str | None = None,
+    search_context: dict | None = None,
+) -> str:
+    """Emit fixed categories, validated search context, and numeric metadata."""
     fields = [category, f"status={status if status is not None else 'unknown'}"]
+    if rate_limit in ("primary", "secondary", "unknown"):
+        fields.append(f"rate_limit={rate_limit}")
+    if search_context is not None:
+        fields.append("endpoint=search/code")
+        query = search_context.get("search_query")
+        if (
+            isinstance(query, str)
+            and len(query) <= 100
+            and re.fullmatch(r"(?:@[A-Za-z0-9_-]+/)?[A-Za-z0-9_.-]+", query)
+        ):
+            fields.append(f"search_query={query}")
+        filename = search_context.get("search_filename")
+        if filename in ("Cargo.toml", "Cargo.lock", "package.json"):
+            fields.append(f"search_filename={filename}")
+        page = search_context.get("search_page")
+        if type(page) is int and 1 <= page <= 1000:
+            fields.append(f"search_page={page}")
     for name in (
         "retry-after",
         "x-ratelimit-limit",
@@ -243,6 +287,7 @@ def _run_gh(
     timeout: int = 60,
     pre_delay: float = 0,
     allow_not_found: bool = False,
+    search_context: dict | None = None,
 ) -> subprocess.CompletedProcess | None:
     """Run a fixed-argument gh command with bounded rate-limit/timeout retries."""
     if cmd[:2] == ["gh", "api"] and "--include" not in cmd:
@@ -255,6 +300,7 @@ def _run_gh(
         headers = {}
         status = None
         category = "timeout"
+        rate_limit = None
         try:
             result = subprocess.run(
                 cmd, capture_output=True, text=True, timeout=timeout, check=False
@@ -266,17 +312,26 @@ def _run_gh(
             if allow_not_found and status == 404:
                 return None
             if not _is_gh_rate_limited(result):
-                diagnostics = _gh_diagnostics("request_failed", status, headers)
+                diagnostics = _gh_diagnostics(
+                    "request_failed", status, headers, search_context=search_context
+                )
                 raise SourceError(
                     f"GitHub request failed; refusing partial results ({diagnostics})"
                 )
             category = "rate_limited"
+            rate_limit = _gh_rate_limit_category(result)
         except subprocess.TimeoutExpired:
             pass
         except FileNotFoundError as exc:
             raise SourceError("gh CLI not found") from exc
 
-        diagnostics = _gh_diagnostics(category, status, headers)
+        diagnostics = _gh_diagnostics(
+            category,
+            status,
+            headers,
+            rate_limit=rate_limit,
+            search_context=search_context,
+        )
         if attempt < GH_MAX_ATTEMPTS - 1:
             try:
                 backoff = _gh_retry_delay(
@@ -353,6 +408,11 @@ def _search_items_once(
                 f"page={page}",
             ],
             pre_delay=GH_SEARCH_DELAY,
+            search_context={
+                "search_query": query,
+                "search_filename": filename,
+                "search_page": page,
+            },
         )
         try:
             data = json.loads(result.stdout)
@@ -370,13 +430,18 @@ def _search_items_once(
                     f"GitHub search for {query} in {filename} hit the 1000-result API cap; split the query"
                 )
             if data["incomplete_results"]:
-                raise _TransientSearchError("incomplete_results")
+                raise _TransientSearchError(f"incomplete_results page={page}")
             if expected_total is not None and total != expected_total:
-                raise _TransientSearchError("changing_total")
+                raise _TransientSearchError(
+                    f"changing_total page={page} expected={expected_total} received={total}"
+                )
             expected_total = total
             wanted = min(total, sample_limit) if sample_limit else total
             if len(page_items) != min(per_page, wanted - len(items)):
-                raise _TransientSearchError("truncated_page")
+                raise _TransientSearchError(
+                    f"truncated_page page={page} "
+                    f"expected={min(per_page, wanted - len(items))} received={len(page_items)}"
+                )
             for item in page_items:
                 repo = item["repository"]["full_name"]
                 path = item["path"]
@@ -389,7 +454,7 @@ def _search_items_once(
                     raise ValueError("invalid repository or path")
                 identity = (repo, path)
                 if identity in seen:
-                    raise _TransientSearchError("duplicate_result")
+                    raise _TransientSearchError(f"duplicate_result page={page}")
                 seen.add(identity)
             items.extend(page_items)
         except (ValueError, KeyError, TypeError, AttributeError) as exc:

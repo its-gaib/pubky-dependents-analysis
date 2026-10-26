@@ -70,10 +70,39 @@ def test_gh_retries_rate_limits_and_timeouts_with_capped_backoff(monkeypatch):
 
 
 def test_gh_default_pacing_respects_code_search_and_secondary_limits():
-    assert sources.GH_SEARCH_DELAY >= 6
+    assert sources.GH_SEARCH_DELAY >= 15
     assert sources.GH_RATE_LIMIT_BACKOFF >= 60
-    assert sources.GH_MAX_ATTEMPTS == 4
+    assert sources.GH_MAX_ATTEMPTS == 10
     assert sources.GH_SEARCH_MAX_ATTEMPTS == 3
+
+
+def test_gh_rate_limit_can_recover_after_previous_four_attempt_cap(monkeypatch):
+    limited = _gh_response(429, headers={"X-RateLimit-Remaining": "10"})
+    run = Mock(side_effect=[limited] * 4 + [_gh_response(200, "complete")])
+    sleep = Mock()
+    monkeypatch.setattr(sources.subprocess, "run", run)
+    monkeypatch.setattr(sources.time, "sleep", sleep)
+
+    assert sources._run_gh(["gh", "api", "repos/example/repo"]).stdout == "complete"
+
+    assert run.call_count == 5
+    assert [call.args[0] for call in sleep.call_args_list] == [60, 120, 240, 480]
+
+
+def test_gh_default_wait_budget_stops_before_attempt_cap(monkeypatch):
+    run = Mock(return_value=_gh_response(429))
+    sleep = Mock()
+    monkeypatch.setattr(sources.subprocess, "run", run)
+    monkeypatch.setattr(sources.time, "sleep", sleep)
+
+    with pytest.raises(sources.SourceError, match="wait budget"):
+        sources._run_gh(["gh", "api", "repos/example/repo"])
+
+    waits = [call.args[0] for call in sleep.call_args_list]
+    assert waits == [60, 120, 240, 480, 600, 600, 600, 600]
+    assert sum(waits) == 3300
+    assert sum(waits) <= sources.GH_RATE_LIMIT_WAIT_BUDGET
+    assert run.call_count == 9 < sources.GH_MAX_ATTEMPTS
 
 
 @pytest.mark.parametrize("newline", ["\r\n", "\n"])
@@ -211,6 +240,118 @@ def test_gh_rate_limit_diagnostics_never_expose_response_secrets(monkeypatch, ca
     assert secret not in str(error.value)
 
 
+@pytest.mark.parametrize(
+    ("headers", "message", "stderr", "expected_category"),
+    [
+        ({"X-RateLimit-Remaining": "0"}, "", "", "primary"),
+        (
+            {"X-RateLimit-Remaining": "0"},
+            "You have exceeded a secondary rate limit.",
+            "",
+            "primary",
+        ),
+        (
+            {"X-RateLimit-Remaining": "10"},
+            "You have exceeded a secondary rate limit.",
+            "",
+            "secondary",
+        ),
+        ({}, "", "HTTP 429: secondary rate limit", "secondary"),
+        ({}, "Request triggered abuse detection.", "", "secondary"),
+        ({"X-RateLimit-Remaining": "10"}, "Too many requests", "", "unknown"),
+        ({}, "", "", "unknown"),
+    ],
+)
+def test_gh_diagnostics_identify_rate_limit_without_logging_messages(
+    monkeypatch, caplog, headers, message, stderr, expected_category
+):
+    secret = "secret-response-token-123"
+    response = _gh_response(429, json.dumps({"message": message + secret}), headers)
+    response.stderr = stderr + secret
+    monkeypatch.setattr(sources.subprocess, "run", Mock(return_value=response))
+    monkeypatch.setattr(sources, "GH_MAX_ATTEMPTS", 2)
+    caplog.set_level(logging.WARNING, logger="sources")
+
+    with pytest.raises(sources.SourceError) as error:
+        sources._run_gh(["gh", "api", "repos/example/repo"])
+
+    assert f"rate_limit={expected_category}" in caplog.text
+    assert f"rate_limit={expected_category}" in str(error.value)
+    assert secret not in caplog.text
+    assert secret not in str(error.value)
+
+
+@pytest.mark.parametrize(
+    ("query", "filename"),
+    [("pubky-app-specs", "Cargo.toml"), ("@synonymdev/pubky", "package.json")],
+)
+def test_gh_search_failure_identifies_query_filename_and_page(
+    monkeypatch, caplog, query, filename
+):
+    monkeypatch.setattr(sources.subprocess, "run", Mock(return_value=_gh_response(429)))
+    monkeypatch.setattr(sources, "GH_MAX_ATTEMPTS", 2)
+    caplog.set_level(logging.WARNING, logger="sources")
+
+    with pytest.raises(sources.SourceError) as error:
+        sources._run_gh(
+            ["gh", "api", "search/code"],
+            search_context={
+                "search_query": query,
+                "search_filename": filename,
+                "search_page": 2,
+            },
+        )
+
+    for field in (
+        "endpoint=search/code",
+        f"search_query={query}",
+        f"search_filename={filename}",
+        "search_page=2",
+    ):
+        assert field in caplog.text
+        assert field in str(error.value)
+
+
+@pytest.mark.parametrize(
+    "context",
+    [
+        {
+            "search_query": "pkarr\ncredential=secret-token-123",
+            "search_filename": "secret-token-123",
+            "search_page": "secret-token-123",
+            "secret-token-123": "secret-token-123",
+        },
+        {
+            "search_query": "x" * 101,
+            "search_filename": "../Cargo.toml",
+            "search_page": 0,
+        },
+        {"search_query": None, "search_filename": None, "search_page": True},
+        {"search_query": 1, "search_filename": [], "search_page": 1001},
+    ],
+)
+def test_gh_search_diagnostics_omit_invalid_context_and_commands(
+    monkeypatch, caplog, context
+):
+    monkeypatch.setattr(sources.subprocess, "run", Mock(return_value=_gh_response(429)))
+    monkeypatch.setattr(sources, "GH_MAX_ATTEMPTS", 2)
+    caplog.set_level(logging.WARNING, logger="sources")
+
+    with pytest.raises(sources.SourceError) as error:
+        sources._run_gh(
+            ["gh", "api", "search/code", "-H", "Authorization: secret-token-123"],
+            search_context=context,
+        )
+
+    for text in (caplog.text, str(error.value)):
+        assert "endpoint=search/code" in text
+        assert "search_query=" not in text
+        assert "search_filename=" not in text
+        assert "search_page=" not in text
+        assert "secret-token-123" not in text
+        assert "Authorization" not in text
+
+
 def test_gh_arbitrary_body_429_does_not_turn_forbidden_into_rate_limit(monkeypatch):
     response = _gh_response(403, json.dumps({"message": "resource 429 is private"}))
     response.stderr = "HTTP 403: Forbidden"
@@ -219,9 +360,10 @@ def test_gh_arbitrary_body_429_does_not_turn_forbidden_into_rate_limit(monkeypat
     monkeypatch.setattr(sources.subprocess, "run", run)
     monkeypatch.setattr(sources.time, "sleep", sleep)
 
-    with pytest.raises(sources.SourceError):
+    with pytest.raises(sources.SourceError) as error:
         sources._run_gh(["gh", "api", "repos/example/repo"])
 
+    assert "rate_limit=" not in str(error.value)
     run.assert_called_once()
     sleep.assert_not_called()
 
@@ -394,7 +536,9 @@ def test_gh_retries_are_finite(monkeypatch, failure):
     sleep = Mock()
     monkeypatch.setattr(sources.subprocess, "run", run)
     monkeypatch.setattr(sources.time, "sleep", sleep)
-    with pytest.raises(sources.SourceError, match="after 4 attempts"):
+    # Isolate the attempt ceiling from the independently enforced wait budget.
+    monkeypatch.setattr(sources, "GH_RATE_LIMIT_WAIT_BUDGET", 10000)
+    with pytest.raises(sources.SourceError, match="after 10 attempts"):
         sources.search_github_cargo_lock("pkarr")
     assert run.call_count == sources.GH_MAX_ATTEMPTS
     assert sleep.call_count == sources.GH_MAX_ATTEMPTS
@@ -481,6 +625,10 @@ def test_search_verifies_every_page(monkeypatch):
     assert len(sources.search_github_cargo_lock("pkarr")) == 101
     assert "page=2" in run.call_args.args[0]
     assert "github.com" in run.call_args.args[0]
+    assert [call.kwargs["search_context"] for call in run.call_args_list] == [
+        {"search_query": "pkarr", "search_filename": "Cargo.lock", "search_page": 1},
+        {"search_query": "pkarr", "search_filename": "Cargo.lock", "search_page": 2},
+    ]
 
 
 @pytest.mark.parametrize(
@@ -501,6 +649,31 @@ def test_later_search_page_failure_discards_earlier_results(monkeypatch, last):
         next(arg for arg in call.args[0] if arg.startswith("page="))
         for call in run.call_args_list
     ] == ["page=1", "page=2"] * 3
+
+
+@pytest.mark.parametrize(
+    ("last", "expected_diagnostic"),
+    [
+        (_search_response([], 101), "truncated_page page=2 expected=1 received=0"),
+        (
+            _search_response(_items(1, 100), 102),
+            "changing_total page=2 expected=101 received=102",
+        ),
+    ],
+)
+def test_incomplete_search_diagnostics_identify_page_and_counts(
+    monkeypatch, caplog, last, expected_diagnostic
+):
+    run = Mock(side_effect=[_search_response(_items(100), 101), last] * 3)
+    monkeypatch.setattr(sources, "_run_gh", run)
+    caplog.set_level(logging.WARNING, logger="sources")
+
+    with pytest.raises(sources.SourceError) as error:
+        sources.search_github_cargo_lock("pkarr")
+
+    assert expected_diagnostic in caplog.text
+    assert expected_diagnostic in str(error.value)
+    assert run.call_count == 6
 
 
 @pytest.mark.parametrize(
@@ -536,11 +709,11 @@ def test_later_search_page_instability_restarts_from_page_one(monkeypatch, last)
 
 def test_search_transport_failure_does_not_multiply_http_retry_budget(monkeypatch):
     run = Mock(
-        side_effect=sources.SourceError("GitHub request failed after 4 attempts")
+        side_effect=sources.SourceError("GitHub request failed after 10 attempts")
     )
     monkeypatch.setattr(sources, "_run_gh", run)
 
-    with pytest.raises(sources.SourceError, match="after 4 attempts"):
+    with pytest.raises(sources.SourceError, match="after 10 attempts"):
         sources.search_github_cargo_lock("pkarr")
 
     run.assert_called_once()
