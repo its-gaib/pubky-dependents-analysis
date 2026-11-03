@@ -443,6 +443,11 @@ def _search_items_once(
                     f"expected={min(per_page, wanted - len(items))} received={len(page_items)}"
                 )
             for item in page_items:
+                if item["repository"].get("private", False) is not False:
+                    raise SourceError(
+                        "GitHub search returned a non-public repository; "
+                        "use a public-read-only analysis token"
+                    )
                 repo = item["repository"]["full_name"]
                 path = item["path"]
                 if (

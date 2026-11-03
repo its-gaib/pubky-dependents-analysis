@@ -421,6 +421,30 @@ def test_gh_search_groups_files_by_repository(
     assert f"q=pkarr filename:{filename}" in run.call_args.args[0]
 
 
+@pytest.mark.parametrize(
+    ("query", "filename", "sample_limit"),
+    [("pkarr", "Cargo.lock", None), ("@synonymdev/pubky", "package.json", 50)],
+)
+def test_search_rejects_private_results_without_disclosing_repository(
+    monkeypatch, query, filename, sample_limit
+):
+    items = [
+        {
+            "repository": {"full_name": "confidential/project", "private": True},
+            "path": "secret/Cargo.lock",
+        }
+    ]
+    run = Mock(return_value=_search_response(items))
+    monkeypatch.setattr(sources, "_run_gh", run)
+
+    with pytest.raises(sources.SourceError, match="public-read-only") as error:
+        sources._search_items(query, filename, sample_limit=sample_limit)
+
+    assert "confidential" not in str(error.value)
+    assert "secret" not in str(error.value)
+    run.assert_called_once()
+
+
 @pytest.mark.parametrize("content", ["invalid base64", "非ASCII"])
 def test_invalid_gh_file_content_falls_back_to_raw(monkeypatch, content):
     run = Mock(return_value=subprocess.CompletedProcess([], 0, content, ""))

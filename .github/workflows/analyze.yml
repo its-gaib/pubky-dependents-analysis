@@ -49,9 +49,13 @@ jobs:
       - name: Run analysis
         if: github.event_name == 'workflow_dispatch' || steps.cycle.outputs.due == 'true'
         env:
-          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          GH_TOKEN: ${{ secrets.DEPENDENTS_READ_TOKEN }}
           ALLOW_LARGE_DECREASE: ${{ inputs.allow_large_decrease == true }}
         run: |
+          if [[ -z "$GH_TOKEN" ]]; then
+            echo "::error::Set the DEPENDENTS_READ_TOKEN Actions secret to a dedicated public-read personal access token before running analysis."
+            exit 1
+          fi
           args=()
           if [[ "$ALLOW_LARGE_DECREASE" == "true" ]]; then
             args+=(--allow-large-decrease)
